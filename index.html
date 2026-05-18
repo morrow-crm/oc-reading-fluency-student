@@ -574,6 +574,8 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script>
 (function () {
   'use strict';
@@ -1437,7 +1439,7 @@
     const safeTitle = safeFileName(shortTitle(state.reading.title));
     const audioExt = extForMime(state.recMime || (state.recBlob && state.recBlob.type) || '');
     const audioFilename = safeName + ' - ' + safeTitle + ' - recording.' + audioExt;
-    const recordFilename = safeName + ' - ' + safeTitle + ' - reading record.html';
+    const recordFilename = safeName + ' - ' + safeTitle + ' - reading record.pdf';
 
     const audioA = $('dl-audio');
     if (state.recBlob) {
@@ -1451,12 +1453,18 @@
       audioA.style.opacity = '0.6';
     }
 
-    const recordHtml = buildReadingRecordHtml(wpm);
-    const recordBlob = new Blob([recordHtml], { type: 'text/html;charset=utf-8' });
+    // Reading record PDF (generated asynchronously)
     const recordA = $('dl-record');
-    recordA.href = URL.createObjectURL(recordBlob);
-    recordA.download = recordFilename;
-    recordA.textContent = 'Download reading record (' + recordFilename + ')';
+    setPendingLink(recordA, 'Preparing reading record PDF…');
+    buildReadingRecordPdf(wpm).then(blob => {
+      recordA.href = URL.createObjectURL(blob);
+      recordA.download = recordFilename;
+      recordA.textContent = 'Download reading record (' + recordFilename + ')';
+      clearPendingLink(recordA);
+    }).catch(err => {
+      console.error(err);
+      recordA.textContent = 'Could not build reading record PDF: ' + (err.message || err);
+    });
 
     // Flashcards
     const chosen = (state.vocab || []).filter(v => v.selected);
@@ -1475,14 +1483,30 @@
       csvA.download = csvFilename;
       csvA.textContent = 'Download flashcards CSV for Quizlet (' + csvFilename + ')';
 
-      const printHtml = buildFlashcardsPrintHtml(chosen);
-      const printBlob = new Blob([printHtml], { type: 'text/html;charset=utf-8' });
-      const printFilename = safeName + ' - ' + safeTitle + ' - flashcards.html';
       const printA = $('dl-flashcards-print');
-      printA.href = URL.createObjectURL(printBlob);
-      printA.download = printFilename;
-      printA.textContent = 'Download printable flashcard sheet (' + printFilename + ')';
+      const printFilename = safeName + ' - ' + safeTitle + ' - flashcards.pdf';
+      setPendingLink(printA, 'Preparing printable flashcard PDF…');
+      buildFlashcardsPdf(chosen).then(blob => {
+        printA.href = URL.createObjectURL(blob);
+        printA.download = printFilename;
+        printA.textContent = 'Download printable flashcard sheet (' + printFilename + ')';
+        clearPendingLink(printA);
+      }).catch(err => {
+        console.error(err);
+        printA.textContent = 'Could not build flashcard PDF: ' + (err.message || err);
+      });
     }
+  }
+
+  function setPendingLink(a, label) {
+    a.textContent = label;
+    a.removeAttribute('href');
+    a.style.pointerEvents = 'none';
+    a.style.opacity = '0.6';
+  }
+  function clearPendingLink(a) {
+    a.style.pointerEvents = '';
+    a.style.opacity = '';
   }
 
   function csvField(s) {
@@ -1502,101 +1526,112 @@
     return lines.join('\r\n') + '\r\n';
   }
 
-  function buildFlashcardsPrintHtml(cards) {
-    const styles = `
-      body {
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-        margin: 24px; color: #222; line-height: 1.45;
+  // ----- PDF generation helpers -----
+  // Both downloadable documents are rasterized via html2canvas and then placed
+  // into a PDF with jsPDF. Image-based PDFs render reliably across viewers
+  // (including Canvas SpeedGrader) and preserve the continuous-fill highlights
+  // exactly as they appear on the page.
+
+  function ensurePdfLibs() {
+    if (!window.html2canvas || !window.jspdf || !window.jspdf.jsPDF) {
+      throw new Error('PDF tools did not load — check your internet connection and reload the page.');
+    }
+  }
+
+  function mountOffscreen(innerHtml, widthPx) {
+    const wrap = document.createElement('div');
+    wrap.style.cssText =
+      'position: fixed; left: -99999px; top: 0; ' +
+      'width: ' + widthPx + 'px; background: #ffffff; ' +
+      'font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; ' +
+      'color: #222; line-height: 1.5;';
+    wrap.innerHTML = innerHtml;
+    document.body.appendChild(wrap);
+    return wrap;
+  }
+
+  async function renderToPdfSliced(wrap, opts) {
+    // Rasterize a tall element and slice the canvas into letter-size pages.
+    const { jsPDF } = window.jspdf;
+    const canvas = await window.html2canvas(wrap, {
+      scale: 2,
+      backgroundColor: '#ffffff',
+      logging: false,
+      windowWidth: wrap.offsetWidth,
+      useCORS: true,
+    });
+    const pdf = new jsPDF({ unit: 'pt', format: 'letter' });
+    const pageW = pdf.internal.pageSize.getWidth();
+    const pageH = pdf.internal.pageSize.getHeight();
+    const margin = (opts && opts.margin) || 36;
+    const printableW = pageW - margin * 2;
+    const printableH = pageH - margin * 2;
+
+    const pxPerPt = canvas.width / printableW;
+    const pageCanvasH = Math.floor(printableH * pxPerPt);
+    const totalPages = Math.max(1, Math.ceil(canvas.height / pageCanvasH));
+
+    for (let i = 0; i < totalPages; i++) {
+      if (i > 0) pdf.addPage();
+      const startY = i * pageCanvasH;
+      const sliceH = Math.min(pageCanvasH, canvas.height - startY);
+      const slice = document.createElement('canvas');
+      slice.width = canvas.width;
+      slice.height = sliceH;
+      const ctx = slice.getContext('2d');
+      ctx.fillStyle = '#ffffff';
+      ctx.fillRect(0, 0, slice.width, slice.height);
+      ctx.drawImage(canvas, 0, -startY);
+      const sliceImgH = sliceH / pxPerPt;
+      pdf.addImage(
+        slice.toDataURL('image/jpeg', 0.92),
+        'JPEG',
+        margin, margin,
+        printableW, sliceImgH
+      );
+    }
+    return pdf.output('blob');
+  }
+
+  function readingRecordStyles() {
+    return `
+      .doc {
+        max-width: 100%;
+        margin: 0;
+        padding: 24px 28px;
+        color: #222;
       }
-      h1 { font-size: 20px; color: #1f3a5f; margin: 0 0 4px; }
-      .meta { color: #555; font-size: 13px; margin-bottom: 14px; }
-      .intro { font-size: 13px; color: #555; margin-bottom: 14px; }
-      .cards {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
+      .doc header { border-bottom: 1px solid #ccc; margin-bottom: 14px; padding-bottom: 10px; }
+      .doc h1 { font-size: 22px; margin: 0 0 6px; color: #1f3a5f; }
+      .doc h2 { font-size: 16px; color: #1f3a5f; margin: 22px 0 8px; }
+      .doc .meta { color: #555; font-size: 13px; line-height: 1.45; }
+      .doc .reading p { font-size: 15px; line-height: 1.75; margin: 0 0 0.9em; }
+      .doc .unfamiliar { background-color: #fff176; }
+      .doc .tag-key { background-color: #b9d8f5; }
+      .doc .unfamiliar.tag-key {
+        background-image: linear-gradient(to top, #fff176 0 3px, #b9d8f5 3px 100%);
       }
-      .card {
-        border: 1px solid #888;
-        border-radius: 5px;
-        padding: 14px 16px;
-        min-height: 170px;
-        break-inside: avoid;
-        page-break-inside: avoid;
-        display: flex;
-        flex-direction: column;
-      }
-      .card .word {
-        font-size: 22px;
-        font-weight: 600;
-        color: #1f3a5f;
-        border-bottom: 1px solid #ccc;
-        padding-bottom: 6px;
-        margin-bottom: 10px;
-      }
-      .card .def { font-size: 14px; }
-      .card .def.missing { color: #888; font-style: italic; }
-      .card .example {
-        margin-top: auto;
-        padding-top: 10px;
-        font-size: 13px;
-        font-style: italic;
-        color: #555;
-      }
-      @media print {
-        body { margin: 0.4in; }
-        .intro, .meta { display: none; }
-        h1 { display: none; }
-      }
+      .doc .legend { font-size: 13px; margin: 4px 0 12px; color: #444; }
+      .doc .legend .swatch { display: inline-block; width: 12px; height: 12px; vertical-align: middle; margin-right: 4px; border: 1px solid rgba(0,0,0,0.12); }
+      .doc dl.summary { margin: 6px 0; }
+      .doc dl.summary dt { font-weight: 600; color: #1f3a5f; margin-top: 6px; }
+      .doc dl.summary dd { margin: 2px 0 8px; }
+      .doc ul.unfamiliar-list { padding-left: 22px; }
+      .doc ul.unfamiliar-list li { margin-bottom: 8px; font-size: 14px; }
+      .doc .note { color: #666; font-size: 13px; }
     `;
-    const cardHtml = cards.map(v => {
-      const defStr = v.status === 'ok'
-        ? esc(v.definition)
-        : '<span class="missing">No definition found.</span>';
-      const ex = v.sentence ? '<div class="example">"' + esc(v.sentence) + '"</div>' : '';
-      return '<div class="card">' +
-        '<div class="word">' + esc(v.word) + '</div>' +
-        '<div class="def">' + defStr + '</div>' +
-        ex +
-        '</div>';
-    }).join('\n');
-
-    return `<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>${esc(state.name)} — ${esc(state.reading.title)} — Flashcards</title>
-<style>${styles}</style>
-</head>
-<body>
-<h1>Flashcards — ${esc(state.name)}</h1>
-<div class="meta">${esc(state.reading.title)}</div>
-<div class="intro">Print this sheet and cut along the borders to make paper cards.</div>
-<div class="cards">
-${cardHtml}
-</div>
-</body>
-</html>`;
   }
 
-  function shortTitle(t) {
-    if (!t) return 'Reading';
-    if (t.length <= 60) return t;
-    return t.slice(0, 60).trim();
-  }
-
-  function buildReadingRecordHtml(wpm) {
+  function readingRecordBody(wpm) {
     const reading = state.reading;
     const ms = state.timer.elapsedMs;
     const dateStr = new Date().toLocaleString();
 
-    // Group words by paragraph in source order.
     const wordsByPara = {};
     state.words.forEach((w, i) => {
       if (!wordsByPara[w.paraIdx]) wordsByPara[w.paraIdx] = [];
       wordsByPara[w.paraIdx].push({ ...w, gi: i });
     });
-
     function annotationKey(w) {
       return (w.unfamiliar ? 'u' : '_') + (w.key ? 'k' : '_');
     }
@@ -1606,29 +1641,21 @@ ${cardHtml}
       if (key[1] === 'k') c.push('tag-key');
       return c.join(' ');
     }
-
-    // Build paragraphs by merging consecutive same-annotation runs into one span,
-    // including the inter-word whitespace inside the span — that's what makes the
-    // highlight render as one continuous band rather than per-word boxes.
     const paragraphsHtml = reading.paragraphs.map((paraText, paraIdx) => {
       const paraWords = wordsByPara[paraIdx] || [];
-      const tokens = []; // [{word, ws}]
+      const tokens = [];
       const tokenRe = /(\S+)(\s*)/g;
       let m;
       while ((m = tokenRe.exec(paraText)) !== null) tokens.push({ word: m[1], ws: m[2] });
-
       const n = Math.min(tokens.length, paraWords.length);
       let out = '';
       let i = 0;
       while (i < n) {
         const key = annotationKey(paraWords[i]);
         if (key === '__') {
-          // plain run
           out += esc(tokens[i].word) + esc(tokens[i].ws);
-          i++;
-          continue;
+          i++; continue;
         }
-        // annotated run — extend while same annotation key continues
         let runHtml = esc(tokens[i].word);
         let j = i;
         while (j + 1 < n && annotationKey(paraWords[j + 1]) === key) {
@@ -1636,72 +1663,29 @@ ${cardHtml}
           j++;
         }
         out += '<span class="' + classFor(key) + '">' + runHtml + '</span>';
-        // trailing ws of last word in run sits outside the highlighted span
         out += esc(tokens[j].ws);
         i = j + 1;
       }
       return '<p>' + out + '</p>';
     }).join('\n');
 
-    // Unfamiliar words list
     const unfamiliarItems = state.words
-      .map((w, i) => ({ ...w, gi: i }))
       .filter(w => w.unfamiliar)
       .map(w => {
         const sentences = state.paraSentenceMap[w.paraIdx] || [];
         const sentence = sentences[w.sentenceIdx] || '';
-        let highlighted = esc(sentence).replace(
+        const highlighted = esc(sentence).replace(
           new RegExp('(' + esc(w.text).replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')'),
           '<span class="unfamiliar">$1</span>'
         );
         return '<li><strong>' + esc(w.text) + '</strong> — ' + highlighted + '</li>';
       }).join('\n');
 
-    // Reflection
     const r = state.reflection;
     const diffLabel = ['', 'Very easy', 'Easy', 'Medium', 'Difficult', 'Very difficult'][parseInt(r.difficulty, 10) || 0] || '(not answered)';
     const speedLabel = ['', 'Very slow', 'Slow', 'About average', 'Fast', 'Very fast'][parseInt(r.speed, 10) || 0] || '(not answered)';
 
-    const styles = `
-      :root {
-        --unfamiliar: #fff176;
-        --tag-key: #b9d8f5;
-        --navy: #1f3a5f;
-      }
-      body {
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-        max-width: 820px; margin: 30px auto; padding: 0 22px; color: #222;
-        line-height: 1.5;
-      }
-      header { border-bottom: 1px solid #ccc; margin-bottom: 16px; padding-bottom: 10px; }
-      h1 { font-size: 20px; margin: 0 0 6px; color: var(--navy); }
-      h2 { font-size: 16px; color: var(--navy); margin-top: 24px; }
-      .meta { color: #555; font-size: 13px; }
-      .reading p { font-size: 16px; line-height: 1.7; margin: 0 0 1em; }
-      .unfamiliar { background-color: var(--unfamiliar); }
-      .tag-key { background-color: var(--tag-key); }
-      .unfamiliar.tag-key {
-        background-image: linear-gradient(to top, var(--unfamiliar) 0 3px, var(--tag-key) 3px 100%);
-      }
-      .legend { font-size: 13px; margin: 6px 0 14px; color: #444; }
-      .legend span.swatch { display: inline-block; width: 12px; height: 12px; vertical-align: middle; margin-right: 4px; border: 1px solid rgba(0,0,0,0.12); }
-      dl.summary dt { font-weight: 600; color: var(--navy); margin-top: 6px; }
-      dl.summary dd { margin: 2px 0 8px; }
-      ul.unfamiliar-list li { margin-bottom: 8px; }
-      .note { color: #666; font-size: 13px; }
-      @media print {
-        body { margin: 0.5in; }
-      }
-    `;
-
-    const html = `<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>${esc(state.name)} — ${esc(reading.title)} — Reading Record</title>
-<style>${styles}</style>
-</head>
-<body>
+    return `<div class="doc">
 <header>
   <h1>Reading Record</h1>
   <div class="meta">
@@ -1721,8 +1705,8 @@ ${cardHtml}
 
 <h2>Annotated reading</h2>
 <div class="legend">
-  <span><span class="swatch" style="background: var(--unfamiliar);"></span>New / unfamiliar word</span>
-  &nbsp; <span><span class="swatch" style="background: var(--tag-key);"></span>Key idea</span>
+  <span><span class="swatch" style="background: #fff176;"></span>New / unfamiliar word</span>
+  &nbsp; <span><span class="swatch" style="background: #b9d8f5;"></span>Key idea</span>
 </div>
 <div class="reading">
 ${paragraphsHtml}
@@ -1741,10 +1725,162 @@ ${unfamiliarItems
   <dt>How easy or difficult the reading felt</dt><dd>${esc(diffLabel)}</dd>
   <dt>How fast the student feels they read</dt><dd>${esc(speedLabel)}</dd>
 </dl>
+</div>`;
+  }
 
-</body>
-</html>`;
-    return html;
+  async function buildReadingRecordPdf(wpm) {
+    ensurePdfLibs();
+    const html = '<style>' + readingRecordStyles() + '</style>' + readingRecordBody(wpm);
+    const wrap = mountOffscreen(html, 780);
+    try {
+      return await renderToPdfSliced(wrap, { margin: 36 });
+    } finally {
+      document.body.removeChild(wrap);
+    }
+  }
+
+  function flashcardStyles() {
+    return `
+      .card {
+        box-sizing: border-box;
+        width: 100%;
+        border: 1px solid #888;
+        border-radius: 5px;
+        padding: 14px 16px;
+        min-height: 170px;
+        display: flex;
+        flex-direction: column;
+        background: #fff;
+        color: #222;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        line-height: 1.45;
+      }
+      .card .word {
+        font-size: 22px;
+        font-weight: 600;
+        color: #1f3a5f;
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 6px;
+        margin-bottom: 10px;
+        word-break: break-word;
+      }
+      .card .def { font-size: 14px; }
+      .card .def.missing { color: #888; font-style: italic; }
+      .card .example {
+        margin-top: 12px;
+        padding-top: 10px;
+        font-size: 13px;
+        font-style: italic;
+        color: #555;
+      }
+    `;
+  }
+
+  function flashcardHtml(v) {
+    const defStr = v.status === 'ok'
+      ? esc(v.definition)
+      : '<span class="missing">No definition found.</span>';
+    const ex = v.sentence ? '<div class="example">"' + esc(v.sentence) + '"</div>' : '';
+    return '<div class="card">' +
+      '<div class="word">' + esc(v.word) + '</div>' +
+      '<div class="def">' + defStr + '</div>' +
+      ex +
+      '</div>';
+  }
+
+  async function buildFlashcardsPdf(cards) {
+    ensurePdfLibs();
+    const { jsPDF } = window.jspdf;
+    const pdf = new jsPDF({ unit: 'pt', format: 'letter' });
+    const pageW = pdf.internal.pageSize.getWidth();
+    const pageH = pdf.internal.pageSize.getHeight();
+    const margin = 36;
+    const gutter = 14;
+    const cols = 2;
+    const usableW = pageW - margin * 2;
+    const cardW = (usableW - gutter * (cols - 1)) / cols;
+
+    // Header (rendered once, placed only on the first page).
+    const headerHtml =
+      '<div style="font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, Helvetica, Arial, sans-serif; color: #222; padding: 0 0 6px;">' +
+      '<h1 style="font-size: 20px; color: #1f3a5f; margin: 0 0 4px;">Flashcards — ' + esc(state.name) + '</h1>' +
+      '<div style="color:#555; font-size: 13px;">' + esc(state.reading.title) + '</div>' +
+      '<div style="color:#555; font-size: 12px; margin-top: 4px;">Print this sheet and cut along the borders to make paper cards.</div>' +
+      '</div>';
+    const headerWrap = mountOffscreen(headerHtml, Math.round(usableW * 2)); // 2x for crispness
+    headerWrap.style.fontSize = '14px';
+    let headerCanvas;
+    try {
+      headerCanvas = await window.html2canvas(headerWrap, {
+        scale: 1, backgroundColor: '#ffffff', logging: false,
+        windowWidth: headerWrap.offsetWidth,
+      });
+    } finally {
+      document.body.removeChild(headerWrap);
+    }
+    const headerImgH = headerCanvas.height * (usableW / headerCanvas.width);
+
+    // Render each card to its own canvas at cardW * 2 (for resolution).
+    const cardRenderW = Math.round(cardW * 2);
+    const cardWrap = mountOffscreen('<style>' + flashcardStyles() + '</style>', cardRenderW);
+    cardWrap.style.padding = '0';
+    const styleNode = cardWrap.querySelector('style');
+    const cardCanvases = [];
+    try {
+      for (const v of cards) {
+        // Replace card content for each iteration.
+        // Remove any prior card element, keep the <style>.
+        while (cardWrap.lastElementChild && cardWrap.lastElementChild !== styleNode) {
+          cardWrap.removeChild(cardWrap.lastElementChild);
+        }
+        const tmp = document.createElement('div');
+        tmp.innerHTML = flashcardHtml(v);
+        cardWrap.appendChild(tmp.firstChild);
+        const cardEl = cardWrap.querySelector('.card');
+        const cv = await window.html2canvas(cardEl, {
+          scale: 1, backgroundColor: '#ffffff', logging: false,
+          windowWidth: cardRenderW,
+        });
+        cardCanvases.push(cv);
+      }
+    } finally {
+      document.body.removeChild(cardWrap);
+    }
+
+    // Layout cards into pages — each card is one atomic image, never split.
+    pdf.addImage(headerCanvas.toDataURL('image/jpeg', 0.92), 'JPEG',
+                 margin, margin, usableW, headerImgH);
+    let y = margin + headerImgH + 16;
+    let col = 0;
+    let rowMaxH = 0;
+
+    for (let i = 0; i < cardCanvases.length; i++) {
+      const cv = cardCanvases[i];
+      const h = cv.height * (cardW / cv.width);
+      if (col === 0) {
+        if (y + h > pageH - margin) {
+          pdf.addPage();
+          y = margin;
+          rowMaxH = 0;
+        }
+      }
+      const x = margin + col * (cardW + gutter);
+      pdf.addImage(cv.toDataURL('image/jpeg', 0.92), 'JPEG', x, y, cardW, h);
+      rowMaxH = Math.max(rowMaxH, h);
+      col++;
+      if (col >= cols) {
+        col = 0;
+        y += rowMaxH + gutter;
+        rowMaxH = 0;
+      }
+    }
+    return pdf.output('blob');
+  }
+
+  function shortTitle(t) {
+    if (!t) return 'Reading';
+    if (t.length <= 60) return t;
+    return t.slice(0, 60).trim();
   }
 
 })();
