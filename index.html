@@ -266,6 +266,45 @@
     font-size: 12px;
   }
   .util-btn:hover { color: var(--text); }
+  /* Vocabulary stage */
+  .vocab-counter {
+    margin: 10px 0;
+    padding: 8px 12px;
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-radius: 5px;
+    font-size: 14px;
+  }
+  .vocab-counter.at-limit { background: var(--warning-bg); border-color: var(--warning-border); }
+  .vocab-list { display: flex; flex-direction: column; gap: 8px; }
+  .vocab-item {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    padding: 10px 12px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 12px;
+    row-gap: 4px;
+    align-items: start;
+  }
+  .vocab-item.selected { border-color: var(--primary); box-shadow: 0 0 0 1px var(--primary) inset; }
+  .vocab-item.disabled { opacity: 0.6; }
+  .vocab-check {
+    display: flex;
+    align-items: center;
+    padding-top: 2px;
+  }
+  .vocab-check input { width: 18px; height: 18px; cursor: pointer; }
+  .vocab-word {
+    font-weight: 600;
+    color: var(--navy);
+    font-size: 16px;
+  }
+  .vocab-def { font-size: 14px; color: var(--text); grid-column: 2; }
+  .vocab-def.missing { color: var(--muted); font-style: italic; }
+  .vocab-def.loading { color: var(--muted); font-style: italic; }
+  .vocab-sentence { font-size: 13px; color: #555; grid-column: 2; font-style: italic; }
   .scale { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; margin-top: 6px; }
   .scale label {
     display: inline-flex; flex-direction: column; align-items: center;
@@ -471,12 +510,33 @@
         </div>
       </div>
       <div class="row end" style="margin-top: 16px;">
-        <button class="primary" id="reflect-next">Continue to download</button>
+        <button class="primary" id="reflect-next">Continue to vocabulary</button>
       </div>
     </div>
   </section>
 
-  <!-- STAGE 6: DOWNLOAD -->
+  <!-- STAGE 6: VOCABULARY -->
+  <section class="stage" id="stage-vocab">
+    <div class="panel">
+      <h2>Vocabulary from your reading</h2>
+      <p>These are the words you marked as unfamiliar. We've looked up a short definition for each. Pick up to <strong>10</strong> to turn into flashcards.</p>
+      <div id="vocab-offline-note" class="notice" style="display:none;">
+        Definitions could not be loaded (your internet connection may be down). You can still pick words for flashcards — their cards will show just the word and the sentence from the reading.
+      </div>
+      <div id="vocab-empty" class="notice" style="display:none;">
+        You didn't mark any words as unfamiliar during the reading. You can skip this step.
+      </div>
+      <div id="vocab-counter-row" class="vocab-counter">
+        <strong><span id="vocab-count">0</span> of 10</strong> selected for flashcards.
+      </div>
+      <div id="vocab-list" class="vocab-list"></div>
+      <div class="row end" style="margin-top: 16px;">
+        <button class="primary" id="vocab-next">Continue to download</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- STAGE 7: DOWNLOAD -->
   <section class="stage" id="stage-download">
     <div class="panel">
       <h2>Download your files</h2>
@@ -487,13 +547,26 @@
           <dt>Words per minute (assumes full passage read)</dt><dd id="dl-wpm"></dd>
         </dl>
       </div>
-      <p>Download both files below and turn them in to your professor.</p>
+      <p><strong>To turn in to your professor</strong> — download both of these:</p>
       <div class="download-row">
         <a href="#" id="dl-audio">Download audio recording</a>
         <a href="#" id="dl-record">Download reading record</a>
       </div>
+
+      <div id="flashcard-block" style="display:none; margin-top: 22px;">
+        <h3 style="margin: 0 0 6px; color: var(--navy); font-size: 15px;">Your flashcards <span id="flashcard-count-label" class="muted" style="font-weight: normal;"></span></h3>
+        <p class="muted" style="margin: 0 0 8px;">Download the <strong>CSV file</strong> to import your flashcards into Quizlet. Download the <strong>printable sheet</strong> for paper cards you can study from or cut out.</p>
+        <div class="download-row">
+          <a href="#" id="dl-flashcards-csv">Download flashcards (CSV for Quizlet)</a>
+          <a href="#" id="dl-flashcards-print">Download flashcards (printable sheet)</a>
+        </div>
+        <p style="margin-top: 10px; font-size: 13px;">
+          Need help with these? <a href="flashcard-instructions.html" target="_blank" rel="noopener">Read the flashcard instructions</a>.
+        </p>
+      </div>
+
       <div class="notice" style="margin-top: 16px;">
-        Once you close this tab, this session is gone. Make sure you have both files saved before leaving.
+        Once you close this tab, this session is gone. Make sure you have your files saved before leaving.
       </div>
     </div>
   </section>
@@ -533,6 +606,7 @@
     recMime: '',
     recStream: null,
     reflection: { like: '', takeaways: '', difficulty: '', speed: '' },
+    vocab: [],              // [{ word, lookup, sentence, status, definition, selected }]
     leaveGuardArmed: false,
   };
 
@@ -1156,11 +1230,207 @@
   $('reflect-next').addEventListener('click', () => {
     state.reflection.like = $('reflect-like').value.trim();
     state.reflection.takeaways = $('reflect-takeaways').value.trim();
+    enterVocabStage();
+  });
+
+  // ----- Stage 6: Vocabulary + dictionary lookup -----
+  const VOCAB_LIMIT = 10;
+
+  function cleanLookupWord(s) {
+    // Strip leading/trailing punctuation, smart quotes, etc. Keep internal apostrophes/hyphens.
+    return s
+      .replace(/^[^\p{L}\p{N}]+|[^\p{L}\p{N}]+$/gu, '')
+      .toLowerCase();
+  }
+
+  function enterVocabStage() {
+    setStage('vocab', 'Vocabulary');
+    buildVocabList();
+  }
+
+  function buildVocabList() {
+    // Gather unique unfamiliar words (dedupe by cleaned form, case-insensitive).
+    state.vocab = [];
+    const seen = new Set();
+    state.words.forEach(w => {
+      if (!w.unfamiliar) return;
+      const clean = cleanLookupWord(w.text);
+      if (!clean) return;
+      if (seen.has(clean)) return;
+      seen.add(clean);
+      const sentences = state.paraSentenceMap[w.paraIdx] || [];
+      const sentence = sentences[w.sentenceIdx] || '';
+      state.vocab.push({
+        word: w.text.replace(/^[^\p{L}\p{N}]+|[^\p{L}\p{N}]+$/gu, '') || w.text,
+        lookup: clean,
+        sentence: sentence,
+        status: 'loading',  // loading | ok | notfound | error
+        definition: '',
+        selected: false,
+      });
+    });
+
+    if (!state.vocab.length) {
+      $('vocab-empty').style.display = 'block';
+      $('vocab-counter-row').style.display = 'none';
+      $('vocab-list').innerHTML = '';
+      $('vocab-offline-note').style.display = 'none';
+      return;
+    }
+    $('vocab-empty').style.display = 'none';
+    $('vocab-counter-row').style.display = 'block';
+
+    renderVocabList();
+    fetchDefinitionsForVocab();
+  }
+
+  function renderVocabList() {
+    const list = $('vocab-list');
+    list.innerHTML = '';
+    state.vocab.forEach((v, i) => {
+      const item = document.createElement('div');
+      item.className = 'vocab-item' + (v.selected ? ' selected' : '');
+      item.dataset.i = i;
+
+      const check = document.createElement('label');
+      check.className = 'vocab-check';
+      const cb = document.createElement('input');
+      cb.type = 'checkbox';
+      cb.dataset.i = i;
+      cb.checked = !!v.selected;
+      check.appendChild(cb);
+      item.appendChild(check);
+
+      const word = document.createElement('div');
+      word.className = 'vocab-word';
+      word.textContent = v.word;
+      item.appendChild(word);
+
+      const def = document.createElement('div');
+      def.className = 'vocab-def';
+      item.appendChild(def);
+
+      const sent = document.createElement('div');
+      sent.className = 'vocab-sentence';
+      sent.textContent = v.sentence ? '"' + v.sentence + '"' : '';
+      item.appendChild(sent);
+
+      setVocabDefElement(def, v);
+      list.appendChild(item);
+    });
+
+    list.removeEventListener('change', onVocabCheckboxChange);
+    list.addEventListener('change', onVocabCheckboxChange);
+    updateVocabCount();
+  }
+
+  function setVocabDefElement(defEl, v) {
+    defEl.classList.remove('loading', 'missing');
+    if (v.status === 'loading') {
+      defEl.classList.add('loading');
+      defEl.textContent = 'Looking up definition…';
+    } else if (v.status === 'ok') {
+      defEl.textContent = v.definition;
+    } else if (v.status === 'notfound') {
+      defEl.classList.add('missing');
+      defEl.textContent = 'No definition found.';
+    } else if (v.status === 'error') {
+      defEl.classList.add('missing');
+      defEl.textContent = 'Definition could not be loaded.';
+    }
+  }
+
+  function onVocabCheckboxChange(e) {
+    const cb = e.target;
+    if (!cb || cb.tagName !== 'INPUT') return;
+    const i = parseInt(cb.dataset.i, 10);
+    if (isNaN(i)) return;
+    const v = state.vocab[i];
+    const currentlySelected = state.vocab.filter(x => x.selected).length;
+    if (cb.checked && !v.selected && currentlySelected >= VOCAB_LIMIT) {
+      cb.checked = false;
+      return;
+    }
+    v.selected = cb.checked;
+    const item = cb.closest('.vocab-item');
+    if (item) item.classList.toggle('selected', v.selected);
+    updateVocabCount();
+  }
+
+  function updateVocabCount() {
+    const n = state.vocab.filter(v => v.selected).length;
+    $('vocab-count').textContent = n;
+    const atLimit = n >= VOCAB_LIMIT;
+    $('vocab-counter-row').classList.toggle('at-limit', atLimit);
+    document.querySelectorAll('#vocab-list .vocab-item').forEach(item => {
+      const i = parseInt(item.dataset.i, 10);
+      const cb = item.querySelector('input[type="checkbox"]');
+      const v = state.vocab[i];
+      if (!cb || !v) return;
+      if (!v.selected && atLimit) {
+        cb.disabled = true;
+        item.classList.add('disabled');
+      } else {
+        cb.disabled = false;
+        item.classList.remove('disabled');
+      }
+    });
+  }
+
+  async function fetchDefinitionsForVocab() {
+    if (!navigator.onLine) {
+      state.vocab.forEach(v => { v.status = 'error'; });
+      refreshVocabDefs();
+      $('vocab-offline-note').style.display = 'block';
+      return;
+    }
+    const tasks = state.vocab.map(async (v) => {
+      try {
+        const res = await fetch(
+          'https://api.dictionaryapi.dev/api/v2/entries/en/' + encodeURIComponent(v.lookup),
+          { method: 'GET' }
+        );
+        if (res.status === 404) { v.status = 'notfound'; return; }
+        if (!res.ok) { v.status = 'error'; return; }
+        const data = await res.json();
+        if (!Array.isArray(data) || !data.length) { v.status = 'notfound'; return; }
+        let firstDef = '';
+        outer: for (const entry of data) {
+          for (const meaning of (entry.meanings || [])) {
+            for (const d of (meaning.definitions || [])) {
+              if (d && d.definition) { firstDef = d.definition; break outer; }
+            }
+          }
+        }
+        if (!firstDef) { v.status = 'notfound'; return; }
+        v.definition = firstDef;
+        v.status = 'ok';
+      } catch (err) {
+        v.status = 'error';
+      }
+    });
+    await Promise.all(tasks);
+    // If every single lookup errored (i.e. none returned 200 or 404), assume offline/blocked.
+    const allErrored = state.vocab.every(v => v.status === 'error');
+    if (allErrored) $('vocab-offline-note').style.display = 'block';
+    refreshVocabDefs();
+  }
+
+  function refreshVocabDefs() {
+    document.querySelectorAll('#vocab-list .vocab-item').forEach(item => {
+      const i = parseInt(item.dataset.i, 10);
+      const v = state.vocab[i];
+      const defEl = item.querySelector('.vocab-def');
+      if (defEl && v) setVocabDefElement(defEl, v);
+    });
+  }
+
+  $('vocab-next').addEventListener('click', () => {
     prepareDownload();
     setStage('download', 'Download');
   });
 
-  // ----- Stage 6: Download -----
+  // ----- Stage 7: Download -----
   function prepareDownload() {
     const ms = state.timer.elapsedMs;
     const minutes = ms / 60000;
@@ -1193,6 +1463,126 @@
     recordA.href = URL.createObjectURL(recordBlob);
     recordA.download = recordFilename;
     recordA.textContent = 'Download reading record (' + recordFilename + ')';
+
+    // Flashcards
+    const chosen = (state.vocab || []).filter(v => v.selected);
+    const fbBlock = $('flashcard-block');
+    if (chosen.length === 0) {
+      fbBlock.style.display = 'none';
+    } else {
+      fbBlock.style.display = '';
+      $('flashcard-count-label').textContent = '(' + chosen.length + ' card' + (chosen.length === 1 ? '' : 's') + ')';
+
+      const csv = buildFlashcardsCsv(chosen);
+      const csvFilename = safeName + ' - ' + safeTitle + ' - flashcards.csv';
+      const csvBlob = new Blob([csv], { type: 'text/csv;charset=utf-8' });
+      const csvA = $('dl-flashcards-csv');
+      csvA.href = URL.createObjectURL(csvBlob);
+      csvA.download = csvFilename;
+      csvA.textContent = 'Download flashcards CSV for Quizlet (' + csvFilename + ')';
+
+      const printHtml = buildFlashcardsPrintHtml(chosen);
+      const printBlob = new Blob([printHtml], { type: 'text/html;charset=utf-8' });
+      const printFilename = safeName + ' - ' + safeTitle + ' - flashcards.html';
+      const printA = $('dl-flashcards-print');
+      printA.href = URL.createObjectURL(printBlob);
+      printA.download = printFilename;
+      printA.textContent = 'Download printable flashcard sheet (' + printFilename + ')';
+    }
+  }
+
+  function csvField(s) {
+    if (s == null) return '';
+    s = String(s);
+    if (/[",\r\n]/.test(s)) return '"' + s.replace(/"/g, '""') + '"';
+    return s;
+  }
+
+  function buildFlashcardsCsv(cards) {
+    const lines = [];
+    cards.forEach(v => {
+      const def = v.status === 'ok' ? v.definition : '(no definition found)';
+      const back = def + (v.sentence ? '\n\nExample: ' + v.sentence : '');
+      lines.push(csvField(v.word) + ',' + csvField(back));
+    });
+    return lines.join('\r\n') + '\r\n';
+  }
+
+  function buildFlashcardsPrintHtml(cards) {
+    const styles = `
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        margin: 24px; color: #222; line-height: 1.45;
+      }
+      h1 { font-size: 20px; color: #1f3a5f; margin: 0 0 4px; }
+      .meta { color: #555; font-size: 13px; margin-bottom: 14px; }
+      .intro { font-size: 13px; color: #555; margin-bottom: 14px; }
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+      .card {
+        border: 1px solid #888;
+        border-radius: 5px;
+        padding: 14px 16px;
+        min-height: 170px;
+        break-inside: avoid;
+        page-break-inside: avoid;
+        display: flex;
+        flex-direction: column;
+      }
+      .card .word {
+        font-size: 22px;
+        font-weight: 600;
+        color: #1f3a5f;
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 6px;
+        margin-bottom: 10px;
+      }
+      .card .def { font-size: 14px; }
+      .card .def.missing { color: #888; font-style: italic; }
+      .card .example {
+        margin-top: auto;
+        padding-top: 10px;
+        font-size: 13px;
+        font-style: italic;
+        color: #555;
+      }
+      @media print {
+        body { margin: 0.4in; }
+        .intro, .meta { display: none; }
+        h1 { display: none; }
+      }
+    `;
+    const cardHtml = cards.map(v => {
+      const defStr = v.status === 'ok'
+        ? esc(v.definition)
+        : '<span class="missing">No definition found.</span>';
+      const ex = v.sentence ? '<div class="example">"' + esc(v.sentence) + '"</div>' : '';
+      return '<div class="card">' +
+        '<div class="word">' + esc(v.word) + '</div>' +
+        '<div class="def">' + defStr + '</div>' +
+        ex +
+        '</div>';
+    }).join('\n');
+
+    return `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>${esc(state.name)} — ${esc(state.reading.title)} — Flashcards</title>
+<style>${styles}</style>
+</head>
+<body>
+<h1>Flashcards — ${esc(state.name)}</h1>
+<div class="meta">${esc(state.reading.title)}</div>
+<div class="intro">Print this sheet and cut along the borders to make paper cards.</div>
+<div class="cards">
+${cardHtml}
+</div>
+</body>
+</html>`;
   }
 
   function shortTitle(t) {

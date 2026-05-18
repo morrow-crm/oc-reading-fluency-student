@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Using Your Flashcards — OC Reading Fluency</title>
+<style>
+  :root {
+    --navy: #1f3a5f;
+    --panel: #f4f4f4;
+    --panel-border: #d4d4d4;
+    --border: #c8c8c8;
+    --text: #222;
+    --muted: #666;
+    --warning-bg: #fff8d6;
+    --warning-border: #e6cf7a;
+    --primary: #1565c0;
+    --primary-hover: #0e4a8f;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: #fff; color: var(--text);
+    font-size: 15px; line-height: 1.55;
+  }
+  .app { max-width: 820px; margin: 0 auto; padding: 24px 20px 64px; }
+  header.banner {
+    background: var(--navy); color: #fff;
+    padding: 14px 20px; border-radius: 5px;
+    margin-bottom: 20px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  header.banner h1 { font-size: 17px; margin: 0; font-weight: 600; letter-spacing: 0.2px; }
+  header.banner a { color: #fff; font-size: 13px; text-decoration: underline; opacity: 0.9; }
+  header.banner a:hover { opacity: 1; }
+  .panel {
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-radius: 5px;
+    padding: 18px 22px;
+    margin-bottom: 16px;
+  }
+  h2 { font-size: 16px; color: var(--navy); margin: 0 0 8px; font-weight: 600; }
+  h3 { font-size: 14px; color: var(--navy); margin: 14px 0 6px; font-weight: 600; }
+  p { margin: 8px 0; }
+  ol, ul { margin: 8px 0 8px 22px; padding: 0; }
+  li { margin: 4px 0; }
+  .muted { color: var(--muted); font-size: 13px; }
+  .notice {
+    background: var(--warning-bg);
+    border: 1px solid var(--warning-border);
+    border-radius: 5px;
+    padding: 10px 14px;
+    margin: 10px 0;
+    font-size: 14px;
+  }
+  a.button {
+    display: inline-block;
+    background: var(--primary); color: #fff;
+    padding: 8px 16px; border-radius: 5px;
+    text-decoration: none; border: 1px solid var(--primary);
+    font-size: 14px;
+  }
+  a.button:hover { background: var(--primary-hover); border-color: var(--primary-hover); }
+  code {
+    background: #efefef; padding: 1px 5px; border-radius: 3px;
+    font-size: 13px;
+  }
+</style>
+</head>
+<body>
+<div class="app">
+
+  <header class="banner">
+    <h1>Using Your Flashcards</h1>
+    <a href="index.html">← Back to reading practice</a>
+  </header>
+
+  <div class="panel">
+    <h2>The two flashcard files</h2>
+    <p>When you finished the reading practice, the page offered your flashcards in <strong>two formats</strong>. They have the same cards in them — use either one, or use both. Each card has the word, a short definition, and the sentence from the reading where the word appeared.</p>
+    <ul>
+      <li><strong>CSV file</strong> (a small text file ending in <code>.csv</code>) — for importing your flashcards into a study app like <a href="https://quizlet.com" target="_blank" rel="noopener">Quizlet</a>.</li>
+      <li><strong>Printable sheet</strong> (an <code>.html</code> file) — for printing on paper, so you can study from physical cards or cut them out.</li>
+    </ul>
+  </div>
+
+  <div class="panel">
+    <h2>Importing the CSV into Quizlet</h2>
+    <p>Quizlet menus change from time to time, so these steps are general. If anything looks different on your screen, search Quizlet's own help for the latest instructions.</p>
+    <ol>
+      <li>Go to <a href="https://quizlet.com" target="_blank" rel="noopener">quizlet.com</a> and sign in. (If you don't already have an account, sign up — Quizlet has a free tier.)</li>
+      <li>Choose the option to <strong>create a new study set</strong> (sometimes shown as a "+" button or "Create").</li>
+      <li>Look for an <strong>Import</strong> option on the new-set page. It's usually labeled something like "Import from Word, Excel, Google Docs."</li>
+      <li>Open your CSV file in a plain text editor or spreadsheet, copy the contents, and paste them into Quizlet's import box. Set the separators to <strong>comma between term and definition</strong> and <strong>new line between cards</strong>.</li>
+      <li>Click <strong>Import</strong> (or "Preview," then save). Give your set a name — the reading title is a good choice — and save it.</li>
+    </ol>
+    <p class="muted">If Quizlet's importer asks about quotes or escaping, leave those at their defaults — the CSV the page produces uses standard quoting.</p>
+    <p>For the exact current steps, see <a href="https://help.quizlet.com" target="_blank" rel="noopener">Quizlet's help pages</a>.</p>
+  </div>
+
+  <div class="panel">
+    <h2>Using the printable sheet</h2>
+    <ol>
+      <li>Open the <code>.html</code> file in any web browser.</li>
+      <li>Print the page (<code>Ctrl/Cmd + P</code>). Plain white paper is fine.</li>
+      <li>Cut along the borders of each card.</li>
+      <li>To study, look at the word, try to say or write the definition aloud, then turn the card over (or check the definition side) to see if you got it.</li>
+    </ol>
+    <p class="muted">Tip: you can also "print to PDF" from the print dialog if you'd rather save it as a file.</p>
+  </div>
+
+  <div class="panel">
+    <h2>A few tips for studying with flashcards</h2>
+    <p>You don't need a special trick — just a few small habits go a long way:</p>
+    <ul>
+      <li><strong>Short and often beats long and rare.</strong> Five or ten minutes a day for several days will stick better than one long cram session.</li>
+      <li><strong>Quiz yourself before flipping the card.</strong> Say or write the definition first, <em>then</em> check. The effort of recalling is what builds the memory.</li>
+      <li><strong>Use the example sentence.</strong> Reading the word in real context — the way it actually showed up in your reading — helps you remember how it's used, not just what it means.</li>
+      <li><strong>Come back to your hard cards.</strong> Set aside the ones you missed and review just those a day or two later. You'll be surprised how quickly they get easier.</li>
+    </ul>
+    <p>You don't need to memorize every word perfectly. The goal is to recognize them when you see them again in your reading.</p>
+  </div>
+
+  <div class="panel" style="text-align: center;">
+    <a class="button" href="index.html">← Back to reading practice</a>
+  </div>
+
+</div>
+</body>
+</html>
