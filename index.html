@@ -476,18 +476,22 @@
     </div>
   </section>
 
-  <!-- STAGE 5: REFLECTION -->
+  <!-- STAGE 5: REFLECTION + VOCABULARY -->
   <section class="stage" id="stage-reflect">
     <div class="panel">
       <h2>Reflection</h2>
       <p class="muted">The reading is closed now. Answer a few short questions about your experience.</p>
       <label class="field">
-        <span>How did you like this reading?</span>
-        <textarea id="reflect-like"></textarea>
+        <span>If you had to explain this reading to a friend, what would you tell them?</span>
+        <textarea id="reflect-q1"></textarea>
       </label>
       <label class="field">
-        <span>What were your biggest takeaways?</span>
-        <textarea id="reflect-takeaways"></textarea>
+        <span>What part of this reading was hardest to get through, and why?</span>
+        <textarea id="reflect-q2"></textarea>
+      </label>
+      <label class="field">
+        <span>Did this reading remind you of anything in your own life or anything else you've read?</span>
+        <textarea id="reflect-q3"></textarea>
       </label>
       <div style="margin-top: 14px;">
         <strong>How easy or difficult did the reading feel?</strong>
@@ -509,14 +513,8 @@
           <label><input type="radio" name="speed" value="5"><span>Very fast</span></label>
         </div>
       </div>
-      <div class="row end" style="margin-top: 16px;">
-        <button class="primary" id="reflect-next">Continue to vocabulary</button>
-      </div>
     </div>
-  </section>
 
-  <!-- STAGE 6: VOCABULARY -->
-  <section class="stage" id="stage-vocab">
     <div class="panel">
       <h2>Vocabulary from your reading</h2>
       <p>These are the words you marked as unfamiliar. We've looked up a short definition for each. Pick up to <strong>10</strong> to turn into flashcards.</p>
@@ -524,19 +522,20 @@
         Definitions could not be loaded (your internet connection may be down). You can still pick words for flashcards — their cards will show just the word and the sentence from the reading.
       </div>
       <div id="vocab-empty" class="notice" style="display:none;">
-        You didn't mark any words as unfamiliar during the reading. You can skip this step.
+        You didn't mark any words as unfamiliar during the reading. You can skip this section.
       </div>
       <div id="vocab-counter-row" class="vocab-counter">
         <strong><span id="vocab-count">0</span> of 10</strong> selected for flashcards.
       </div>
       <div id="vocab-list" class="vocab-list"></div>
-      <div class="row end" style="margin-top: 16px;">
-        <button class="primary" id="vocab-next">Continue to download</button>
-      </div>
+    </div>
+
+    <div class="row end" style="margin-top: 16px;">
+      <button class="primary" id="reflect-next">Continue to download</button>
     </div>
   </section>
 
-  <!-- STAGE 7: DOWNLOAD -->
+  <!-- STAGE 6: DOWNLOAD -->
   <section class="stage" id="stage-download">
     <div class="panel">
       <h2>Download your files</h2>
@@ -605,7 +604,7 @@
     recBlob: null,
     recMime: '',
     recStream: null,
-    reflection: { like: '', takeaways: '', difficulty: '', speed: '' },
+    reflection: { q1: '', q2: '', q3: '', difficulty: '', speed: '' },
     vocab: [],              // [{ word, lookup, sentence, status, definition, selected }]
     leaveGuardArmed: false,
   };
@@ -1209,7 +1208,10 @@
   $('annotate-continue').addEventListener('click', () => {
     const ok = confirm('Done annotating? You won\'t be able to return to the reading.');
     if (!ok) return;
-    setStage('reflect', 'Reflection');
+    setStage('reflect', 'Reflection & vocabulary');
+    // Kick off dictionary lookups now, while the student fills in reflection,
+    // so definitions have a head start by the time they scroll down.
+    buildVocabList();
   });
 
   // ----- Stage 5: Reflection -----
@@ -1228,12 +1230,14 @@
   wireScale('scale-speed', 'speed');
 
   $('reflect-next').addEventListener('click', () => {
-    state.reflection.like = $('reflect-like').value.trim();
-    state.reflection.takeaways = $('reflect-takeaways').value.trim();
-    enterVocabStage();
+    state.reflection.q1 = $('reflect-q1').value.trim();
+    state.reflection.q2 = $('reflect-q2').value.trim();
+    state.reflection.q3 = $('reflect-q3').value.trim();
+    prepareDownload();
+    setStage('download', 'Download');
   });
 
-  // ----- Stage 6: Vocabulary + dictionary lookup -----
+  // ----- Vocabulary + dictionary lookup (lives on the combined reflection screen) -----
   const VOCAB_LIMIT = 10;
 
   function cleanLookupWord(s) {
@@ -1241,11 +1245,6 @@
     return s
       .replace(/^[^\p{L}\p{N}]+|[^\p{L}\p{N}]+$/gu, '')
       .toLowerCase();
-  }
-
-  function enterVocabStage() {
-    setStage('vocab', 'Vocabulary');
-    buildVocabList();
   }
 
   function buildVocabList() {
@@ -1425,12 +1424,7 @@
     });
   }
 
-  $('vocab-next').addEventListener('click', () => {
-    prepareDownload();
-    setStage('download', 'Download');
-  });
-
-  // ----- Stage 7: Download -----
+  // ----- Stage 6: Download -----
   function prepareDownload() {
     const ms = state.timer.elapsedMs;
     const minutes = ms / 60000;
@@ -1741,8 +1735,9 @@ ${unfamiliarItems
 
 <h2>Reflection</h2>
 <dl class="summary">
-  <dt>How did you like this reading?</dt><dd>${r.like ? esc(r.like).replace(/\n/g, '<br>') : '<span class="note">(no answer)</span>'}</dd>
-  <dt>Biggest takeaways</dt><dd>${r.takeaways ? esc(r.takeaways).replace(/\n/g, '<br>') : '<span class="note">(no answer)</span>'}</dd>
+  <dt>If you had to explain this reading to a friend, what would you tell them?</dt><dd>${r.q1 ? esc(r.q1).replace(/\n/g, '<br>') : '<span class="note">(no answer)</span>'}</dd>
+  <dt>What part of this reading was hardest to get through, and why?</dt><dd>${r.q2 ? esc(r.q2).replace(/\n/g, '<br>') : '<span class="note">(no answer)</span>'}</dd>
+  <dt>Did this reading remind you of anything in your own life or anything else you've read?</dt><dd>${r.q3 ? esc(r.q3).replace(/\n/g, '<br>') : '<span class="note">(no answer)</span>'}</dd>
   <dt>How easy or difficult the reading felt</dt><dd>${esc(diffLabel)}</dd>
   <dt>How fast the student feels they read</dt><dd>${esc(speedLabel)}</dd>
 </dl>
