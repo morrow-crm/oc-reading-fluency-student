@@ -23,9 +23,8 @@
     --secondary-hover: #d2d2d2;
     --recording: #c62828;
     --unfamiliar: #fff176;
-    --tag-confusing: #f8bbd0;
-    --tag-questions: #ffcc80;
-    --tag-like: #a5d6a7;
+    --tag-key: #b9d8f5;
+    --tag-key-edge: #6b9dcc;
   }
   * { box-sizing: border-box; }
   html, body {
@@ -178,36 +177,95 @@
     user-select: text;
   }
   .reading-container p { margin: 0 0 1em; }
-  .word {
+  .word, .ws {
+    /* no padding, no border-radius — highlights must butt against each other
+       cleanly so adjacent colored words + ws form one continuous band */
+  }
+  .word { cursor: pointer; }
+  .word:hover {
+    text-decoration: underline dotted #9aa3ad;
+    text-underline-offset: 2px;
+  }
+  .word.unfamiliar, .ws.unfamiliar { background-color: var(--unfamiliar); }
+  .word.tag-key, .ws.tag-key { background-color: var(--tag-key); }
+  .word.unfamiliar.tag-key, .ws.unfamiliar.tag-key {
+    background-image: linear-gradient(to top, var(--unfamiliar) 0 3px, var(--tag-key) 3px 100%);
+  }
+  /* Toolbar — single tight band, two grouped tool clusters */
+  .toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 16px;
+    padding: 8px 12px;
+    margin-bottom: 10px;
+    background: #fafafa;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    font-size: 13px;
+  }
+  .tool-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .tool-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    color: #888;
+    font-weight: 600;
+  }
+  .tool-divider {
+    width: 1px;
+    height: 22px;
+    background: #d0d0d0;
+  }
+  .toolbar .control {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--muted);
+  }
+  .toolbar input[type="range"] { width: 110px; }
+  .toolbar .hint { color: var(--muted); }
+  .hint-swatch {
+    display: inline-block;
+    width: 24px; height: 12px;
+    vertical-align: -2px;
+    background: var(--unfamiliar);
+    border: 1px solid rgba(0,0,0,0.12);
+    margin: 0 1px;
+  }
+  .tag-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: #fff;
+    border: 1px solid var(--border);
+    padding: 5px 12px;
+    border-radius: 5px;
     cursor: pointer;
-    border-radius: 3px;
-    padding: 0 1px;
-    transition: background-color 0.08s linear;
+    font-size: 13px;
+    color: var(--text);
   }
-  .word:hover { background: #e8eef5; }
-  .word.unfamiliar { background: var(--unfamiliar); }
-  .word.tag-confusing { background: var(--tag-confusing); }
-  .word.tag-questions { background: var(--tag-questions); }
-  .word.tag-like { background: var(--tag-like); }
-  .word.unfamiliar.tag-confusing,
-  .word.unfamiliar.tag-questions,
-  .word.unfamiliar.tag-like {
-    box-shadow: inset 0 -3px 0 var(--unfamiliar);
+  .tag-btn:hover { background: #f1f1f1; }
+  .tag-btn .btn-swatch {
+    width: 14px; height: 12px;
+    background: var(--tag-key);
+    border: 1px solid rgba(0,0,0,0.12);
   }
-  .legend { display: flex; gap: 12px; flex-wrap: wrap; font-size: 13px; margin: 8px 0; }
-  .legend .swatch {
-    display: inline-block; width: 14px; height: 14px;
-    border-radius: 3px; margin-right: 5px; vertical-align: middle;
-    border: 1px solid rgba(0,0,0,0.1);
+  .util-btn {
+    background: none;
+    border: none;
+    color: var(--muted);
+    text-decoration: underline;
+    cursor: pointer;
+    padding: 4px 2px;
+    font-size: 12px;
   }
-  .reading-controls { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; margin: 10px 0; font-size: 13px; }
-  .reading-controls label { display: flex; align-items: center; gap: 6px; }
-  .reading-controls input[type="range"] { width: 120px; }
-  .tag-bar { display: flex; gap: 8px; flex-wrap: wrap; margin: 10px 0; }
-  .tag-bar button { font-size: 13px; padding: 6px 12px; }
-  .tag-bar button.tag-confusing { background: var(--tag-confusing); border-color: #d48aa3; }
-  .tag-bar button.tag-questions { background: var(--tag-questions); border-color: #d6a05e; }
-  .tag-bar button.tag-like { background: var(--tag-like); border-color: #7fb486; }
+  .util-btn:hover { color: var(--text); }
   .scale { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; margin-top: 6px; }
   .scale label {
     display: inline-flex; flex-direction: column; align-items: center;
@@ -351,22 +409,19 @@
 
     <div class="panel">
       <h2 id="reading-title-display"></h2>
-      <div class="reading-controls">
-        <label>Font size <input type="range" id="font-size" min="14" max="28" value="17"></label>
-        <label>Line spacing <input type="range" id="line-spacing" min="14" max="28" step="1" value="16"></label>
-      </div>
-      <div class="legend">
-        <span><span class="swatch" style="background: var(--unfamiliar);"></span>New / unfamiliar word (click a word)</span>
-        <span><span class="swatch" style="background: var(--tag-confusing);"></span>Confusing or murky</span>
-        <span><span class="swatch" style="background: var(--tag-questions);"></span>I have questions</span>
-        <span><span class="swatch" style="background: var(--tag-like);"></span>I like this</span>
-      </div>
-      <div class="tag-bar">
-        <span class="muted" style="align-self:center;">Select a sentence or passage, then tag it:</span>
-        <button class="tag-confusing" data-tag="confusing">Confusing or murky</button>
-        <button class="tag-questions" data-tag="questions">I have questions</button>
-        <button class="tag-like" data-tag="like">I like this</button>
-        <button data-tag="clear">Clear tags in selection</button>
+      <div class="toolbar">
+        <div class="tool-group">
+          <span class="tool-label">Display</span>
+          <label class="control">Size <input type="range" id="font-size" min="14" max="28" value="17"></label>
+          <label class="control">Spacing <input type="range" id="line-spacing" min="14" max="28" step="1" value="16"></label>
+        </div>
+        <div class="tool-divider"></div>
+        <div class="tool-group">
+          <span class="tool-label">Mark up</span>
+          <span class="hint">Click a word to mark it <span class="hint-swatch"></span> unfamiliar, or select text and</span>
+          <button class="tag-btn" id="apply-key"><span class="btn-swatch"></span> Mark key idea</button>
+          <button class="util-btn" id="clear-key">Clear in selection</button>
+        </div>
       </div>
       <div class="reading-container" id="reading-container"></div>
     </div>
@@ -456,7 +511,8 @@
   const state = {
     name: '',
     reading: null,          // { title, readingLevel, levelDescription, paragraphs }
-    words: [],              // [{ text, paraIdx, sentenceIdx, unfamiliar, tags: [] }]
+    words: [],              // [{ text, paraIdx, sentenceIdx, unfamiliar, key }]
+    wsSpansByLeft: {},      // leftWordIdx -> .ws span between word leftIdx and leftIdx+1
     totalWords: 0,
     paraSentenceMap: [],    // per paragraph: array of sentence strings
     timer: { startMs: 0, elapsedMs: 0, interval: null },
@@ -837,29 +893,30 @@
   }
 
   // ----- Stage 4: Build reading DOM with clickable words -----
+  // Each paragraph becomes a sequence of alternating .word and .ws spans.
+  // The .ws (whitespace) span is what makes highlights look continuous:
+  // it gets the same highlight class as its neighbors when both sides
+  // share an annotation, so the colored band runs through the spaces.
   function prepareReadingDom() {
     const container = $('reading-container');
     container.innerHTML = '';
     state.words = [];
     state.paraSentenceMap = [];
+    state.wsSpansByLeft = {};
     const reading = state.reading;
-    $('reading-title-display').textContent = reading.title +
-      (reading.readingLevel ? '' : '');
+    $('reading-title-display').textContent = reading.title;
 
     reading.paragraphs.forEach((paraText, paraIdx) => {
       const p = document.createElement('p');
       const sentences = splitSentences(paraText);
       state.paraSentenceMap.push(sentences);
 
-      // Tokenize with sentence indices.
-      let charIdx = 0;
-      // Build a sentence-end map: for each char position in para, which sentence?
+      // Sentence-of-char map for the "unfamiliar words" list later.
       const sentenceOfChar = new Int32Array(paraText.length + 1);
       {
         let pos = 0;
         for (let si = 0; si < sentences.length; si++) {
           const sLen = sentences[si].length;
-          // find sentence in paraText starting at pos (skipping whitespace)
           let found = paraText.indexOf(sentences[si], pos);
           if (found < 0) found = pos;
           for (let i = found; i < found + sLen && i < sentenceOfChar.length; i++) {
@@ -870,33 +927,42 @@
         for (let i = pos; i < sentenceOfChar.length; i++) sentenceOfChar[i] = sentences.length - 1;
       }
 
-      const tokenRe = /(\s+)|([^\s]+)/g;
+      // Token = non-whitespace run + immediately-following whitespace.
+      const tokenRe = /(\S+)(\s*)/g;
       let m;
       while ((m = tokenRe.exec(paraText)) !== null) {
-        if (m[1]) {
-          p.appendChild(document.createTextNode(m[1]));
-        } else {
-          const tok = m[2];
-          // Determine if token contains any word chars.
-          if (/[\w'’]/.test(tok)) {
-            const span = document.createElement('span');
-            span.className = 'word';
-            const globalIdx = state.words.length;
-            span.dataset.i = globalIdx;
-            span.textContent = tok;
-            const startPos = m.index;
-            const sIdx = sentenceOfChar[Math.min(startPos, sentenceOfChar.length - 1)];
-            state.words.push({
-              text: tok,
-              paraIdx,
-              sentenceIdx: sIdx,
-              unfamiliar: false,
-              tags: [],
-            });
-            p.appendChild(span);
+        const tok = m[1];
+        const ws = m[2];
+        const globalIdx = state.words.length;
+
+        const wordSpan = document.createElement('span');
+        wordSpan.className = 'word';
+        wordSpan.dataset.i = globalIdx;
+        wordSpan.textContent = tok;
+        const startPos = m.index;
+        const sIdx = sentenceOfChar[Math.min(startPos, sentenceOfChar.length - 1)];
+        state.words.push({
+          text: tok,
+          paraIdx,
+          sentenceIdx: sIdx,
+          unfamiliar: false,
+          key: false,
+        });
+        p.appendChild(wordSpan);
+
+        if (ws.length > 0) {
+          const restStart = m.index + tok.length + ws.length;
+          const moreInPara = /\S/.test(paraText.slice(restStart));
+          if (moreInPara) {
+            const wsSpan = document.createElement('span');
+            wsSpan.className = 'ws';
+            wsSpan.textContent = ws;
+            wsSpan.dataset.left = globalIdx;
+            wsSpan.dataset.right = globalIdx + 1;
+            state.wsSpansByLeft[globalIdx] = wsSpan;
+            p.appendChild(wsSpan);
           } else {
-            // Punctuation-only token (e.g. an em-dash standing alone). Keep as text.
-            p.appendChild(document.createTextNode(tok));
+            // trailing whitespace at end of paragraph — drop it
           }
         }
       }
@@ -905,6 +971,27 @@
 
     attachWordHandlers();
     applyFontControls();
+  }
+
+  function updateWsSpan(wsSpan) {
+    const a = state.words[parseInt(wsSpan.dataset.left, 10)];
+    const b = state.words[parseInt(wsSpan.dataset.right, 10)];
+    const bothUnf = a && b && a.unfamiliar && b.unfamiliar;
+    const bothKey = a && b && a.key && b.key;
+    wsSpan.classList.toggle('unfamiliar', bothUnf);
+    wsSpan.classList.toggle('tag-key', bothKey);
+  }
+  function updateWordAndNeighbors(idx) {
+    const w = state.words[idx];
+    const span = document.querySelector('.word[data-i="' + idx + '"]');
+    if (span) {
+      span.classList.toggle('unfamiliar', !!w.unfamiliar);
+      span.classList.toggle('tag-key', !!w.key);
+    }
+    const wsL = state.wsSpansByLeft[idx - 1];
+    if (wsL && parseInt(wsL.dataset.right, 10) === idx) updateWsSpan(wsL);
+    const wsR = state.wsSpansByLeft[idx];
+    if (wsR) updateWsSpan(wsR);
   }
 
   function splitSentences(text) {
@@ -928,52 +1015,47 @@
       const sel = window.getSelection();
       if (sel && sel.toString().length > 0) return;
       const idx = parseInt(span.dataset.i, 10);
-      const w = state.words[idx];
-      w.unfamiliar = !w.unfamiliar;
-      span.classList.toggle('unfamiliar', w.unfamiliar);
+      state.words[idx].unfamiliar = !state.words[idx].unfamiliar;
+      updateWordAndNeighbors(idx);
     });
   }
 
-  // Tag bar
-  document.querySelectorAll('.tag-bar button').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const tag = btn.dataset.tag;
-      const sel = window.getSelection();
-      if (!sel || sel.rangeCount === 0 || sel.isCollapsed) {
-        alert('Select a sentence or passage first, then click a tag.');
-        return;
-      }
-      const range = sel.getRangeAt(0);
-      const wordSpans = $('reading-container').querySelectorAll('.word');
-      const touched = [];
-      wordSpans.forEach(s => {
-        if (range.intersectsNode(s)) touched.push(s);
-      });
-      if (!touched.length) {
-        alert('That selection does not include any words from the reading.');
-        return;
-      }
-      touched.forEach(s => {
-        const idx = parseInt(s.dataset.i, 10);
-        const w = state.words[idx];
-        if (tag === 'clear') {
-          w.tags = [];
-          s.classList.remove('tag-confusing', 'tag-questions', 'tag-like');
-        } else {
-          // Toggle: if already tagged with this tag, remove; else replace existing passage tag.
-          const had = w.tags.indexOf(tag) !== -1;
-          // Remove all passage tag classes first.
-          s.classList.remove('tag-confusing', 'tag-questions', 'tag-like');
-          if (had) {
-            w.tags = w.tags.filter(t => t !== tag);
-          } else {
-            w.tags = [tag];
-            s.classList.add('tag-' + tag);
-          }
-        }
-      });
-      sel.removeAllRanges();
+  function touchedWordIndicesFromSelection() {
+    const sel = window.getSelection();
+    if (!sel || sel.rangeCount === 0 || sel.isCollapsed) return null;
+    const range = sel.getRangeAt(0);
+    const indices = [];
+    $('reading-container').querySelectorAll('.word').forEach(s => {
+      if (range.intersectsNode(s)) indices.push(parseInt(s.dataset.i, 10));
     });
+    return indices;
+  }
+
+  $('apply-key').addEventListener('click', () => {
+    const indices = touchedWordIndicesFromSelection();
+    if (indices === null) {
+      alert('Select a sentence or passage first, then click "Mark key idea."');
+      return;
+    }
+    if (!indices.length) {
+      alert('That selection does not include any words from the reading.');
+      return;
+    }
+    indices.forEach(i => { state.words[i].key = true; });
+    indices.forEach(i => updateWordAndNeighbors(i));
+    window.getSelection().removeAllRanges();
+  });
+
+  $('clear-key').addEventListener('click', () => {
+    const indices = touchedWordIndicesFromSelection();
+    if (indices === null) {
+      alert('Select the text you want to clear first.');
+      return;
+    }
+    if (!indices.length) return;
+    indices.forEach(i => { state.words[i].key = false; });
+    indices.forEach(i => updateWordAndNeighbors(i));
+    window.getSelection().removeAllRanges();
   });
 
   // Font / line spacing controls
@@ -1118,40 +1200,56 @@
     const reading = state.reading;
     const ms = state.timer.elapsedMs;
     const dateStr = new Date().toLocaleString();
-    const tagLabel = { confusing: 'Confusing or murky', questions: 'I have questions', like: 'I like this' };
 
-    // Build per-paragraph annotated HTML
+    // Group words by paragraph in source order.
     const wordsByPara = {};
     state.words.forEach((w, i) => {
       if (!wordsByPara[w.paraIdx]) wordsByPara[w.paraIdx] = [];
       wordsByPara[w.paraIdx].push({ ...w, gi: i });
     });
 
+    function annotationKey(w) {
+      return (w.unfamiliar ? 'u' : '_') + (w.key ? 'k' : '_');
+    }
+    function classFor(key) {
+      const c = [];
+      if (key[0] === 'u') c.push('unfamiliar');
+      if (key[1] === 'k') c.push('tag-key');
+      return c.join(' ');
+    }
+
+    // Build paragraphs by merging consecutive same-annotation runs into one span,
+    // including the inter-word whitespace inside the span — that's what makes the
+    // highlight render as one continuous band rather than per-word boxes.
     const paragraphsHtml = reading.paragraphs.map((paraText, paraIdx) => {
-      // Re-tokenize the paragraph to match indices used in state.words.
-      const tokenRe = /(\s+)|([^\s]+)/g;
-      let out = '';
-      let m;
-      let wi = 0;
       const paraWords = wordsByPara[paraIdx] || [];
-      while ((m = tokenRe.exec(paraText)) !== null) {
-        if (m[1]) {
-          out += esc(m[1]);
-        } else {
-          const tok = m[2];
-          if (/[\w'’]/.test(tok) && wi < paraWords.length) {
-            const w = paraWords[wi++];
-            const classes = [];
-            if (w.unfamiliar) classes.push('unfamiliar');
-            if (w.tags && w.tags.length) classes.push('tag-' + w.tags[w.tags.length - 1]);
-            const cls = classes.join(' ');
-            out += cls
-              ? '<span class="' + cls + '">' + esc(tok) + '</span>'
-              : esc(tok);
-          } else {
-            out += esc(tok);
-          }
+      const tokens = []; // [{word, ws}]
+      const tokenRe = /(\S+)(\s*)/g;
+      let m;
+      while ((m = tokenRe.exec(paraText)) !== null) tokens.push({ word: m[1], ws: m[2] });
+
+      const n = Math.min(tokens.length, paraWords.length);
+      let out = '';
+      let i = 0;
+      while (i < n) {
+        const key = annotationKey(paraWords[i]);
+        if (key === '__') {
+          // plain run
+          out += esc(tokens[i].word) + esc(tokens[i].ws);
+          i++;
+          continue;
         }
+        // annotated run — extend while same annotation key continues
+        let runHtml = esc(tokens[i].word);
+        let j = i;
+        while (j + 1 < n && annotationKey(paraWords[j + 1]) === key) {
+          runHtml += esc(tokens[j].ws) + esc(tokens[j + 1].word);
+          j++;
+        }
+        out += '<span class="' + classFor(key) + '">' + runHtml + '</span>';
+        // trailing ws of last word in run sits outside the highlighted span
+        out += esc(tokens[j].ws);
+        i = j + 1;
       }
       return '<p>' + out + '</p>';
     }).join('\n');
@@ -1178,9 +1276,7 @@
     const styles = `
       :root {
         --unfamiliar: #fff176;
-        --tag-confusing: #f8bbd0;
-        --tag-questions: #ffcc80;
-        --tag-like: #a5d6a7;
+        --tag-key: #b9d8f5;
         --navy: #1f3a5f;
       }
       body {
@@ -1192,13 +1288,14 @@
       h1 { font-size: 20px; margin: 0 0 6px; color: var(--navy); }
       h2 { font-size: 16px; color: var(--navy); margin-top: 24px; }
       .meta { color: #555; font-size: 13px; }
-      .reading p { font-size: 16px; line-height: 1.6; margin: 0 0 1em; }
-      .unfamiliar { background: var(--unfamiliar); border-radius: 3px; padding: 0 2px; }
-      .tag-confusing { background: var(--tag-confusing); border-radius: 3px; padding: 0 2px; }
-      .tag-questions { background: var(--tag-questions); border-radius: 3px; padding: 0 2px; }
-      .tag-like { background: var(--tag-like); border-radius: 3px; padding: 0 2px; }
+      .reading p { font-size: 16px; line-height: 1.7; margin: 0 0 1em; }
+      .unfamiliar { background-color: var(--unfamiliar); }
+      .tag-key { background-color: var(--tag-key); }
+      .unfamiliar.tag-key {
+        background-image: linear-gradient(to top, var(--unfamiliar) 0 3px, var(--tag-key) 3px 100%);
+      }
       .legend { font-size: 13px; margin: 6px 0 14px; color: #444; }
-      .legend span.swatch { display: inline-block; width: 12px; height: 12px; vertical-align: middle; border-radius: 2px; margin-right: 4px; border: 1px solid rgba(0,0,0,0.1); }
+      .legend span.swatch { display: inline-block; width: 12px; height: 12px; vertical-align: middle; margin-right: 4px; border: 1px solid rgba(0,0,0,0.12); }
       dl.summary dt { font-weight: 600; color: var(--navy); margin-top: 6px; }
       dl.summary dd { margin: 2px 0 8px; }
       ul.unfamiliar-list li { margin-bottom: 8px; }
@@ -1236,9 +1333,7 @@
 <h2>Annotated reading</h2>
 <div class="legend">
   <span><span class="swatch" style="background: var(--unfamiliar);"></span>New / unfamiliar word</span>
-  &nbsp; <span><span class="swatch" style="background: var(--tag-confusing);"></span>${esc(tagLabel.confusing)}</span>
-  &nbsp; <span><span class="swatch" style="background: var(--tag-questions);"></span>${esc(tagLabel.questions)}</span>
-  &nbsp; <span><span class="swatch" style="background: var(--tag-like);"></span>${esc(tagLabel.like)}</span>
+  &nbsp; <span><span class="swatch" style="background: var(--tag-key);"></span>Key idea</span>
 </div>
 <div class="reading">
 ${paragraphsHtml}
