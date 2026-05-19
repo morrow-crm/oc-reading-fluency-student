@@ -496,6 +496,83 @@
     color: var(--navy);
     margin-right: 6px;
   }
+  /* Reading-screen vocabulary panel — sits at the bottom of the reading
+     stage and lets the student choose a meaning for each marked word while
+     the whole passage is still visible as context. Unobtrusive: each word
+     collapses to a single row and the meaning UI only appears when the
+     student expands the row. */
+  .reading-vocab-panel { margin-bottom: 16px; }
+  .reading-vocab-panel h3 {
+    margin: 0 0 4px;
+    color: var(--navy);
+    font-size: 15px;
+    font-weight: 600;
+  }
+  .reading-vocab-panel .muted { margin: 0 0 8px; }
+  .reading-vocab-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .rvp-item details {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 5px;
+  }
+  .rvp-summary {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    cursor: pointer;
+    list-style: none;
+    border-radius: 5px;
+  }
+  .rvp-summary::-webkit-details-marker { display: none; }
+  .rvp-summary::before {
+    content: "▸";
+    color: var(--muted);
+    width: 12px;
+    display: inline-block;
+  }
+  .rvp-item details[open] > .rvp-summary::before { content: "▾"; }
+  .rvp-summary:focus-visible {
+    outline: 3px solid var(--focus-ring);
+    outline-offset: 2px;
+  }
+  .rvp-word {
+    font-weight: 600;
+    color: var(--navy);
+    min-width: 8em;
+  }
+  .rvp-status {
+    color: var(--muted);
+    font-size: 13px;
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .rvp-status.needs-pick { color: #8a4b00; font-weight: 600; }
+  .rvp-status.missing { color: var(--muted); font-style: italic; }
+  .rvp-body {
+    padding: 4px 12px 12px;
+    border-top: 1px solid var(--panel-border);
+  }
+  .rvp-body.loading,
+  .rvp-body.missing { color: var(--muted); font-style: italic; }
+  .rvp-body .vocab-sentence-context {
+    background: #f6f8fb;
+    border-left: 3px solid var(--tag-key-edge);
+    padding: 6px 10px;
+    margin: 8px 0;
+    font-style: italic;
+    color: #333;
+    font-size: 14px;
+  }
   .scale { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; margin-top: 6px; }
   .scale label {
     display: inline-flex; flex-direction: column; align-items: center;
@@ -735,6 +812,13 @@
       <div id="word-state-sr" class="sr-only" aria-live="polite" aria-atomic="true"></div>
     </div>
 
+    <div class="panel reading-vocab-panel" aria-labelledby="reading-vocab-heading">
+      <h3 id="reading-vocab-heading">New vocabulary — pick a meaning</h3>
+      <p class="muted">As you mark new vocabulary words, they appear here. Open a word to see all its meanings and pick the one that fits — the full reading above is your context. You can change your pick any time.</p>
+      <div id="reading-vocab-empty" class="muted">No new vocabulary words marked yet. Click any word in the reading above and choose "Mark as new vocab."</div>
+      <ul id="reading-vocab-list" class="reading-vocab-list"></ul>
+    </div>
+
     <div class="row end">
       <button class="primary" id="finish-reading">I've finished reading</button>
       <button class="primary" id="annotate-continue" style="display:none;">Continue</button>
@@ -872,7 +956,8 @@
     recMime: '',
     recStream: null,
     reflection: { q1: '', q2: '', q3: '', difficulty: '', speed: '' },
-    vocab: [],              // [{ word, lookup, sentence, status, definition, selected }]
+    vocab: [],              // ordered list of currently-active vocab entries
+    vocabByLookup: {},      // lookup -> entry, persistent across mark/unmark
     leaveGuardArmed: false,
   };
 
@@ -1279,6 +1364,9 @@
     state.words = [];
     state.paraSentenceMap = [];
     state.wsSpansByLeft = {};
+    // A new reading wipes the vocabulary tied to the previous one.
+    state.vocab = [];
+    state.vocabByLookup = {};
     const reading = state.reading;
     $('reading-title-display').textContent = reading.title;
 
@@ -1353,6 +1441,8 @@
 
     attachWordHandlers();
     applyFontControls();
+    // Reset reading-screen vocab panel to its empty state.
+    syncReadingVocabPanel();
   }
 
   function updateWsSpan(wsSpan) {
@@ -1655,6 +1745,7 @@
       state.words[idx].unfamiliar = !wasUnfamiliar;
       updateWordAndNeighbors(idx);
       announceWordState(w.text, !wasUnfamiliar);
+      onUnfamiliarChange();
       closeWordPopup({ restoreFocus: true });
     });
     popup.appendChild(markBtn);
@@ -1893,9 +1984,11 @@
     const ok = confirm('Done annotating? You won\'t be able to return to the reading.');
     if (!ok) return;
     setStage('reflect', 'Reflection & vocabulary');
-    // Kick off dictionary lookups now, while the student fills in reflection,
-    // so definitions have a head start by the time they scroll down.
-    buildVocabList();
+    // state.vocab has been built up as words were marked; any background
+    // lookups still in flight will refresh the list when they settle.
+    rebuildVocab();
+    ensureVocabFetches();
+    renderVocabList();
   });
 
   // ----- Stage 5: Reflection -----
@@ -1921,7 +2014,11 @@
     setStage('download', 'Download');
   });
 
-  // ----- Vocabulary + dictionary lookup (lives on the combined reflection screen) -----
+  // ----- Vocabulary + dictionary lookup -----
+  // Definitions are now chosen on the reading screen, where the whole passage
+  // provides context. The vocabulary section on the later screen is a
+  // review-and-select view, with a backstop for words the student didn't
+  // pick a meaning for on the reading screen.
   const VOCAB_LIMIT = 10;
 
   function cleanLookupWord(s) {
@@ -1931,50 +2028,291 @@
       .toLowerCase();
   }
 
-  function buildVocabList() {
-    // Gather unique unfamiliar words (dedupe by cleaned form, case-insensitive).
-    state.vocab = [];
+  // Rebuild state.vocab (the ordered list of currently-active entries) from
+  // the words the student has currently marked as new vocab. Entries are
+  // cached in state.vocabByLookup, so re-marking a previously unmarked word
+  // restores its prior chosen meaning, fetched definitions, and selected
+  // state.
+  function rebuildVocab() {
     const seen = new Set();
+    const list = [];
     state.words.forEach(w => {
       if (!w.unfamiliar) return;
-      const clean = cleanLookupWord(w.text);
-      if (!clean) return;
-      if (seen.has(clean)) return;
-      seen.add(clean);
-      const sentences = state.paraSentenceMap[w.paraIdx] || [];
-      const sentence = sentences[w.sentenceIdx] || '';
-      state.vocab.push({
-        word: w.text.replace(/^[^\p{L}\p{N}]+|[^\p{L}\p{N}]+$/gu, '') || w.text,
-        lookup: clean,
-        sentence: sentence,
-        status: 'loading',          // loading | ok | notfound | error
-        options: [],                // [{ partOfSpeech, definition }]
-        chosenId: null,             // index into options, or null when no choice made
-        selected: false,
-      });
+      const lookup = cleanLookupWord(w.text);
+      if (!lookup) return;
+      if (seen.has(lookup)) return;
+      seen.add(lookup);
+      let entry = state.vocabByLookup[lookup];
+      if (!entry) {
+        const sentences = state.paraSentenceMap[w.paraIdx] || [];
+        const sentence = sentences[w.sentenceIdx] || '';
+        entry = {
+          word: w.text.replace(/^[^\p{L}\p{N}]+|[^\p{L}\p{N}]+$/gu, '') || w.text,
+          lookup,
+          sentence,
+          status: 'pending',  // pending | loading | ok | notfound | error
+          options: [],
+          chosenId: null,
+          selected: false,
+        };
+        state.vocabByLookup[lookup] = entry;
+      }
+      list.push(entry);
     });
+    state.vocab = list;
+  }
 
+  // Called whenever a word's unfamiliar state toggles. Keeps the vocab list
+  // and the reading-screen panel in sync, and kicks background lookups for
+  // any newly-marked words.
+  function onUnfamiliarChange() {
+    rebuildVocab();
+    syncReadingVocabPanel();
+    ensureVocabFetches();
+  }
+
+  // Kick a dictionary lookup for any vocab entry that hasn't started one yet.
+  // Lookups run in the background and never block the reading or recording.
+  function ensureVocabFetches() {
+    state.vocab.forEach(v => {
+      if (v.status === 'pending') {
+        v.status = 'loading';
+        fetchOneVocab(v).finally(() => {
+          // Update both the reading-screen panel and (if present) the
+          // stage-5 vocab list.
+          updateReadingVocabPanelItem(v);
+          refreshStageVocabItem(v);
+        });
+      }
+    });
+  }
+
+  async function fetchOneVocab(v) {
+    if (!navigator.onLine) {
+      v.status = 'error';
+      return;
+    }
+    try {
+      const res = await fetch(
+        'https://api.dictionaryapi.dev/api/v2/entries/en/' + encodeURIComponent(v.lookup),
+        { method: 'GET' }
+      );
+      if (res.status === 404) { v.status = 'notfound'; return; }
+      if (!res.ok) { v.status = 'error'; return; }
+      const data = await res.json();
+      if (!Array.isArray(data) || !data.length) { v.status = 'notfound'; return; }
+      const options = [];
+      for (const entry of data) {
+        for (const meaning of (entry.meanings || [])) {
+          const pos = (meaning.partOfSpeech && String(meaning.partOfSpeech).trim()) || '';
+          for (const d of (meaning.definitions || [])) {
+            if (d && d.definition) {
+              options.push({ partOfSpeech: pos, definition: String(d.definition) });
+            }
+          }
+        }
+      }
+      if (!options.length) { v.status = 'notfound'; return; }
+      v.options = options;
+      // A single-meaning entry is treated as auto-chosen; multi-meaning
+      // entries wait for the student to pick.
+      if (options.length === 1 && (v.chosenId === null || v.chosenId === undefined)) {
+        v.chosenId = 0;
+      }
+      v.status = 'ok';
+    } catch (err) {
+      v.status = 'error';
+    }
+  }
+
+  // ----- Reading-screen vocabulary panel -----
+
+  // Sync the reading-screen list with state.vocab without destroying existing
+  // items (so an open <details> and any focused radio survive when the user
+  // marks or unmarks an unrelated word).
+  function syncReadingVocabPanel() {
+    const list = $('reading-vocab-list');
+    const empty = $('reading-vocab-empty');
+    if (!list || !empty) return;
+    if (!state.vocab.length) {
+      list.innerHTML = '';
+      empty.style.display = '';
+      return;
+    }
+    empty.style.display = 'none';
+
+    const existing = {};
+    list.querySelectorAll('li.rvp-item').forEach(li => {
+      existing[li.dataset.lookup] = li;
+    });
+    const activeLookups = new Set(state.vocab.map(v => v.lookup));
+    Object.keys(existing).forEach(lookup => {
+      if (!activeLookups.has(lookup)) {
+        existing[lookup].remove();
+        delete existing[lookup];
+      }
+    });
+    // Add new items, reorder if needed. Don't touch existing items: their
+    // content depends only on their own vocab entry (which hasn't changed
+    // unless its own fetch settles, handled separately).
+    state.vocab.forEach((v, vIdx) => {
+      let li = existing[v.lookup];
+      if (!li) {
+        li = buildReadingVocabItem(v);
+        list.appendChild(li);
+      }
+      const target = list.children[vIdx];
+      if (target !== li) list.insertBefore(li, target || null);
+    });
+  }
+
+  function buildReadingVocabItem(v) {
+    const li = document.createElement('li');
+    li.className = 'rvp-item';
+    li.dataset.lookup = v.lookup;
+
+    const details = document.createElement('details');
+    details.dataset.lookup = v.lookup;
+
+    const summary = document.createElement('summary');
+    summary.className = 'rvp-summary';
+    const wordSpan = document.createElement('span');
+    wordSpan.className = 'rvp-word';
+    wordSpan.textContent = v.word;
+    summary.appendChild(wordSpan);
+    const statusSpan = document.createElement('span');
+    statusSpan.className = 'rvp-status';
+    summary.appendChild(statusSpan);
+    details.appendChild(summary);
+
+    const body = document.createElement('div');
+    body.className = 'rvp-body';
+    details.appendChild(body);
+
+    li.appendChild(details);
+
+    // Wire the change handler for this item's body (radios).
+    body.addEventListener('change', onVocabListChange);
+
+    renderReadingVocabSummary(summary, v);
+    renderReadingVocabBody(body, v);
+    return li;
+  }
+
+  function updateReadingVocabPanelItem(v) {
+    const list = $('reading-vocab-list');
+    if (!list) return;
+    const li = list.querySelector('li.rvp-item[data-lookup="' + cssEscapeAttr(v.lookup) + '"]');
+    if (!li) return;
+    const summary = li.querySelector('.rvp-summary');
+    const body = li.querySelector('.rvp-body');
+    if (summary) renderReadingVocabSummary(summary, v);
+    if (body) renderReadingVocabBody(body, v);
+  }
+
+  function cssEscapeAttr(s) {
+    return String(s).replace(/["\\]/g, '\\$&');
+  }
+
+  function renderReadingVocabSummary(summary, v) {
+    const statusSpan = summary.querySelector('.rvp-status');
+    if (!statusSpan) return;
+    statusSpan.classList.remove('needs-pick', 'missing');
+    if (v.status === 'pending' || v.status === 'loading') {
+      statusSpan.textContent = 'Loading meanings…';
+      statusSpan.classList.add('missing');
+      return;
+    }
+    if (v.status === 'error') {
+      statusSpan.textContent = 'Definitions unavailable';
+      statusSpan.classList.add('missing');
+      return;
+    }
+    if (v.status === 'notfound' || !v.options || !v.options.length) {
+      statusSpan.textContent = 'No definition found';
+      statusSpan.classList.add('missing');
+      return;
+    }
+    if (v.chosenId === null || v.chosenId === undefined) {
+      statusSpan.textContent = v.options.length === 1 ? '' : 'Pick a meaning';
+      statusSpan.classList.add('needs-pick');
+      return;
+    }
+    const o = v.options[v.chosenId];
+    if (!o) { statusSpan.textContent = ''; return; }
+    const text = o.definition;
+    statusSpan.textContent = text.length > 90 ? text.slice(0, 90) + '…' : text;
+  }
+
+  function renderReadingVocabBody(body, v) {
+    body.classList.remove('loading', 'missing');
+    body.innerHTML = '';
+    if (v.sentence) {
+      const ctx = document.createElement('div');
+      ctx.className = 'vocab-sentence-context';
+      ctx.textContent = '"' + v.sentence + '"';
+      body.appendChild(ctx);
+    }
+    if (v.status === 'pending' || v.status === 'loading') {
+      body.classList.add('loading');
+      const p = document.createElement('div');
+      p.textContent = 'Looking up definitions…';
+      body.appendChild(p);
+      return;
+    }
+    if (v.status === 'error') {
+      body.classList.add('missing');
+      const p = document.createElement('div');
+      p.textContent = 'Definitions could not be loaded. You can still keep this word for a flashcard; it will save without a definition.';
+      body.appendChild(p);
+      return;
+    }
+    if (v.status === 'notfound' || !v.options || !v.options.length) {
+      body.classList.add('missing');
+      const p = document.createElement('div');
+      p.textContent = 'No definition found. You can still keep this word for a flashcard; it will save without a definition.';
+      body.appendChild(p);
+      return;
+    }
+    if (v.options.length === 1) {
+      const o = v.options[0];
+      const row = document.createElement('div');
+      row.className = 'vocab-meaning-single';
+      if (o.partOfSpeech) {
+        const pos = document.createElement('span');
+        pos.className = 'vocab-pos-inline';
+        pos.textContent = o.partOfSpeech;
+        row.appendChild(pos);
+      }
+      const txt = document.createElement('span');
+      txt.className = 'vocab-meaning-text';
+      txt.textContent = o.definition;
+      row.appendChild(txt);
+      body.appendChild(row);
+      return;
+    }
+    renderMeaningChoiceUi(body, v, 'rvp');
+  }
+
+  // ----- Stage 5 (review and select) vocabulary list -----
+
+  function renderVocabList() {
+    const list = $('vocab-list');
+    list.innerHTML = '';
     if (!state.vocab.length) {
       $('vocab-empty').style.display = 'block';
       $('vocab-counter-row').style.display = 'none';
-      $('vocab-list').innerHTML = '';
       $('vocab-offline-note').style.display = 'none';
       return;
     }
     $('vocab-empty').style.display = 'none';
     $('vocab-counter-row').style.display = 'block';
 
-    renderVocabList();
-    fetchDefinitionsForVocab();
-  }
-
-  function renderVocabList() {
-    const list = $('vocab-list');
-    list.innerHTML = '';
     state.vocab.forEach((v, i) => {
       const item = document.createElement('div');
       item.className = 'vocab-item' + (v.selected ? ' selected' : '');
       item.dataset.i = i;
+      item.dataset.lookup = v.lookup;
 
       const wordId = 'vocab-word-' + i;
       const sentId = 'vocab-sent-' + i;
@@ -1997,7 +2335,6 @@
       word.textContent = v.word;
       item.appendChild(word);
 
-      // Sentence first — it is the context the student uses to choose.
       const sent = document.createElement('div');
       sent.className = 'vocab-sentence';
       sent.id = sentId;
@@ -2016,19 +2353,23 @@
     list.removeEventListener('change', onVocabListChange);
     list.addEventListener('change', onVocabListChange);
     updateVocabCount();
+
+    // Offline note: shown only if every fetched entry errored and none
+    // returned a result.
+    const allErrored = state.vocab.length > 0 && state.vocab.every(v => v.status === 'error');
+    $('vocab-offline-note').style.display = allErrored ? 'block' : 'none';
   }
 
+  // Render the definition area on the stage-5 (review) view. If the student
+  // has chosen a meaning, show it as plain text — this screen is for review,
+  // not the primary place to pick. If the word is still unchosen and has
+  // multiple options, fall back to the full meaning-choice UI as a backstop.
   function setVocabDefElement(defEl, v, vIdx) {
     defEl.classList.remove('loading', 'missing');
     defEl.innerHTML = '';
-    if (v.status === 'loading') {
+    if (v.status === 'pending' || v.status === 'loading') {
       defEl.classList.add('loading');
       defEl.textContent = 'Looking up definitions…';
-      return;
-    }
-    if (v.status === 'notfound') {
-      defEl.classList.add('missing');
-      defEl.textContent = 'No definition found.';
       return;
     }
     if (v.status === 'error') {
@@ -2036,16 +2377,19 @@
       defEl.textContent = 'Definition could not be loaded.';
       return;
     }
-    // status === 'ok' — render meanings.
+    if (v.status === 'notfound') {
+      defEl.classList.add('missing');
+      defEl.textContent = 'No definition found.';
+      return;
+    }
     const opts = v.options || [];
     if (opts.length === 0) {
       defEl.classList.add('missing');
       defEl.textContent = 'No definition found.';
       return;
     }
-    if (opts.length === 1) {
-      // Single meaning — display as plain text; treat as auto-selected.
-      const o = opts[0];
+    if (v.chosenId !== null && v.chosenId !== undefined) {
+      const o = opts[v.chosenId];
       const row = document.createElement('div');
       row.className = 'vocab-meaning-single';
       if (o.partOfSpeech) {
@@ -2061,23 +2405,35 @@
       defEl.appendChild(row);
       return;
     }
+    // Backstop: word still unchosen at stage 5 — let the student pick here.
+    renderMeaningChoiceUi(defEl, v, 'stage5');
+    refreshPickWarning(defEl, v);
+  }
 
-    // Multiple meanings — scrollable, grouped by part of speech.
+  // Shared meaning-choice UI: a "Pick the meaning…" hint plus a scrollable
+  // contained box of <fieldset>/<legend> radio groups, one fieldset per
+  // consecutive run of options with the same part of speech.
+  //
+  // Radios are keyed by v.lookup (not by an index into state.vocab) so they
+  // remain valid when the active vocab list shifts as the student marks
+  // and unmarks other words.
+  function renderMeaningChoiceUi(container, v, ctx) {
+    const safeLookup = String(v.lookup).replace(/[^a-z0-9]/gi, '_');
+    const radioName = ctx + '-meaning-' + safeLookup;
+
     const hint = document.createElement('div');
     hint.className = 'vocab-pick-hint';
-    hint.id = 'vocab-pick-hint-' + vIdx;
     hint.textContent = 'Pick the meaning that fits the sentence.';
     if (v.chosenId !== null && v.chosenId !== undefined) hint.style.display = 'none';
-    defEl.appendChild(hint);
+    container.appendChild(hint);
 
     const scroll = document.createElement('div');
     scroll.className = 'vocab-meanings-scroll';
     scroll.setAttribute('role', 'radiogroup');
     scroll.setAttribute('aria-label', 'Meanings of "' + v.word + '" — choose the one that fits the sentence');
 
-    // Group consecutive options by partOfSpeech, preserving dictionary order.
     const groups = [];
-    opts.forEach((o, idx) => {
+    v.options.forEach((o, idx) => {
       const pos = o.partOfSpeech || '';
       const last = groups.length ? groups[groups.length - 1] : null;
       if (last && last.pos === pos) {
@@ -2087,7 +2443,7 @@
       }
     });
 
-    groups.forEach((g, gIdx) => {
+    groups.forEach(g => {
       const group = document.createElement('fieldset');
       group.className = 'vocab-meanings-group';
       if (g.pos) {
@@ -2102,10 +2458,11 @@
         if (v.chosenId === opt.idx) lbl.classList.add('chosen');
         const r = document.createElement('input');
         r.type = 'radio';
-        r.name = 'vocab-meaning-' + vIdx;
+        r.name = radioName;
         r.value = String(opt.idx);
-        r.dataset.vi = vIdx;
-        r.dataset.oi = opt.idx;
+        r.dataset.lookup = v.lookup;
+        r.dataset.oi = String(opt.idx);
+        r.dataset.ctx = ctx;
         if (v.chosenId === opt.idx) r.checked = true;
         lbl.appendChild(r);
         const txt = document.createElement('span');
@@ -2117,27 +2474,19 @@
       scroll.appendChild(group);
     });
 
-    defEl.appendChild(scroll);
-
-    // If this word is already selected for flashcards but no meaning has been
-    // chosen yet, warn the student so the card doesn't ship without a
-    // definition.
-    refreshPickWarning(defEl, v, vIdx);
+    container.appendChild(scroll);
   }
 
-  function refreshPickWarning(defEl, v, vIdx) {
-    const id = 'vocab-pick-warn-' + vIdx;
-    const existing = defEl.querySelector('#' + id);
+  function refreshPickWarning(defEl, v) {
+    const existing = defEl.querySelector('.vocab-pick-warning');
     const hasOptions = v.status === 'ok' && v.options && v.options.length > 1;
     const needsPick = hasOptions && (v.chosenId === null || v.chosenId === undefined);
     if (v.selected && needsPick) {
       if (existing) return;
       const warn = document.createElement('div');
-      warn.id = id;
       warn.className = 'vocab-pick-warning';
       warn.setAttribute('role', 'status');
       warn.textContent = 'No meaning picked yet — this card will save without a definition.';
-      // Insert at the top of the def block (above the meanings).
       defEl.insertBefore(warn, defEl.firstChild);
     } else if (existing) {
       existing.remove();
@@ -2159,6 +2508,7 @@
     const i = parseInt(cb.dataset.i, 10);
     if (isNaN(i)) return;
     const v = state.vocab[i];
+    if (!v) return;
     const currentlySelected = state.vocab.filter(x => x.selected).length;
     if (cb.checked && !v.selected && currentlySelected >= VOCAB_LIMIT) {
       cb.checked = false;
@@ -2169,29 +2519,42 @@
     if (item) {
       item.classList.toggle('selected', v.selected);
       const defEl = item.querySelector('.vocab-def');
-      if (defEl) refreshPickWarning(defEl, v, i);
+      if (defEl) refreshPickWarning(defEl, v);
     }
     updateVocabCount();
   }
 
   function onVocabMeaningChange(e) {
     const r = e.target;
-    const vi = parseInt(r.dataset.vi, 10);
+    const lookup = r.dataset.lookup;
     const oi = parseInt(r.dataset.oi, 10);
-    if (isNaN(vi) || isNaN(oi)) return;
-    const v = state.vocab[vi];
+    if (!lookup || isNaN(oi)) return;
+    const v = state.vocabByLookup[lookup];
+    if (!v) return;
     v.chosenId = oi;
-    const item = r.closest('.vocab-item');
-    if (!item) return;
-    const defEl = item.querySelector('.vocab-def');
-    // Update visual selection on labels and hide the "Pick the meaning..." hint.
-    item.querySelectorAll('.vocab-meaning-label').forEach(l => {
-      const ri = l.querySelector('input[type="radio"]');
-      l.classList.toggle('chosen', !!(ri && ri.checked));
-    });
-    const hint = item.querySelector('.vocab-pick-hint');
-    if (hint) hint.style.display = 'none';
-    if (defEl) refreshPickWarning(defEl, v, vi);
+    // Update visual selection and hint on the originating item (whichever
+    // screen the student is on).
+    const item = r.closest('.vocab-item, .rvp-item');
+    if (item) {
+      item.querySelectorAll('.vocab-meaning-label').forEach(l => {
+        const ri = l.querySelector('input[type="radio"]');
+        l.classList.toggle('chosen', !!(ri && ri.checked));
+      });
+      const hint = item.querySelector('.vocab-pick-hint');
+      if (hint) hint.style.display = 'none';
+      const defEl = item.querySelector('.vocab-def');
+      if (defEl) refreshPickWarning(defEl, v);
+    }
+    // Reflect the new chosen meaning in the other screen's summary, if it
+    // happens to be present in the DOM.
+    const list = $('reading-vocab-list');
+    if (list) {
+      const li = list.querySelector('li.rvp-item[data-lookup="' + cssEscapeAttr(v.lookup) + '"]');
+      if (li) {
+        const summary = li.querySelector('.rvp-summary');
+        if (summary) renderReadingVocabSummary(summary, v);
+      }
+    }
   }
 
   function updateVocabCount() {
@@ -2214,61 +2577,22 @@
     });
   }
 
-  async function fetchDefinitionsForVocab() {
-    if (!navigator.onLine) {
-      state.vocab.forEach(v => { v.status = 'error'; });
-      refreshVocabDefs();
-      $('vocab-offline-note').style.display = 'block';
-      return;
+  // Update a single vocab entry's stage-5 rendering after its fetch settles.
+  // Safe to call regardless of which stage is currently visible — it's a
+  // no-op if stage 5 hasn't rendered yet.
+  function refreshStageVocabItem(v) {
+    const list = $('vocab-list');
+    if (!list) return;
+    const item = list.querySelector('.vocab-item[data-lookup="' + cssEscapeAttr(v.lookup) + '"]');
+    if (!item) return;
+    const i = parseInt(item.dataset.i, 10);
+    const defEl = item.querySelector('.vocab-def');
+    if (defEl) setVocabDefElement(defEl, v, i);
+    // Re-evaluate the offline note for the whole list.
+    if (state.vocab.length > 0) {
+      const allErrored = state.vocab.every(x => x.status === 'error');
+      $('vocab-offline-note').style.display = allErrored ? 'block' : 'none';
     }
-    const tasks = state.vocab.map(async (v) => {
-      try {
-        const res = await fetch(
-          'https://api.dictionaryapi.dev/api/v2/entries/en/' + encodeURIComponent(v.lookup),
-          { method: 'GET' }
-        );
-        if (res.status === 404) { v.status = 'notfound'; return; }
-        if (!res.ok) { v.status = 'error'; return; }
-        const data = await res.json();
-        if (!Array.isArray(data) || !data.length) { v.status = 'notfound'; return; }
-        // Collect every definition the dictionary returns, preserving the
-        // dictionary's order and the part of speech for each. The student will
-        // pick the one that fits the sentence; we don't discard any.
-        const options = [];
-        for (const entry of data) {
-          for (const meaning of (entry.meanings || [])) {
-            const pos = (meaning.partOfSpeech && String(meaning.partOfSpeech).trim()) || '';
-            for (const d of (meaning.definitions || [])) {
-              if (d && d.definition) {
-                options.push({ partOfSpeech: pos, definition: String(d.definition) });
-              }
-            }
-          }
-        }
-        if (!options.length) { v.status = 'notfound'; return; }
-        v.options = options;
-        // If there is only one meaning, treat it as auto-chosen; otherwise
-        // leave the choice unset so the student actively picks.
-        v.chosenId = options.length === 1 ? 0 : null;
-        v.status = 'ok';
-      } catch (err) {
-        v.status = 'error';
-      }
-    });
-    await Promise.all(tasks);
-    // If every single lookup errored (i.e. none returned 200 or 404), assume offline/blocked.
-    const allErrored = state.vocab.every(v => v.status === 'error');
-    if (allErrored) $('vocab-offline-note').style.display = 'block';
-    refreshVocabDefs();
-  }
-
-  function refreshVocabDefs() {
-    document.querySelectorAll('#vocab-list .vocab-item').forEach(item => {
-      const i = parseInt(item.dataset.i, 10);
-      const v = state.vocab[i];
-      const defEl = item.querySelector('.vocab-def');
-      if (defEl && v) setVocabDefElement(defEl, v, i);
-    });
   }
 
   // The definition that ends up on a flashcard: the meaning the student
