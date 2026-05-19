@@ -215,6 +215,19 @@
     text-decoration: underline dotted #595959;
     text-underline-offset: 2px;
   }
+  /* The word that currently has keyboard focus needs a clearly visible
+     indicator. box-shadow is used instead of outline so the ring renders
+     over neighbouring inline content without reflowing the text. */
+  .word:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px var(--focus-ring);
+    border-radius: 3px;
+    background-color: #e6f0fb;
+    position: relative;
+    z-index: 2;
+  }
+  .word.unfamiliar:focus-visible { background-color: var(--unfamiliar); }
+  .word.tag-key:focus-visible { background-color: var(--tag-key); }
   .word-popup {
     position: absolute;
     z-index: 1000;
@@ -250,6 +263,11 @@
     font: inherit;
   }
   .word-popup button:hover { background: var(--secondary); }
+  .word-popup button:focus-visible {
+    background: var(--secondary);
+    outline: 3px solid var(--focus-ring);
+    outline-offset: -1px;
+  }
   .word-popup .popup-icon {
     display: inline-block;
     width: 16px;
@@ -475,6 +493,10 @@
     background-color: var(--tag-key);
     border-bottom: 3px solid var(--tag-key-edge);
   }
+  .reading-keyboard-hint {
+    font-size: 13px;
+    margin: 4px 0 10px;
+  }
 </style>
 </head>
 <body>
@@ -621,8 +643,15 @@
           Key idea (blue with solid bottom border)
         </span>
       </div>
+      <p class="muted reading-keyboard-hint" id="reading-keyboard-hint">
+        <strong>Keyboard:</strong> Tab into the reading, then use Left/Right arrows
+        to move between words (Up/Down by line, Home/End for line start/end,
+        Page Up/Down for paragraph). Press Enter or Space on a word to open its
+        actions; press Escape to close.
+      </p>
       <div class="reading-container" id="reading-container" role="region"
-           aria-label="Reading passage" tabindex="0"></div>
+           aria-label="Reading passage"></div>
+      <div id="word-state-sr" class="sr-only" aria-live="polite" aria-atomic="true"></div>
     </div>
 
     <div class="row end">
@@ -1205,6 +1234,12 @@
         wordSpan.className = 'word';
         wordSpan.dataset.i = globalIdx;
         wordSpan.textContent = tok;
+        // Each word is a focusable toggle button: arrow-key navigation rovers
+        // tabindex between words so Tab brings the user to the "current" word
+        // (initially the first), and aria-pressed exposes the new-vocab state.
+        wordSpan.setAttribute('role', 'button');
+        wordSpan.setAttribute('tabindex', globalIdx === 0 ? '0' : '-1');
+        wordSpan.setAttribute('aria-pressed', 'false');
         const startPos = m.index;
         const sIdx = sentenceOfChar[Math.min(startPos, sentenceOfChar.length - 1)];
         state.words.push({
@@ -1253,6 +1288,7 @@
     if (span) {
       span.classList.toggle('unfamiliar', !!w.unfamiliar);
       span.classList.toggle('tag-key', !!w.key);
+      span.setAttribute('aria-pressed', w.unfamiliar ? 'true' : 'false');
     }
     const wsL = state.wsSpansByLeft[idx - 1];
     if (wsL && parseInt(wsL.dataset.right, 10) === idx) updateWsSpan(wsL);
@@ -1281,8 +1317,186 @@
       const sel = window.getSelection();
       if (sel && sel.toString().length > 0) return;
       const idx = parseInt(span.dataset.i, 10);
-      showWordPopup(span, idx);
+      // Mouse/touch entry: synchronise the roving tabindex so the next Tab
+      // returns to the word the user just clicked.
+      setRovingWord(idx);
+      showWordPopup(span, idx, { fromKeyboard: false });
     });
+    // Keep the roving tabindex in sync if focus shifts via the screen reader
+    // or other means.
+    container.addEventListener('focusin', (e) => {
+      const span = e.target.closest('.word');
+      if (!span) return;
+      const idx = parseInt(span.dataset.i, 10);
+      setRovingWord(idx);
+    });
+    // Keyboard navigation between words and popup activation.
+    container.addEventListener('keydown', onReadingKeyDown);
+  }
+
+  function onReadingKeyDown(e) {
+    const span = e.target.closest('.word');
+    if (!span) return;
+    const idx = parseInt(span.dataset.i, 10);
+    const total = state.words.length;
+    let next = null;
+    switch (e.key) {
+      case 'ArrowRight':
+        next = Math.min(idx + 1, total - 1);
+        break;
+      case 'ArrowLeft':
+        next = Math.max(idx - 1, 0);
+        break;
+      case 'ArrowDown':
+        next = findWordInAdjacentLine(idx, 1);
+        break;
+      case 'ArrowUp':
+        next = findWordInAdjacentLine(idx, -1);
+        break;
+      case 'Home':
+        next = firstWordOfLine(idx);
+        break;
+      case 'End':
+        next = lastWordOfLine(idx);
+        break;
+      case 'PageDown':
+        next = firstWordOfNextParagraph(idx);
+        break;
+      case 'PageUp':
+        next = firstWordOfPrevParagraph(idx);
+        break;
+      case 'Enter':
+      case ' ':
+      case 'Spacebar':
+        e.preventDefault();
+        showWordPopup(span, idx, { fromKeyboard: true });
+        return;
+      default:
+        return;
+    }
+    if (next !== null && next !== idx) {
+      e.preventDefault();
+      focusWord(next);
+    } else if (next === idx) {
+      e.preventDefault();
+    }
+  }
+
+  function setRovingWord(idx) {
+    const container = $('reading-container');
+    const prev = container.querySelector('.word[tabindex="0"]');
+    if (prev && parseInt(prev.dataset.i, 10) === idx) return;
+    if (prev) prev.setAttribute('tabindex', '-1');
+    const span = container.querySelector('.word[data-i="' + idx + '"]');
+    if (span) span.setAttribute('tabindex', '0');
+  }
+
+  function focusWord(idx) {
+    const container = $('reading-container');
+    const span = container.querySelector('.word[data-i="' + idx + '"]');
+    if (!span) return;
+    setRovingWord(idx);
+    // Use preventScroll so the browser doesn't yank the whole page around,
+    // then nudge the reading container's own scroll to keep the focused
+    // word visible inside it.
+    span.focus({ preventScroll: true });
+    const cRect = container.getBoundingClientRect();
+    const sRect = span.getBoundingClientRect();
+    if (sRect.top < cRect.top) {
+      container.scrollTop -= (cRect.top - sRect.top) + 8;
+    } else if (sRect.bottom > cRect.bottom) {
+      container.scrollTop += (sRect.bottom - cRect.bottom) + 8;
+    }
+  }
+
+  // Helpers for line- and paragraph-based navigation. The reading is laid out
+  // by the browser, so "line" is determined by the on-screen y-position of
+  // each word's bounding rect.
+  function wordRect(idx) {
+    const container = $('reading-container');
+    const span = container.querySelector('.word[data-i="' + idx + '"]');
+    return span ? span.getBoundingClientRect() : null;
+  }
+  function findWordInAdjacentLine(fromIdx, dir) {
+    const total = state.words.length;
+    const startRect = wordRect(fromIdx);
+    if (!startRect) return null;
+    const startTop = startRect.top;
+    const startCenter = startRect.left + startRect.width / 2;
+    // Find the first word in a different line.
+    let i = fromIdx + dir;
+    let candidateLineTop = null;
+    let best = null;
+    let bestDx = Infinity;
+    while (i >= 0 && i < total) {
+      const r = wordRect(i);
+      if (!r) { i += dir; continue; }
+      // Same line? skip until we cross to a new line.
+      const sameLine = Math.abs(r.top - startTop) < r.height * 0.5;
+      if (sameLine) { i += dir; continue; }
+      if (candidateLineTop === null) {
+        candidateLineTop = r.top;
+      } else if (Math.abs(r.top - candidateLineTop) > r.height * 0.5) {
+        // moved past the target line — stop.
+        break;
+      }
+      const c = r.left + r.width / 2;
+      const dx = Math.abs(c - startCenter);
+      if (dx < bestDx) {
+        bestDx = dx;
+        best = i;
+      }
+      i += dir;
+    }
+    return best;
+  }
+  function firstWordOfLine(fromIdx) {
+    const r0 = wordRect(fromIdx);
+    if (!r0) return fromIdx;
+    let i = fromIdx;
+    while (i > 0) {
+      const r = wordRect(i - 1);
+      if (!r) break;
+      if (Math.abs(r.top - r0.top) >= r.height * 0.5) break;
+      i--;
+    }
+    return i;
+  }
+  function lastWordOfLine(fromIdx) {
+    const r0 = wordRect(fromIdx);
+    if (!r0) return fromIdx;
+    let i = fromIdx;
+    while (i < state.words.length - 1) {
+      const r = wordRect(i + 1);
+      if (!r) break;
+      if (Math.abs(r.top - r0.top) >= r.height * 0.5) break;
+      i++;
+    }
+    return i;
+  }
+  function firstWordOfNextParagraph(fromIdx) {
+    const total = state.words.length;
+    const curPara = state.words[fromIdx].paraIdx;
+    for (let i = fromIdx + 1; i < total; i++) {
+      if (state.words[i].paraIdx !== curPara) return i;
+    }
+    return total - 1;
+  }
+  function firstWordOfPrevParagraph(fromIdx) {
+    const curPara = state.words[fromIdx].paraIdx;
+    // If not already at the start of this paragraph, jump to its start.
+    let firstOfCurPara = fromIdx;
+    while (firstOfCurPara > 0 && state.words[firstOfCurPara - 1].paraIdx === curPara) {
+      firstOfCurPara--;
+    }
+    if (fromIdx !== firstOfCurPara) return firstOfCurPara;
+    // Otherwise jump to the start of the previous paragraph.
+    const prevPara = curPara - 1;
+    if (prevPara < 0) return 0;
+    for (let i = 0; i < state.words.length; i++) {
+      if (state.words[i].paraIdx === prevPara) return i;
+    }
+    return 0;
   }
 
   // ----- Word popup (Mark as new vocab / Pronounce) -----
@@ -1291,29 +1505,51 @@
     'speechSynthesis' in window &&
     typeof window.SpeechSynthesisUtterance === 'function';
   let activeWordPopup = null;
+  // Word the popup was opened from, so Escape (and post-action focus) can
+  // return focus to it.
+  let activeWordPopupOriginIdx = null;
 
   function popupOutsideMouseDown(e) {
     if (activeWordPopup && !activeWordPopup.contains(e.target)) closeWordPopup();
   }
-  function popupKeyDown(e) {
-    if (e.key === 'Escape') closeWordPopup();
+  function popupOutsideFocusIn(e) {
+    if (activeWordPopup && !activeWordPopup.contains(e.target)) {
+      // Focus moved outside the popup (e.g. via Tab past the last item).
+      // Close it, but don't steal focus from wherever it just landed.
+      closeWordPopup({ restoreFocus: false });
+    }
   }
-  function closeWordPopup() {
+  function popupKeyDown(e) {
+    if (e.key === 'Escape') {
+      e.preventDefault();
+      closeWordPopup({ restoreFocus: true });
+    }
+  }
+  function closeWordPopup(opts) {
     if (!activeWordPopup) return;
+    const restoreFocus = !!(opts && opts.restoreFocus);
+    const originIdx = activeWordPopupOriginIdx;
     activeWordPopup.remove();
     activeWordPopup = null;
+    activeWordPopupOriginIdx = null;
     document.removeEventListener('mousedown', popupOutsideMouseDown, true);
+    document.removeEventListener('focusin', popupOutsideFocusIn, true);
     document.removeEventListener('keydown', popupKeyDown, true);
     window.removeEventListener('scroll', closeWordPopup, true);
     window.removeEventListener('resize', closeWordPopup);
+    if (restoreFocus && originIdx !== null) {
+      focusWord(originIdx);
+    }
   }
 
-  function showWordPopup(span, idx) {
+  function showWordPopup(span, idx, opts) {
+    const fromKeyboard = !!(opts && opts.fromKeyboard);
     closeWordPopup();
     const w = state.words[idx];
     const popup = document.createElement('div');
     popup.className = 'word-popup';
     popup.setAttribute('role', 'menu');
+    popup.setAttribute('aria-label', 'Actions for "' + w.text + '"');
     // Don't let mousedown inside the popup close it.
     popup.addEventListener('mousedown', e => e.stopPropagation());
 
@@ -1334,9 +1570,11 @@
     markBtn.appendChild(markIcon);
     markBtn.appendChild(markText);
     markBtn.addEventListener('click', () => {
-      state.words[idx].unfamiliar = !state.words[idx].unfamiliar;
+      const wasUnfamiliar = state.words[idx].unfamiliar;
+      state.words[idx].unfamiliar = !wasUnfamiliar;
       updateWordAndNeighbors(idx);
-      closeWordPopup();
+      announceWordState(w.text, !wasUnfamiliar);
+      closeWordPopup({ restoreFocus: true });
     });
     popup.appendChild(markBtn);
 
@@ -1354,10 +1592,32 @@
       sayBtn.appendChild(sayText);
       sayBtn.addEventListener('click', () => {
         pronounceWord(w.text);
-        closeWordPopup();
+        closeWordPopup({ restoreFocus: true });
       });
       popup.appendChild(sayBtn);
     }
+
+    // Keyboard navigation within the popup: arrow keys move between items,
+    // Tab/Shift+Tab cycle (trap focus inside the popup), Home/End jump to
+    // ends, Enter/Space activate the focused item (default button behavior).
+    popup.addEventListener('keydown', (e) => {
+      const items = Array.from(popup.querySelectorAll('button[role="menuitem"]'));
+      if (!items.length) return;
+      const cur = items.indexOf(document.activeElement);
+      let nextIdx = null;
+      if (e.key === 'ArrowDown') nextIdx = (cur + 1 + items.length) % items.length;
+      else if (e.key === 'ArrowUp') nextIdx = (cur - 1 + items.length) % items.length;
+      else if (e.key === 'Home') nextIdx = 0;
+      else if (e.key === 'End') nextIdx = items.length - 1;
+      else if (e.key === 'Tab') {
+        e.preventDefault();
+        nextIdx = (cur + (e.shiftKey ? -1 : 1) + items.length) % items.length;
+      }
+      if (nextIdx !== null) {
+        e.preventDefault();
+        items[nextIdx].focus();
+      }
+    });
 
     document.body.appendChild(popup);
 
@@ -1382,14 +1642,37 @@
     popup.style.top = top + 'px';
 
     activeWordPopup = popup;
+    activeWordPopupOriginIdx = idx;
+
+    // When opened by keyboard, move focus into the popup so the user can
+    // operate it without a pointer. Pointer/touch opens keep focus on the
+    // page (matching the existing behavior).
+    if (fromKeyboard) {
+      const firstBtn = popup.querySelector('button[role="menuitem"]');
+      if (firstBtn) firstBtn.focus();
+    }
+
     // Defer dismiss listeners so the click that opened the popup doesn't close it.
     setTimeout(() => {
       if (!activeWordPopup) return;
       document.addEventListener('mousedown', popupOutsideMouseDown, true);
+      document.addEventListener('focusin', popupOutsideFocusIn, true);
       document.addEventListener('keydown', popupKeyDown, true);
       window.addEventListener('scroll', closeWordPopup, true);
       window.addEventListener('resize', closeWordPopup);
     }, 0);
+  }
+
+  function announceWordState(wordText, isUnfamiliar) {
+    const region = $('word-state-sr');
+    if (!region) return;
+    // Re-set to force a re-announcement even if the message is the same as
+    // last time (some screen readers debounce identical live-region content).
+    region.textContent = '';
+    setTimeout(() => {
+      region.textContent = '"' + wordText + '" ' +
+        (isUnfamiliar ? 'marked as new vocab.' : 'mark removed.');
+    }, 30);
   }
 
   function pronounceWord(text) {
