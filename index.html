@@ -9,22 +9,51 @@
     --navy: #1f3a5f;
     --navy-dark: #15294a;
     --panel: #f4f4f4;
-    --panel-border: #d4d4d4;
-    --border: #c8c8c8;
+    --panel-border: #a8a8a8;
+    --border: #767676;
     --text: #222;
-    --muted: #666;
+    --muted: #595959;
     --warning-bg: #fff8d6;
-    --warning-border: #e6cf7a;
+    --warning-border: #b08c2a;
     --error-bg: #ffe5e0;
-    --error-border: #d9785f;
+    --error-border: #a8442a;
+    --error-text: #6a1b16;
     --primary: #1565c0;
     --primary-hover: #0e4a8f;
     --secondary: #e3e3e3;
     --secondary-hover: #d2d2d2;
-    --recording: #c62828;
+    --recording: #b71c1c;
     --unfamiliar: #fff176;
+    --unfamiliar-edge: #8a6a00;
     --tag-key: #b9d8f5;
-    --tag-key-edge: #6b9dcc;
+    --tag-key-edge: #1f4f7d;
+    --focus-ring: #0b4f9c;
+  }
+  /* Visually hidden but available to screen readers. */
+  .sr-only {
+    position: absolute;
+    width: 1px; height: 1px;
+    padding: 0; margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+    border: 0;
+  }
+  /* Visible focus indicator for all keyboard-focusable controls. */
+  :focus-visible {
+    outline: 3px solid var(--focus-ring);
+    outline-offset: 2px;
+    border-radius: 3px;
+  }
+  /* Headings receive programmatic focus on stage change so screen readers
+     announce the new stage; they should not show the keyboard focus ring. */
+  h1[tabindex="-1"]:focus,
+  h2[tabindex="-1"]:focus,
+  h3[tabindex="-1"]:focus,
+  h1[tabindex="-1"]:focus-visible,
+  h2[tabindex="-1"]:focus-visible,
+  h3[tabindex="-1"]:focus-visible {
+    outline: none;
   }
   * { box-sizing: border-box; }
   html, body {
@@ -90,7 +119,7 @@
     padding: 10px 14px;
     margin: 10px 0;
     font-size: 14px;
-    color: #6a1b16;
+    color: var(--error-text);
   }
   .recording-bar {
     background: var(--navy);
@@ -183,7 +212,7 @@
   }
   .word { cursor: pointer; }
   .word:hover {
-    text-decoration: underline dotted #9aa3ad;
+    text-decoration: underline dotted #595959;
     text-underline-offset: 2px;
   }
   .word-popup {
@@ -227,10 +256,25 @@
     text-align: center;
     color: var(--navy);
   }
-  .word.unfamiliar, .ws.unfamiliar { background-color: var(--unfamiliar); }
-  .word.tag-key, .ws.tag-key { background-color: var(--tag-key); }
+  /* Annotation styling: each annotation type carries a non-color signal in
+     addition to its highlight color, so the two types are distinguishable
+     without relying on color alone (WCAG 1.4.1). */
+  .word.unfamiliar, .ws.unfamiliar {
+    background-color: var(--unfamiliar);
+    text-decoration: underline wavy var(--unfamiliar-edge);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 2px;
+  }
+  .word.tag-key, .ws.tag-key {
+    background-color: var(--tag-key);
+    box-shadow: inset 0 -3px 0 var(--tag-key-edge);
+  }
   .word.unfamiliar.tag-key, .ws.unfamiliar.tag-key {
     background-image: linear-gradient(to top, var(--unfamiliar) 0 3px, var(--tag-key) 3px 100%);
+    text-decoration: underline wavy var(--unfamiliar-edge);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 2px;
+    box-shadow: inset 0 -3px 0 var(--tag-key-edge);
   }
   /* Toolbar — two separate panels (Display and Mark up), stacked. */
   .tool-row {
@@ -268,7 +312,7 @@
     font-size: 11px;
     text-transform: uppercase;
     letter-spacing: 0.4px;
-    color: #888;
+    color: #595959;
     font-weight: 600;
   }
   .toolbar .control {
@@ -293,9 +337,10 @@
   }
   .tag-btn:hover { background: #f1f1f1; }
   .tag-btn .btn-swatch {
-    width: 14px; height: 12px;
+    width: 18px; height: 12px;
     background: var(--tag-key);
-    border: 1px solid rgba(0,0,0,0.12);
+    border: 1px solid rgba(0,0,0,0.18);
+    border-bottom: 2px solid var(--tag-key-edge);
   }
   .util-btn {
     background: none;
@@ -307,6 +352,12 @@
     font-size: 12px;
   }
   .util-btn:hover { color: var(--text); }
+  .recording-bar .util-btn {
+    color: #fff;
+    opacity: 0.95;
+    font-size: 13px;
+  }
+  .recording-bar .util-btn:hover { color: #fff; opacity: 1; }
   /* Vocabulary stage */
   .vocab-counter {
     margin: 10px 0;
@@ -354,7 +405,25 @@
     background: #fff; min-width: 70px; text-align: center;
   }
   .scale label.selected { background: var(--primary); color: #fff; border-color: var(--primary); }
-  .scale input { display: none; }
+  /* The radio input itself is visually hidden but remains in the accessibility
+     tree and keyboard tab order; selection is shown by styling its parent
+     label. Using display:none would remove the radio from the a11y tree and
+     break keyboard operability of the rating scales. */
+  .scale input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+    border: 0;
+  }
+  .scale label:has(input:focus-visible) {
+    outline: 3px solid var(--focus-ring);
+    outline-offset: 2px;
+  }
   .summary-box { background: #fff; border: 1px solid var(--border); border-radius: 5px; padding: 14px 16px; margin: 10px 0; }
   .summary-box dt { font-weight: 600; color: var(--navy); margin-top: 6px; }
   .summary-box dd { margin: 2px 0 8px; }
@@ -377,6 +446,35 @@
     padding: 2px 8px; border-radius: 999px; font-size: 12px; margin-left: 8px;
   }
   .nowrap { white-space: nowrap; }
+  /* Inline legend describing the non-color signals applied to annotations. */
+  .annotation-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 18px;
+    font-size: 13px;
+    color: var(--text);
+    margin: 8px 0 10px;
+  }
+  .annotation-legend .legend-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .annotation-legend .legend-swatch {
+    display: inline-block;
+    width: 32px;
+    height: 14px;
+    border: 1px solid rgba(0,0,0,0.18);
+    vertical-align: middle;
+  }
+  .annotation-legend .legend-swatch.unfamiliar {
+    background-color: var(--unfamiliar);
+    border-bottom: 2px solid var(--unfamiliar-edge);
+  }
+  .annotation-legend .legend-swatch.tag-key {
+    background-color: var(--tag-key);
+    border-bottom: 3px solid var(--tag-key-edge);
+  }
 </style>
 </head>
 <body>
@@ -384,13 +482,13 @@
 
   <header class="banner">
     <h1>OC Reading Fluency — Student</h1>
-    <div class="stepinfo" id="stepinfo">Welcome</div>
+    <div class="stepinfo" id="stepinfo" aria-live="polite">Welcome</div>
   </header>
 
   <!-- STAGE 1: WELCOME -->
-  <section class="stage active" id="stage-welcome">
+  <section class="stage active" id="stage-welcome" aria-labelledby="welcome-heading">
     <div class="panel">
-      <h2>Welcome</h2>
+      <h2 id="welcome-heading" tabindex="-1">Welcome</h2>
       <p>This page helps you read a passage aloud for your composition class. Here is what you will do:</p>
       <ol>
         <li>Test your microphone.</li>
@@ -403,9 +501,9 @@
       <div class="notice">
         You will need a <strong>working microphone</strong> and a <strong>quiet space</strong>. Nothing you do here is uploaded or saved on a server — your work lives only in this browser tab until you download it.
       </div>
-      <label class="field">
+      <label class="field" for="student-name">
         <span>Your name (required) — this goes on the files you turn in.</span>
-        <input type="text" id="student-name" placeholder="e.g., Jordan Lee" autocomplete="off">
+        <input type="text" id="student-name" placeholder="e.g., Jordan Lee" autocomplete="off" aria-required="true">
       </label>
       <div class="row end">
         <button class="primary" id="welcome-next">Start microphone check</button>
@@ -414,18 +512,19 @@
   </section>
 
   <!-- STAGE 2: MIC CHECK -->
-  <section class="stage" id="stage-mic">
+  <section class="stage" id="stage-mic" aria-labelledby="mic-heading">
     <div class="panel">
-      <h2>Microphone check</h2>
+      <h2 id="mic-heading" tabindex="-1">Microphone check</h2>
       <p>Before you read, let's make sure your microphone works. Record about ten seconds of yourself speaking, then listen to the playback.</p>
-      <div id="mic-error" class="error" style="display:none;"></div>
-      <div id="mic-status" class="notice" style="display:none;"></div>
+      <div id="mic-error" class="error" role="alert" style="display:none;"></div>
+      <div id="mic-status" class="notice" role="status" aria-live="polite" style="display:none;"></div>
       <div class="row">
         <button class="primary" id="mic-start">Start recording (10s)</button>
         <button id="mic-stop" disabled>Stop early</button>
-        <span id="mic-timer" class="muted nowrap"></span>
+        <span id="mic-timer" class="muted nowrap" aria-hidden="true"></span>
+        <span id="mic-timer-sr" class="sr-only" aria-live="polite"></span>
       </div>
-      <audio id="mic-playback" controls style="display:none;"></audio>
+      <audio id="mic-playback" controls aria-label="Microphone test playback" style="display:none;"></audio>
       <div class="row end" style="margin-top: 12px;">
         <button id="mic-again" style="display:none;">Record again</button>
         <button class="primary" id="mic-next" disabled>It works — continue</button>
@@ -434,21 +533,22 @@
   </section>
 
   <!-- STAGE 3: LOAD READING -->
-  <section class="stage" id="stage-load">
+  <section class="stage" id="stage-load" aria-labelledby="load-heading">
     <div class="panel">
-      <h2>Load the reading</h2>
+      <h2 id="load-heading" tabindex="-1">Load the reading</h2>
       <p>Open the file your professor sent you. Accepted file types: <strong>.json</strong> (preferred), <strong>.docx</strong>, or <strong>.pdf</strong>.</p>
-      <div class="drop-zone" id="drop-zone">
+      <div class="drop-zone" id="drop-zone" role="button" tabindex="0"
+           aria-label="Choose a reading file. Press Enter or Space to open the file picker, or drag a file here.">
         <p><strong>Click to choose a file</strong> or drag the file here.</p>
         <p class="muted">Or load the included sample: <button id="load-sample">Load sample-reading.json</button></p>
-        <input type="file" id="file-input" accept=".json,.docx,.pdf,application/json,application/pdf">
+        <input type="file" id="file-input" accept=".json,.docx,.pdf,application/json,application/pdf" aria-hidden="true" tabindex="-1">
       </div>
-      <div id="load-error" class="error" style="display:none;"></div>
+      <div id="load-error" class="error" role="alert" style="display:none;"></div>
       <div id="title-confirm" style="display:none;">
-        <div class="notice">This file does not include a labeled title. Please confirm or type the title of the reading.</div>
+        <div class="notice" role="status">This file does not include a labeled title. Please confirm or type the title of the reading.</div>
         <p class="muted">Preview of extracted text (first paragraphs):</p>
-        <div class="preview-box" id="extracted-preview"></div>
-        <label class="field">
+        <div class="preview-box" id="extracted-preview" aria-label="Preview of extracted text"></div>
+        <label class="field" for="confirm-title">
           <span>Reading title</span>
           <input type="text" id="confirm-title" placeholder="Type the reading title">
         </label>
@@ -473,42 +573,56 @@
   </section>
 
   <!-- STAGE 4: READ ALOUD -->
-  <section class="stage" id="stage-read">
+  <section class="stage" id="stage-read" aria-labelledby="reading-title-display">
     <div id="read-state-a">
-      <div class="recording-bar">
-        <span class="rec-dot"></span>
+      <div class="recording-bar" role="status" aria-live="polite">
+        <span class="rec-dot" aria-hidden="true"></span>
         <strong>Recording</strong>
         <span class="muted">— read the passage aloud at a natural pace.</span>
-        <span class="timer" id="read-timer">00:00</span>
+        <span class="timer" id="read-timer" aria-hidden="true">00:00</span>
+        <button type="button" id="read-time-check" class="util-btn"
+                aria-label="Check elapsed reading time">Check time</button>
+        <span id="read-timer-sr" class="sr-only" aria-live="polite" aria-atomic="true"></span>
       </div>
     </div>
 
     <div id="read-state-b" style="display:none;">
-      <div class="notice"><strong>Recording finished.</strong> Take your time to mark up the reading. The timer is stopped.</div>
+      <div class="notice" role="status" aria-live="polite"><strong>Recording finished.</strong> Take your time to mark up the reading. The timer is stopped.</div>
     </div>
 
     <div class="panel">
-      <h2 id="reading-title-display"></h2>
+      <h2 id="reading-title-display" tabindex="-1"></h2>
       <div class="tool-row">
-        <div class="toolbar">
+        <div class="toolbar" role="group" aria-labelledby="display-tools-label">
           <div class="tool-group">
-            <span class="tool-label">Display</span>
-            <label class="control">Size <input type="range" id="font-size" min="14" max="28" value="17"></label>
-            <label class="control">Spacing <input type="range" id="line-spacing" min="14" max="28" step="1" value="16"></label>
+            <span class="tool-label" id="display-tools-label">Display</span>
+            <label class="control" for="font-size">Text size <input type="range" id="font-size" min="14" max="28" value="17" aria-label="Reading text size"></label>
+            <label class="control" for="line-spacing">Line spacing <input type="range" id="line-spacing" min="14" max="28" step="1" value="16" aria-label="Reading line spacing"></label>
           </div>
         </div>
-        <div class="toolbar">
+        <div class="toolbar" role="group" aria-labelledby="markup-tools-label">
           <div class="tool-group markup-group">
-            <span class="tool-label">Mark up</span>
+            <span class="tool-label" id="markup-tools-label">Mark up</span>
             <span class="hint">Click a word to mark it as new vocab or hear it pronounced. To mark a key idea, select a sentence or passage, then click "Mark key idea."</span>
             <div class="markup-actions">
-              <button class="tag-btn" id="apply-key"><span class="btn-swatch"></span> Mark key idea</button>
+              <button class="tag-btn" id="apply-key"><span class="btn-swatch" aria-hidden="true"></span> Mark key idea</button>
               <button class="util-btn" id="clear-key">Clear in selection</button>
             </div>
           </div>
         </div>
       </div>
-      <div class="reading-container" id="reading-container"></div>
+      <div class="annotation-legend" aria-label="Annotation legend">
+        <span class="legend-item">
+          <span class="legend-swatch unfamiliar" aria-hidden="true"></span>
+          New vocabulary word (yellow with wavy underline)
+        </span>
+        <span class="legend-item">
+          <span class="legend-swatch tag-key" aria-hidden="true"></span>
+          Key idea (blue with solid bottom border)
+        </span>
+      </div>
+      <div class="reading-container" id="reading-container" role="region"
+           aria-label="Reading passage" tabindex="0"></div>
     </div>
 
     <div class="row end">
@@ -518,57 +632,57 @@
   </section>
 
   <!-- STAGE 5: REFLECTION + VOCABULARY -->
-  <section class="stage" id="stage-reflect">
+  <section class="stage" id="stage-reflect" aria-labelledby="reflect-heading">
     <div class="panel">
-      <h2>Reflection</h2>
+      <h2 id="reflect-heading" tabindex="-1">Reflection</h2>
       <p class="muted">The reading is closed now. Answer a few short questions about your experience.</p>
-      <label class="field">
+      <label class="field" for="reflect-q1">
         <span>If you had to explain this reading to a friend, what would you tell them?</span>
         <textarea id="reflect-q1"></textarea>
       </label>
-      <label class="field">
+      <label class="field" for="reflect-q2">
         <span>What part of this reading was hardest to get through, and why?</span>
         <textarea id="reflect-q2"></textarea>
       </label>
-      <label class="field">
+      <label class="field" for="reflect-q3">
         <span>Did this reading remind you of anything in your own life or anything else you've read?</span>
         <textarea id="reflect-q3"></textarea>
       </label>
-      <div style="margin-top: 14px;">
-        <strong>How easy or difficult did the reading feel?</strong>
-        <div class="scale" id="scale-difficulty">
+      <fieldset style="margin-top: 14px; border: none; padding: 0;">
+        <legend style="font-weight: 600;">How easy or difficult did the reading feel?</legend>
+        <div class="scale" id="scale-difficulty" role="radiogroup" aria-label="How easy or difficult did the reading feel?">
           <label><input type="radio" name="difficulty" value="1"><span>Very easy</span></label>
           <label><input type="radio" name="difficulty" value="2"><span>Easy</span></label>
           <label><input type="radio" name="difficulty" value="3"><span>Medium</span></label>
           <label><input type="radio" name="difficulty" value="4"><span>Difficult</span></label>
           <label><input type="radio" name="difficulty" value="5"><span>Very difficult</span></label>
         </div>
-      </div>
-      <div style="margin-top: 14px;">
-        <strong>How fast do you feel you read?</strong>
-        <div class="scale" id="scale-speed">
+      </fieldset>
+      <fieldset style="margin-top: 14px; border: none; padding: 0;">
+        <legend style="font-weight: 600;">How fast do you feel you read?</legend>
+        <div class="scale" id="scale-speed" role="radiogroup" aria-label="How fast do you feel you read?">
           <label><input type="radio" name="speed" value="1"><span>Very slow</span></label>
           <label><input type="radio" name="speed" value="2"><span>Slow</span></label>
           <label><input type="radio" name="speed" value="3"><span>About average</span></label>
           <label><input type="radio" name="speed" value="4"><span>Fast</span></label>
           <label><input type="radio" name="speed" value="5"><span>Very fast</span></label>
         </div>
-      </div>
+      </fieldset>
     </div>
 
     <div class="panel">
-      <h2>Vocabulary from your reading</h2>
+      <h2 id="vocab-heading" tabindex="-1">Vocabulary from your reading</h2>
       <p>These are the new vocabulary words you marked. We've looked up a short definition for each. Pick up to <strong>10</strong> to turn into flashcards.</p>
-      <div id="vocab-offline-note" class="notice" style="display:none;">
+      <div id="vocab-offline-note" class="notice" role="status" style="display:none;">
         Definitions could not be loaded (your internet connection may be down). You can still pick words for flashcards — their cards will show just the word and the sentence from the reading.
       </div>
       <div id="vocab-empty" class="notice" style="display:none;">
         You didn't mark any new vocabulary words during the reading. You can skip this section.
       </div>
-      <div id="vocab-counter-row" class="vocab-counter">
+      <div id="vocab-counter-row" class="vocab-counter" aria-live="polite" aria-atomic="true">
         <strong><span id="vocab-count">0</span> of 10</strong> selected for flashcards.
       </div>
-      <div id="vocab-list" class="vocab-list"></div>
+      <div id="vocab-list" class="vocab-list" role="group" aria-labelledby="vocab-heading"></div>
     </div>
 
     <div class="row end" style="margin-top: 16px;">
@@ -577,9 +691,9 @@
   </section>
 
   <!-- STAGE 6: DOWNLOAD -->
-  <section class="stage" id="stage-download">
+  <section class="stage" id="stage-download" aria-labelledby="download-heading">
     <div class="panel">
-      <h2>Download your files</h2>
+      <h2 id="download-heading" tabindex="-1">Download your files</h2>
       <div class="summary-box">
         <dl>
           <dt>Time spent reading</dt><dd id="dl-time"></dd>
@@ -657,9 +771,18 @@
   function setStage(name, stepLabel) {
     if (typeof closeWordPopup === 'function') closeWordPopup();
     document.querySelectorAll('.stage').forEach(s => s.classList.remove('active'));
-    document.getElementById('stage-' + name).classList.add('active');
+    const stageEl = document.getElementById('stage-' + name);
+    stageEl.classList.add('active');
     $('stepinfo').textContent = stepLabel;
     window.scrollTo(0, 0);
+    // Move focus to the new stage's heading so screen readers announce the
+    // change and keyboard users land in the right place. Headings carry
+    // tabindex="-1" so they can be programmatically focused.
+    const heading = stageEl.querySelector('h1, h2, h3');
+    if (heading) {
+      // Defer to next tick so display change applies before focus.
+      setTimeout(() => heading.focus({ preventScroll: true }), 0);
+    }
   }
 
   // ----- Leave guard -----
@@ -715,6 +838,7 @@
     if (!name) {
       $('student-name').focus();
       $('student-name').style.borderColor = 'var(--recording)';
+      $('student-name').setAttribute('aria-invalid', 'true');
       return;
     }
     state.name = name;
@@ -723,6 +847,7 @@
   });
   $('student-name').addEventListener('input', () => {
     $('student-name').style.borderColor = '';
+    $('student-name').removeAttribute('aria-invalid');
   });
 
   // ----- Stage 2: Microphone check -----
@@ -776,6 +901,7 @@
         $('mic-status').style.display = 'block';
         $('mic-status').textContent = 'Recording captured. Press play to hear yourself. If it sounds right, press "It works — continue."';
         $('mic-timer').textContent = '';
+        $('mic-timer-sr').textContent = 'Recording finished.';
         if (micCountdownTimer) { clearInterval(micCountdownTimer); micCountdownTimer = null; }
       };
       rec.start();
@@ -783,6 +909,9 @@
       $('mic-start').disabled = true;
       $('mic-stop').disabled = false;
       $('mic-timer').textContent = '0.0s / 10.0s';
+      // Announce only the start; per-tick updates are kept out of the live
+      // region so the screen reader is not overwhelmed.
+      $('mic-timer-sr').textContent = 'Recording started, 10 seconds.';
       micCountdownTimer = setInterval(() => {
         const elapsed = (Date.now() - micStartTs) / 1000;
         $('mic-timer').textContent = elapsed.toFixed(1) + 's / 10.0s';
@@ -838,6 +967,15 @@
   dropZone.addEventListener('click', (e) => {
     if (e.target.tagName === 'BUTTON') return;
     fileInput.click();
+  });
+  // The drop-zone is exposed as role="button" so keyboard users must be able
+  // to activate it with Enter or Space.
+  dropZone.addEventListener('keydown', (e) => {
+    if (e.target.tagName === 'BUTTON') return;
+    if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar') {
+      e.preventDefault();
+      fileInput.click();
+    }
   });
   dropZone.addEventListener('dragover', (e) => {
     e.preventDefault();
@@ -985,8 +1123,14 @@
     $('confirm-title').focus();
     $('confirm-title-btn').onclick = () => {
       const t = $('confirm-title').value.trim();
-      if (!t) { $('confirm-title').focus(); $('confirm-title').style.borderColor = 'var(--recording)'; return; }
+      if (!t) {
+        $('confirm-title').focus();
+        $('confirm-title').style.borderColor = 'var(--recording)';
+        $('confirm-title').setAttribute('aria-invalid', 'true');
+        return;
+      }
       $('confirm-title').style.borderColor = '';
+      $('confirm-title').removeAttribute('aria-invalid');
       $('title-confirm').style.display = 'none';
       setReading({ title: t, readingLevel: '', levelDescription: '', paragraphs });
     };
@@ -1352,6 +1496,17 @@
     }
   }
 
+  // On-demand timer announcement for screen-reader users. The visible timer
+  // updates every 250ms but is aria-hidden so it does not flood assistive
+  // tech; pressing "Check time" exposes the current elapsed time in a polite
+  // live region.
+  $('read-time-check').addEventListener('click', () => {
+    const ms = state.timer.interval
+      ? (Date.now() - state.timer.startMs)
+      : state.timer.elapsedMs;
+    $('read-timer-sr').textContent = 'Elapsed reading time: ' + formatTimeLong(ms) + '.';
+  });
+
   $('finish-reading').addEventListener('click', () => {
     // Stop timer
     if (state.timer.interval) {
@@ -1456,22 +1611,29 @@
       item.className = 'vocab-item' + (v.selected ? ' selected' : '');
       item.dataset.i = i;
 
+      const wordId = 'vocab-word-' + i;
+      const defId = 'vocab-def-' + i;
+
       const check = document.createElement('label');
       check.className = 'vocab-check';
       const cb = document.createElement('input');
       cb.type = 'checkbox';
       cb.dataset.i = i;
       cb.checked = !!v.selected;
+      cb.setAttribute('aria-label', 'Select "' + v.word + '" for flashcards');
+      cb.setAttribute('aria-describedby', defId);
       check.appendChild(cb);
       item.appendChild(check);
 
       const word = document.createElement('div');
       word.className = 'vocab-word';
+      word.id = wordId;
       word.textContent = v.word;
       item.appendChild(word);
 
       const def = document.createElement('div');
       def.className = 'vocab-def';
+      def.id = defId;
       item.appendChild(def);
 
       const sent = document.createElement('div');
@@ -1769,13 +1931,33 @@
       .doc h2 { font-size: 16px; color: #1f3a5f; margin: 22px 0 8px; }
       .doc .meta { color: #555; font-size: 13px; line-height: 1.45; }
       .doc .reading p { font-size: 15px; line-height: 1.75; margin: 0 0 0.9em; }
-      .doc .unfamiliar { background-color: #fff176; }
-      .doc .tag-key { background-color: #b9d8f5; }
+      /* Non-color signals mirror the on-screen annotations: a wavy
+         underline for new vocabulary, a solid bottom border for key ideas.
+         These ensure the two annotation types are distinguishable in the
+         instructor's PDF even when printed in grayscale or viewed by a
+         colorblind reader. */
+      .doc .unfamiliar {
+        background-color: #fff176;
+        text-decoration: underline wavy #8a6a00;
+        text-decoration-thickness: 2px;
+        text-underline-offset: 2px;
+      }
+      .doc .tag-key {
+        background-color: #b9d8f5;
+        box-shadow: inset 0 -3px 0 #1f4f7d;
+      }
       .doc .unfamiliar.tag-key {
         background-image: linear-gradient(to top, #fff176 0 3px, #b9d8f5 3px 100%);
+        text-decoration: underline wavy #8a6a00;
+        text-decoration-thickness: 2px;
+        text-underline-offset: 2px;
+        box-shadow: inset 0 -3px 0 #1f4f7d;
       }
-      .doc .legend { font-size: 13px; margin: 4px 0 12px; color: #444; }
-      .doc .legend .swatch { display: inline-block; width: 12px; height: 12px; vertical-align: middle; margin-right: 4px; border: 1px solid rgba(0,0,0,0.12); }
+      .doc .legend { font-size: 13px; margin: 4px 0 12px; color: #333; display: flex; flex-wrap: wrap; gap: 6px 18px; }
+      .doc .legend .legend-item { display: inline-flex; align-items: center; gap: 6px; }
+      .doc .legend .swatch { display: inline-block; width: 28px; height: 12px; vertical-align: middle; border: 1px solid rgba(0,0,0,0.12); }
+      .doc .legend .swatch.unfamiliar { background: #fff176; border-bottom: 2px solid #8a6a00; }
+      .doc .legend .swatch.tag-key { background: #b9d8f5; border-bottom: 3px solid #1f4f7d; }
       .doc dl.summary { margin: 6px 0; }
       .doc dl.summary dt { font-weight: 600; color: #1f3a5f; margin-top: 6px; }
       .doc dl.summary dd { margin: 2px 0 8px; }
@@ -1868,8 +2050,8 @@
 
 <h2>Annotated reading</h2>
 <div class="legend">
-  <span><span class="swatch" style="background: #fff176;"></span>New vocabulary word</span>
-  &nbsp; <span><span class="swatch" style="background: #b9d8f5;"></span>Key idea</span>
+  <span class="legend-item"><span class="swatch unfamiliar"></span>New vocabulary word (yellow, wavy underline)</span>
+  <span class="legend-item"><span class="swatch tag-key"></span>Key idea (blue, solid bottom border)</span>
 </div>
 <div class="reading">
 ${paragraphsHtml}
@@ -1928,7 +2110,7 @@ ${unfamiliarItems
         word-break: break-word;
       }
       .card .def { font-size: 14px; }
-      .card .def.missing { color: #888; font-style: italic; }
+      .card .def.missing { color: #595959; font-style: italic; }
       .card .example {
         margin-top: 12px;
         padding-top: 10px;
