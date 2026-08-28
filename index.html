@@ -675,6 +675,7 @@
         <li>Load the reading file your professor gave you.</li>
         <li>Read the passage aloud. The page will time you and record your voice while you read.</li>
         <li>Lightly mark up the reading: tap words you don't know, and tag passages that are confusing, that raise questions, or that you like.</li>
+        <li>Answer a few comprehension questions about the reading, if your professor included them.</li>
         <li>Answer a few short reflection questions.</li>
         <li>Download two files (the recording and a reading record) and turn them in to your professor.</li>
       </ol>
@@ -825,8 +826,14 @@
     </div>
   </section>
 
-  <!-- STAGE 5: REFLECTION + VOCABULARY -->
+  <!-- STAGE 5: COMPREHENSION + REFLECTION + VOCABULARY -->
   <section class="stage" id="stage-reflect" aria-labelledby="reflect-heading">
+    <!-- Comprehension check: filled in by renderComprehension() only when the
+         loaded reading carries a "questions" array. Left empty (and with no
+         heading) otherwise, so it takes no space and does not steal the
+         stage's initial heading focus. -->
+    <div id="comprehension-panel"></div>
+
     <div class="panel">
       <h2 id="reflect-heading" tabindex="-1">Reflection</h2>
       <p class="muted">The reading is closed now. Answer a few short questions about your experience.</p>
@@ -938,7 +945,7 @@
   // ----- App state -----
   const state = {
     name: '',
-    reading: null,          // { title, readingLevel, levelDescription, paragraphs }
+    reading: null,          // { title, readingLevel, levelDescription, paragraphs, questions? }
     words: [],              // [{ text, paraIdx, sentenceIdx, unfamiliar, key }]
     wsSpansByLeft: {},      // leftWordIdx -> .ws span between word leftIdx and leftIdx+1
     totalWords: 0,
@@ -956,6 +963,7 @@
     recMime: '',
     recStream: null,
     reflection: { q1: '', q2: '', q3: '', difficulty: '', speed: '' },
+    comprehension: [],      // answers to the optional per-reading comprehension questions, aligned to reading.questions
     vocab: [],              // ordered list of currently-active vocab entries
     vocabByLookup: {},      // lookup -> entry, persistent across mark/unmark
     leaveGuardArmed: false,
@@ -1292,11 +1300,22 @@
       .map(p => typeof p === 'string' ? p.trim() : '')
       .filter(p => p.length > 0);
     if (!paragraphs.length) { showLoadError('The JSON file\'s paragraphs are all empty.'); return; }
+    // Optional comprehension questions. Absent, non-array, or all-empty ->
+    // no questions, and the Comprehension check step never appears. At most
+    // four plain-text questions are kept.
+    let questions = [];
+    if (Array.isArray(data.questions)) {
+      questions = data.questions
+        .map(q => typeof q === 'string' ? q.trim() : '')
+        .filter(q => q.length > 0)
+        .slice(0, 4);
+    }
     setReading({
       title: data.title.trim(),
       readingLevel: (typeof data.readingLevel === 'string' && data.readingLevel.trim()) ? data.readingLevel.trim() : '',
       levelDescription: (typeof data.levelDescription === 'string' && data.levelDescription.trim()) ? data.levelDescription.trim() : '',
       paragraphs: paragraphs,
+      questions: questions,
     });
   }
 
@@ -1983,13 +2002,51 @@
   $('annotate-continue').addEventListener('click', () => {
     const ok = confirm('Done annotating? You won\'t be able to return to the reading.');
     if (!ok) return;
-    setStage('reflect', 'Reflection & vocabulary');
+    // Build the comprehension check before setStage so, when questions are
+    // present, its heading exists and receives the stage's initial focus.
+    renderComprehension();
+    const hasQuestions = comprehensionQuestions().length > 0;
+    setStage('reflect', hasQuestions ? 'Comprehension & reflection' : 'Reflection & vocabulary');
     // state.vocab has been built up as words were marked; any background
     // lookups still in flight will refresh the list when they settle.
     rebuildVocab();
     ensureVocabFetches();
     renderVocabList();
   });
+
+  // ----- Comprehension check (optional, per-reading questions) -----
+  function comprehensionQuestions() {
+    return (state.reading && Array.isArray(state.reading.questions)) ? state.reading.questions : [];
+  }
+  // Build one labeled textarea per question. When there are no questions the
+  // host is emptied so the step does not appear at all.
+  function renderComprehension() {
+    const host = $('comprehension-panel');
+    const questions = comprehensionQuestions();
+    if (!questions.length) { host.innerHTML = ''; return; }
+    let html = '<div class="panel">'
+      + '<h2 id="comprehension-heading" tabindex="-1">Comprehension check</h2>'
+      + '<p class="muted">Answer these questions about the reading in your own words. '
+      + 'It\'s fine to leave one blank if you\'re not sure.</p>';
+    questions.forEach((q, i) => {
+      const id = 'comp-answer-' + i;
+      html += '<label class="field" for="' + id + '">'
+        + '<span>' + esc(q) + '</span>'
+        + '<textarea id="' + id + '"></textarea>'
+        + '</label>';
+    });
+    html += '</div>';
+    host.innerHTML = html;
+  }
+  // Snapshot the current answers into state, aligned to the questions. Blank
+  // answers are kept as '' — the student may proceed and the record shows the
+  // blank, exactly as the reflection questions behave.
+  function collectComprehension() {
+    state.comprehension = comprehensionQuestions().map((q, i) => {
+      const el = $('comp-answer-' + i);
+      return el ? el.value.trim() : '';
+    });
+  }
 
   // ----- Stage 5: Reflection -----
   function wireScale(groupId, key) {
@@ -2007,6 +2064,7 @@
   wireScale('scale-speed', 'speed');
 
   $('reflect-next').addEventListener('click', () => {
+    collectComprehension();
     state.reflection.q1 = $('reflect-q1').value.trim();
     state.reflection.q2 = $('reflect-q2').value.trim();
     state.reflection.q3 = $('reflect-q3').value.trim();
@@ -2882,6 +2940,20 @@
         return '<li><strong>' + esc(w.text) + '</strong> — ' + highlighted + '</li>';
       }).join('\n');
 
+    // Comprehension check — only rendered when the reading carried questions.
+    // Empty answers show "(no answer)", mirroring the reflection section.
+    const comprehensionQs = Array.isArray(reading.questions) ? reading.questions : [];
+    const comprehensionAns = state.comprehension || [];
+    const comprehensionHtml = comprehensionQs.length
+      ? '<h2>Comprehension check</h2>\n<dl class="summary">\n'
+        + comprehensionQs.map((q, i) => {
+            const a = (comprehensionAns[i] || '').trim();
+            return '  <dt>' + esc(q) + '</dt><dd>' +
+              (a ? esc(a).replace(/\n/g, '<br>') : '<span class="note">(no answer)</span>') + '</dd>';
+          }).join('\n')
+        + '\n</dl>\n'
+      : '';
+
     const r = state.reflection;
     const diffLabel = ['', 'Very easy', 'Easy', 'Medium', 'Difficult', 'Very difficult'][parseInt(r.difficulty, 10) || 0] || '(not answered)';
     const speedLabel = ['', 'Very slow', 'Slow', 'About average', 'Fast', 'Very fast'][parseInt(r.speed, 10) || 0] || '(not answered)';
@@ -2918,6 +2990,7 @@ ${unfamiliarItems
   ? '<ul class="unfamiliar-list">\n' + unfamiliarItems + '\n</ul>'
   : '<p class="note">No new vocabulary words were marked.</p>'}
 
+${comprehensionHtml}
 <h2>Reflection</h2>
 <dl class="summary">
   <dt>If you had to explain this reading to a friend, what would you tell them?</dt><dd>${r.q1 ? esc(r.q1).replace(/\n/g, '<br>') : '<span class="note">(no answer)</span>'}</dd>
