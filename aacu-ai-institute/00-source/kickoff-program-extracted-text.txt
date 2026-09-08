@@ -1,0 +1,2720 @@
+
+===== PAGE 1 =====
+1 
+Program 
+2026-2027 Institute on AI, Pedagogy, and the Curriculum 
+Kick-Off Event 
+September 10 - 11, 2026 
+
+
+===== PAGE 2 =====
+2 
+Table of Contents 
+Overview ........................................................................................................................ 3 
+Ins$tute Kick-Oﬀ Curriculum .......................................................................................... 3 
+Curricular Structure ...................................................................................................... 3 
+Final “Kick-Oﬀ” Event Project – The Ac$on Plan ................................................................ 4 
+Ins$tute PlaBorm & Tech Support ................................................................................... 4 
+Program Partners for the Ins3tute ...................................................................................... 6 
+Ins3tute Schedule at a Glance ........................................................................................... 8 
+Full Program of Events with Session Abstracts ................................................................... 15 
+Thursday, September 10, 2026 ..................................................................................... 15 
+Friday, September 11, 2026 ......................................................................................... 23 
+Future Events ................................................................................................................ 34 
+Guide to Ini3al Cluster Advising Session and Individual Team Mee3ngs ................................ 35 
+Campus-Mentor Pairings with Detailed Schedule of Advising Mee3ng Times ..................... 35 
+Team Advising Guide .................................................................................................. 42 
+Faculty and Staﬀ List with E-Mail Addresses ...................................................................... 44 
+
+===== PAGE 3 =====
+ 
+ 3 
+Overview 
+ 
+Institute Kick-Off Curriculum 
+ 
+In the application for the Institute on AI, Pedagogy, and the Curriculum (IAIPC), each team was asked to 
+identify three to five goals they hoped to accomplish by participating.  The most stated goals centered 
+on academic transformation and included the following: 
+ 
+• AI literacy and curriculum integraBon (91.8%) 
+• Developing a campus-wide AI strategy or insBtuBonal framework (86.6%) 
+• Improving teaching, pedagogy, assessment, and course design (85.8%) 
+• AI governance, policy, ethics, and responsible use (82.1%) 
+• Faculty development and professional learning (65.7%) 
+• IdenBfying, evaluaBng, and implemenBng AI tools and resources (56.0%) 
+• Preparing students with AI competencies and workforce readiness (50.7%) 
+ 
+Other goals included themes addressing data security, privacy, and cybersecurity; administrative uses of 
+AI; operational efficiencies; and building communities of practice and cross campus collaborations.  Your 
+stated goals guided the development of the curriculum for this Kick-off.  While each session will address 
+one of these topics, many sessions will address many of them at the same time.  You are welcome and 
+encouraged to attend any session during the Kick-off, and recordings of all presentations will be 
+available following the event in the Institute’s online Hub. 
+ 
+Curricular Structure 
+ 
+As you review the program, you will see that your time is roughly divided across two categories of 
+activities: (1) concurrent sessions and (2) team time/consulting.  
+ 
+There are four bands of live concurrent sessions at the Institute during which the Institute faculty will 
+engage participants with presentations and activities to designed to help you and your colleagues to 
+respond effectively to the challenges and opportunities artificial intelligence (AI) presents for courses 
+and curricula. Participants must choose from among these sessions, ideally in collaboration with their 
+teammates, to ensure that the collective needs of the team engaging in this work are met.  
+ 
+In addition to plenary and concurrent sessions, you will see that throughout the program, there are 
+blocks of time dedicated to team time and/or consulting with faculty mentors.  We highly encourage 
+each team to take full advantage of dedicated time to meet with one another when scheduled to 
+synthesize new knowledge and insights gained from the core courses and concurrent sessions, to meet 
+with the Institute’s faculty mentors to ask for questions and feedback, and to work on your Action Plans.  
+Please note that when you are meeting alone with your team members, your team lead will determine 
+the location (either online or in a physical space) to meet. 
+ 
+By using your one-page statement as a starting point, we encourage you to speak with other teams and 
+faculty members during team time and consulting sessions to refine your goals. Team time and 
+consulting are scheduled on both days of the kick-off—we encourage you to have engaging discussions 
+about shared challenges, opportunities, and ideas!  Keep in mind that this is a seven-month-long event.  
+
+===== PAGE 4 =====
+4 
+If you do not have time to chat with a particular faculty expert within these two days, please schedule a 
+time after the conclusion of the kick-off to have that conversation. 
+Final “Kick-Off” Event Project – The Action Plan 
+All teams are required to submit a 2-3 page Action Plan, via this link, by the close of business on Friday, 
+October 2nd.  The Action Plan template can be found under the “Tools and Materials” submenu on the 
+Institute’s online hub. Under than submenu, select “Resources.” The Action Plan is designed to help 
+teams fully address the components required for successful academic transformation in regard to AI. 
+These components may include: (a) a timeline for next steps; (b) relevant stakeholders, audience 
+members, and decision-makers essential for discussion and capacity-building; and (c) potential 
+obstacles.  Each component has multiple dimensions. For example, next steps may pertain to curricular, 
+co-curricular, pedagogical, faculty support, or administrative processes. Capacity-building may include 
+dissemination strategies for sharing process plans, assessment/institutional data, and best practices. 
+Obstacles may include resources, institutional reward structures (i.e., promotion and tenure 
+considerations), and communication strategies. 
+For this Institute Kick-off, we ask that you focus on planning for strategies and activities you will 
+implement during the fall semester.  Include the following question in your thinking:  As you seek to 
+address AI in your context, how do your team members and the offices/departments they represent 
+work together to contribute to this work?  For the fall, we recommend that your team include plans for 
+at least one collaborative project/effort. 
+Teams will present their action plans for peer and faculty feedback at the end of the day on Friday, 
+September 11th. Presentations should be brief and conversational (5 minutes, followed by 5 minutes for 
+questions). You may involve all or multiple team members in the presentation.  To save time, we 
+encourage presentations without PowerPoint or PowerPoint utilizing a single slide. We recognize that 
+planning will continue beyond the conclusion of the Institute Kick-off.  As a result, completed Action 
+Plans are not due until three weeks after the conclusion of this kick-off.  Please upload your Action Plan 
+to this link by the close of business on Friday, October 2nd. Please follow the naming convention of 
+“[Institution Name] Action Plan” for the file. 
+Future Institute events will focus specifically on planning for the spring semester (and beyond!) as well 
+as scaling efforts; however, the Action Plan template activity during the Kick-off provides opportunities 
+to think beyond the fall semester as well.  With that said, for this Kick-off, we encourage you to focus 
+on immediate steps you will take as the fall semester progresses. 
+Institute Platform & Tech Support 
+The Institute on AI, Pedagogy, and the Curriculum is utilizing two online platforms to facilitate 
+synchronous and asynchronous interactions during the kick-off and throughout the year. The two 
+platforms are the Institute Hub and Zoom Events. The Institute Hub will contain session recordings, 
+handouts, articles, etc. The Hub is located at 
+https://www.aacu.org/institutes/2026-27-iaipc-hub 
+
+===== PAGE 5 =====
+5 
+Your username to access the site is the e-mail address associated with your AAC&U account. This is 
+almost always your institutional email address. If you don’t know your password, please use the “Reset 
+Your Password” link and follow the instructions on that page.  All technical concerns (such as login 
+questions, technical support, locating documents within the Hub, questions regarding functionality, 
+assistance regarding how to accomplish tasks, etc.) should be sent to Hannah Schneider 
+(HSchneider@aacu.org), Director of Digital Education Programs, AAC&U. 
+Zoom Events will facilitate all synchronous aspects of the Institute. The Kick-Off, Mid-Institute Event, 
+Capstone, and fall & spring webinars will take place on Zoom Events. Before each event listed, all 
+participants will receive a unique access link via email from no-reply@zoom.us. This unique access link 
+will give each participant access to all Zoom sessions associated with the event. Additionally, the Hub 
+will always contain a group access link to the Zoom Events platform under “Schedule/Recordings.” 
+Participants can either use the unique access link emailed to them or the group access link in the Hub 
+to access Zoom sessions.  
+AI Notetaker Statement
+In previous AI Institutes, some participants shared that the presence of AI notetakers in Zoom meeting 
+sessions diminished their comfort-level and prevented them from making the decision to speak openly 
+and candidly about their challenges and goals.  As a result, we will not be permitting Zoom-based AI 
+Notetakers within concurrent sessions, advising sessions, or action plan presentations. This reflects a 
+desire to create a welcoming culture of openness, collegiality, and community for everyone that we 
+hope carries through the entire Institute Kick-Off and beyond. If you have any questions or would like 
+to discuss this decision in greater length, please contact Eddie Watson (watson@aacu.org).
+
+===== PAGE 6 =====
+6 
+Program Partners for the Institute 
+Thank you to our Gold Level partners! 
+https://boodlebox.ai/ 
+https://www.instructure.com/  
+
+
+===== PAGE 7 =====
+ 
+ 7 
+Thank you to our Silver Level partners! 
+ 
+ 
+ 
+ 
+ 
+ 
+https://cochat.ai/ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+http://packback.co 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+https://yellowdig.co/ 
+
+
+===== PAGE 8 =====
+ 
+ 8 
+Institute Schedule at a Glance 
+ 
+ 
+Thursday, September 10th  
+ 
+11:00 am – 11:55 am ET 
+ 
+Welcome & Opening Plenary Presentation: Higher Education’s New Grand Challenge 
+and Strategies for Addressing It 
+C. Edward Watson, Vice President for Digital Innovation, AAC&U 
+ 
+Noon to 1:00 pm ET 
+ 
+Concurrent Sessions Block #1 
+ 
+Build Your Own Teaching Tools with AI Coding Agents 
+Rick Dakan, AI Coordinator, Ringling College of Art & Design 
+ 
+Writing Classrooms: Assignments that Can Keep Students Engaged and Using AI 
+Ethically 
+Laura Dumin, Professor in English and Technical Writing, University of Central Oklahoma 
+ 
+Prepping for the Agentic Turn 
+Lance Eaton, Senior Associate Director of AI in Teaching and Learning, Northeastern 
+University 
+ 
+Faculty Development in the Age of AI 
+Chris Hakala, Executive Director of the Center for Excellence Training; Professor of the 
+Psychology Department, Springfield College 
+ 
+Academic Integrity Without AI Detection: Building Better Policy, Assessment, and 
+Practice 
+Nick Gaspar, Director of Online and Digital Education, University of Michigan-Flint 
+ 
+Process Over Product: What Students Actually Do with AI 
+Jeanne Beatrix Law, Professor of English, Kennesaw State University 
+ 
+Designing AI as a Learning Partner 
+Adam Maksl, Professor of Journalism & New Media and Chair of the Department of 
+Communication at Indiana University Indianapolis 
+ 
+Developing Institutional Policies on AI 
+Bethany Miller, Associate Provost & Chief Data Officer, Macalester College 
+
+===== PAGE 9 =====
+9 
+AI Strategy Starter Kit: Architecting a Campus-Wide Strategy for Responsible AI 
+Shawn Miller, Associate Provost for Digital Learning and Strategy, Rice University 
+AI Literacy: Action Planning for Campus Success 
+Megan L. "Meg" Mittelstadt, Assistant Vice President for Learning Initiatives, Director 
+of the Center for Teaching and Learning, University of Georgia 
+Artificial Intelligence and the Unmasking of ‘Academic Meconnaissance’ 
+Territa Upchurch-Poole, Associate Professor of Psychology and Director of the Lakso 
+Center for the Scholarship of Teaching and Learning (SoTL), Juniata College 
+Context is All You Need: Using an AI Coding Agent in the Classroom 
+Marc Watkins, Assistant Director of Academic Innovation, Lecturer of Writing and 
+Rhetoric, University of Mississippi 
+1:00 – 1:30 pm ET 
+Combined Team Advising with Faculty Mentors 
+1:30 pm-2:45 pm ET 
+Lunch/Team Time Discussions and Organization 
+2:45 pm-3:45 pm ET  
+Concurrent Sessions Block #2 
+SPONSOR SESSION: Accelerating AI responsibly in your LMS 
+Daniel Guillot, Solutions Engineer, Instructure  
+A Policy is Not a Solution: Building Strategy and Culture 
+José Bowen, Senior Scholar, AAC&U 
+AI and the Humanities: Teaching A Framework for Setting Boundaries in Research 
+Antonio Byrd, Associate Professor of English, University of Missouri-Kansas City 
+Beyond AI Adoption: Building the Culture, Leadership, and Change Capacity for an 
+Intelligent Organization 
+
+===== PAGE 10 =====
+ 
+ 10 
+Gary Carini, Vice Provost for Artificial Intelligence and Institutional Research, Baylor 
+University 
+ 
+AI Proofing is a Myth, or It’s Harmful: Toward AI-Resilient Design (A Workshop) 
+Reed Dickson, Director, Faculty & Academic Leader Support, Pima Community College 
+ 
+AI and Accreditation: Balancing Efficiency and Authenticity 
+Myk Garn, Public Commissioner, Distance Education Accreditation Commission (DEAC) 
+ 
+AI Literacy is Not the Same as AI Fluency: Learning, Workplace Readiness, and the Role 
+of Higher Education 
+Sarah Z. Johnson, Academic Integrity Officer, Chair of First Year Composition, and 
+Writing Center Director, Madison College 
+ 
+Our Values in an AI World: Rethinking Academic Integrity  
+Camilla Roberts, Director of the Honor and Integrity System, Kansas State University 
+ 
+Guiding AI Integration at a Community College - Lessons from a Full-Time AI Strategy 
+Officer 
+Peter Shea, Assistant Dean for AI Integration, Middlesex Community College in 
+Massachusetts 
+ 
+Exploring Approaches to Designing AI Chatbots for Learning 
+Krista Wojdak, Professor of Instructional Design and Technology, Appalachian State 
+University 
+ 
+Scaling the Faculty Voice: Designing Low-Lift, High-Impact Socratic AI Tutors 
+Galen Ziegler, Assistant Professor of Nursing, Harford Community College 
+ 
+Simplifying Administrative Processes Using AI 
+Michael Zwick, Senior Vice President for Research, Rutgers University 
+ 
+3:45-4:15pm ET / 4:15-4:45pm ET / 4:45-5:15pm ET 
+ 
+Individual Team Advising with Faculty Mentors / Team Planning 
+ 
+5:15 pm –  
+ 
+Team planning – Action Plan Drafting 
+ 
+ 
+Friday, September 11th  
+ 
+ 
+
+===== PAGE 11 =====
+ 
+ 11 
+11 am – 12:00 pm ET 
+ 
+Concurrent Sessions Block #3 
+ 
+SPONSOR SESSION: 
+Title TBD 
+France Hoang, CEO, BoodleBox 
+ 
+Integrating A.I. Into Digital Course Development: the 20% Challenge 
+Thomas Cavanagh, Vice Provost for Digital Learning, University of Central Florida 
+ 
+From AI Literacy to Judgment Literacy: How Purpose-Driven Thinking Can Cultivate 
+Deep Learning in the Age of AI 
+Enoch Hale, Director, Center for Teaching & Learning & Director, Academic Technology, 
+California Polytechnic Humboldt 
+ 
+AI Development for Good: Checking the Vibe at ASU 
+Kyle Jensen, Assistant Dean of AI & Emerging Digital Technologies, College of Liberal Arts 
+and Sciences, Arizona State University 
+ 
+The Good, the Bad, and the Ethical: Reimagining Critical Inquiry for the AI Era 
+Mozhdeh Khodarahmi, Director of Libraries and Archives at the College of Saint Benedict 
+and Saint John’s University (CSB+SJU) 
+ 
+What Is an Agent, Really? A Practical Mental Model for Agentic AI 
+Jonathan McMichael, AI Learning Solutions Specialist, College of Liberal Arts and 
+Sciences, Arizona State University 
+ 
+The Hidden Work of Curriculum: Using AI to Draft, Diagnose, and Decide 
+Will Miller, Associate Vice President for Continuous Improvement and Institutional 
+Performance, Embry-Riddle Aeronautical University 
+ 
+From Policy to People: Strategies to Center Humanity Within Campus AI Initiatives 
+Carter Moulton, Faculty Developer, Trefny Innovative Instruction Center at Colorado 
+School of Mines 
+ 
+AI Ethics in Practice: Real-World Impacts in the Classroom & Beyond 
+Sarah Newman, Director of Art & Education, metaLAB at Harvard Berkman Klein Center 
+for Internet & Society 
+ 
+Bridging the AI Readiness Gap: A Conversation with Campus Leaders 
+Sherry Rankins-Robertson, Chair and Professor of Writing and Rhetoric, University of 
+Central Florida 
+ 
+
+===== PAGE 12 =====
+12 
+The Values Foundation of a Human-first AI Initiative 
+Melinda Rhodes-DiSalvo, Executive Director, Center for Teaching, Learning, and 
+Assessment, Ohio University 
+Beyond Answer Generation: Designing AI Interactions as a Cognitive Partner 
+Vincent Spezzo, Associate Director of AI, Online, and Emerging Digital Pedagogies, 
+Center for Teaching and Learning, Georgia Tech 
+Helping Faculty across Disciplines Integrate AI into Courses 
+Annette Vee, Associate Professor of English, Facilitator for AI across the Disciplines, 
+University of Pittsburgh 
+12:00 pm – 12:15 pm 
+BREAK 
+12:15 pm – 1:00 pm ET 
+Day Two Plenary – Today’s Higher Education Landscape: The Current Moment and 
+What’s Ahead 
+Doug Lederman, Principal, Lederman Advisory Services; Co-Founder, Inside Higher Ed 
+1:00 pm – 2:00 pm ET 
+ Team Time / Consulting / Action Plan Development / Lunch 
+2:00 pm – 3:00 pm ET 
+Concurrent Sessions Block #4 
+Preparing for the Post-AI Workforce 
+Bryan Alexander, Senior Scholar, Learning Design, and Technology Program, 
+Georgetown University 
+Human-AI Collaboration: Teaching Students to Think with AI Instead of Cognitive 
+Offloading 
+Brent Anders, Lecturer and Researcher, American University of Armenia 
+Building a Network of AI Teaching Fellows: A Distributed Leadership Model for 
+Pedagogical and Curricular Innovation 
+
+===== PAGE 13 =====
+ 
+ 13 
+Amy C. Davis, CHRO, Associate Vice Chancellor of Human Resources & Professor, 
+University of Arkansas Little Rock 
+ 
+Beyond Implementation: Turning AI Education Initiatives into Scholarship 
+Julaine M. Fowlin, Assistant Professor and Executive Director of the Center for the 
+Advancement of Teaching and Learning (CATL), Medical University of South Carolina 
+ 
+What Role Does Grading Play in The Age of AI? 
+Jason Gulya, Professor of English, Berkeley College 
+ 
+Finding Collaborators for Campus AI Strategy and Implementation 
+Caleb J. Keith, Assistant Vice President for Digital Initiatives, AAC&U 
+ 
+Beyond Guardrails: Operationalizing Ethical AI Governance Through Institutional 
+Values 
+Gloria Niles, Chief Academic Technology Innovation Officer, University of Hawai'i System 
+ 
+Universal Design for Learning Meets Artificial Intelligence 
+Susan Purrington, Harold F. Wiley Generative AI Teaching and Learning Fellow, 
+Connecticut College 
+ 
+Beyond Detection: Productive Friction and the End of the AI Arms Race 
+Susan Ray, Associate Professor of English, Delaware County Community College 
+ 
+Agile Innovation: A Case Study in Institutional Transformation 
+Michelle Singh, Vice President of Strategic Educational Alliances, University of North 
+Texas 
+ 
+What Happens When No One is Watching: Designing Learning Environments that 
+Foster Academic Integrity 
+Sharon Stoerger, Assistant Dean for Programs and Assessment, School of 
+Communication and Information, Rutgers University 
+ 
+From "Ugh, AI" to "Un-grading": How Alternative Grading Can Reduce AI Anxieties 
+JT Torres, Director of the Houston H. Harte Center for Teaching and Learning, 
+Washington & Lee University 
+ 
+ 
+3:00 pm – 3:15 pm 
+ 
+ 
+BREAK 
+ 
+ 
+
+===== PAGE 14 =====
+ 
+ 14 
+3:15-3:45 pm ET / 3:45-4:15 pm ET / 4:15-4:45 pm ET 
+ 
+Individual Team Advising with Faculty Mentors / Team Planning / Action Plan 
+Development 
+ 
+4:45 pm – 5:15 pm ET 
+ 
+Action Plan Presentations with Faculty Mentor 
+ 
+5:20 pm – 5:30 pm ET 
+ 
+Closing Remarks and Next Steps 
+- C. Edward Watson, Vice President for Digital Innovation, AAC&U 
+ 
+ 
+  
+
+===== PAGE 15 =====
+ 
+ 15 
+Full Program of Events with Session Abstracts 
+ 
+Thursday, September 10, 2026   
+ 
+11:00 am – 11:55 am ET 
+ 
+Welcome & Opening Plenary Presentation: Higher Education’s New Grand Challenge 
+and Strategies for Addressing It 
+- C. Edward Watson, Vice President for Digital Innova:on, AAC&U 
+The rapid advancement and widespread adoption of AI technologies present a 
+formidable challenge to higher education institutions worldwide. This plenary explores 
+the multifaceted attributes of AI that suggest, paradoxically, that we must both limit and 
+embrace AI in our curriculum and in our college classrooms.  How do we navigate this 
+tension and landscape in meaningful and productive ways? This Institute is designed to 
+respond to this question, and this plenary will set the stage for discussions and actions 
+participants will have in the hours, days, and weeks to come.  
+ 
+Noon to 1:00 pm ET 
+ 
+Concurrent Sessions Block #1 
+ 
+Build Your Own Teaching Tools with AI Coding Agents 
+- Rick Dakan, AI Coordinator, Ringling College of Art & Design   
+AI has gotten so good at writing computer code that any of us can make our own apps 
+and software tools without coding experience. This capability unlocks all kinds of 
+exciting possibilities that even the most AI-skeptical faculty find compelling. This 
+workshop shares a proven model for a collaborative session you can run at your own 
+institution, guiding faculty and staff through the process of identifying challenges and 
+opportunities in their teaching and learning practice and then vibe coding a custom app 
+in just a couple of hours to make teaching easier, more engaging, or more fun. This 
+presentation will include facilitation tools and sample faculty apps from real-world 
+workshops. 
+ 
+Writing Classrooms: Assignments that Can Keep Students Engaged and Using AI 
+Ethically 
+- Laura Dumin, Professor in English and Technical Writing, University of Central 
+Oklahoma 
+Are you wondering about ways to build assignments that can work for students either 
+with or without AI assistance? This presentation will look at assignments that allow 
+students to use AI (or not) and that keep students engaged in learning writing and 
+communication skills. 
+ 
+ 
+
+===== PAGE 16 =====
+ 
+ 16 
+Prepping for the Agentic Turn 
+- Lance Eaton, Senior Associate Director of AI in Teaching and Learning, Northeastern 
+University 
+While higher ed has been discussing much about generative AI, the conversation about 
+agentic AI is still early and often not discussed. This session will explore some of the 
+emerging trends and questions that have arisen with agentic AI and set up participants 
+to be ready to start those conversations on their own campuses.   
+ 
+Faculty Development in the Age of AI 
+- Chris Hakala, Executive Director of the Center for Excellence Training; Professor of the 
+Psychology Department, Springfield College 
+Centers for teaching and learning have traditionally been the home of faculty 
+development for pedagogical advances. In the age of AI, many centers have created 
+approaches to support programming aimed at helping faculty develop the necessary 
+tools to better understand this technology. The term "AI literacy" is bandied about as if 
+it is a clearly defined construct and is often, now, the topic of workshops on campuses. 
+In this conversation, we will begin to create a deeper appreciation for what AI literacy 
+can mean and how faculty and educational developers can work together to enhance 
+understanding of AI for both teaching as well as learning so that AI literacy becomes a 
+more tangible, and therefore, more useful construct. The goal is to engage participants 
+in conversations about how they experience AI in their world and how centers or other 
+entities on campus can further develop understanding so that AI literacy is not such a 
+moving target on campus.   
+ 
+Academic Integrity Without AI Detection: Building Better Policy, Assessment, and 
+Practice 
+- Nick Gaspar, Director of Online and Digital Education, University of Michigan-Flint 
+AI detection tools produce unreliable results and create risks for students, faculty, and 
+institutional trust. This session offers a more durable approach to academic integrity by 
+focusing on behavior rather than specific technologies. Participants will examine how to 
+update existing misconduct policies, set clear course-level expectations, and use 
+assessment practices that make student thinking and process more visible. 
+ 
+Process Over Product: What Students Actually Do with AI 
+- Jeanne Beatrix Law, Professor of English, Kennesaw State University 
+Conversations about student AI use often focus on the final product rather than the 
+intellectual and rhetorical work involved in producing it. Researchers at Kennesaw State 
+University wanted to measure how undergraduate students are actually using 
+generative AI (or not!) in their own academic writing practices. Drawing on think-aloud 
+protocol methods and focusing overall data into a subset of neurodivergent writers, this 
+talk examines what becomes visible when we study students’ planning, prompting, 
+evaluating, revising, and rejecting decisions as they compose with AI. The session 
+considers how AI may function as a tool for cognitive scaffolding, focus, pacing, and 
+metacognitive reflection while also raising important questions about overreliance, 
+
+===== PAGE 17 =====
+17 
+authorship, access, and equity. Participants will explore practical ways to gather 
+evidence about student AI practices through process reflections, annotated prompt 
+transcripts, interviews, and think-aloud activities. They will also receive openly available 
+research resources, including adaptable study protocols, data-collection tools, coding 
+materials, and IRB-supporting documents for developing ethical, context-specific 
+inquiries into how students actually write with AI. 
+Designing AI as a Learning Partner 
+- Adam Maksl, Professor of Journalism & New Media and Chair of the Department of 
+Communication at Indiana University Indianapolis
+Most conversations about AI in education focus on what AI can produce. This session 
+shifts the focus to what AI can help students experience. Participants will explore how AI 
+can act as an interviewer, patient, client, historical figure, debate partner, coach, or 
+collaborator to create authentic learning experiences at scale. Using a simple and 
+adaptable design framework, we'll examine how AI interactions can support practice, 
+reflection, and increasingly, process-based assessment. Examples will include both text- 
+and voice-based experiences that can be adapted across disciplines.
+Developing Institutional Policies on AI 
+- Bethany Miller, Associate Provost & Chief Data Officer, Macalester College
+This presentation will focus on practical considerations for the development and 
+eventual implementation of institutional policies on AI. AI policies need to be multi-
+layered and multi-leveled. It is important to recognize that existing policy development, 
+implementation, and review practices may not keep pace with AI’s rate of change.
+AI Strategy Starter Kit: Architecting a Campus-Wide Strategy for Responsible AI 
+- Shawn Miller, Associate Provost for Digital Learning and Strategy, Rice University
+The rapid arrival of generative AI has many institutions in a reactive mode of 
+policymaking and tool adoption. This session provides a leadership framework for 
+shifting from a reactive posture to a proactive, holistic institutional strategy. Drawing on
+experiences leading AI initiatives at Rice and Duke University, we will explore a model for 
+building a comprehensive campus strategy around four key pillars: Policy (creating agile 
+and ethical guidelines), Infrastructure (building a supportive tech ecosystem), Pedagogy 
+(fostering a culture of innovation), and People (engaging all stakeholders from faculty to 
+students). This session is designed for institutional leaders and team captains, oﬀering 
+practical approaches for building consensus, securing buy-in, and launching a 
+coordinated plan. Participants will leave with a blueprint for architecting an institutional 
+AI strategy that is not only innovative but also equitable, responsible, and aligned with 
+the core academic mission. 
+
+===== PAGE 18 =====
+18 
+AI Literacy: Action Planning for Campus Success 
+- Megan L. "Meg" Mittelstadt, Assistant Vice President for Learning Initiatives, Director of 
+the Center for Teaching and Learning, University of Georgia
+This workshop introduces a campus planning framework grounded in Kotter's eight-step 
+change model, tailored to support campus-wide AI literacy initiatives. The framework 
+can guide change-champions, AI committees, and others in devising strategies to 
+address emerging needs. Participants will explore strategies to create a sense of urgency 
+regarding AI literacy, build a guiding coalition, and craft a clear vision for change. 
+Emphasis will be placed on engaging stakeholders, removing barriers, and achieving 
+early successes that drive long-term institutional transformation. By leveraging this 
+structured approach, institutions can work to integrate AI literacy into their educational 
+framework, ensuring meaningful and sustainable change across campus.
+Artificial Intelligence and the Unmasking of ‘Academic Meconnaissance’ 
+- Territa Upchurch-Poole, Associate Professor of Psychology and Director of the Lakso 
+Center for the Scholarship of Teaching and Learning (SoTL), Juniata College
+Generative artificial intelligence (GenAI) represents much more than a new iteration of 
+technological change in higher education; it instead constitutes a sort of epistemological 
+rupture. For decades, schools—including colleges and universities—have treated student 
+products, often in the form of tests, essays, end-of-semester projects, and grades, as an 
+imperfect but acceptable proxy for evidence of learning. But GenAI has now destabilized 
+this perceived relationship by enabling students to delegate cognitive labor, bypass 
+social engagement and still produce what appears to be credible work. This session 
+addresses the problem of epistemic inference in the age of AI and responds to two 
+important questions: How can educators recognize learning when outputs no longer 
+reliably index the processes through which learning occurs? And, do students genuinely 
+understand what it means to learn? To examine these challenges, we introduce 
+‘Academic Méconnaissance’ as a system-level condition in which educators, students, 
+and institutions misrecognize performance as meaningful learning and in turn offer 
+‘Triadic Re-recognition’ as a framework for reconsidering what counts as knowing, what 
+responsibilities accompany learning and AI use, and how institutional structures can 
+support holistic learner development.
+
+===== PAGE 19 =====
+19 
+Context is All You Need: Using an AI Coding Agent in the Classroom 
+- Marc Watkins, Assistant Director of Academic Innovation, Lecturer of Writing and
+Rhetoric, University of Mississippi
+Generative AI often produces generic work because it is treated primarily as a tool for
+efficiency and task completion. This talk argues that meaningful AI use depends on
+human judgment, creativity, and a willingness to experiment inefficiently. Drawing on
+examples of AI-assisted educational tools and interactive activities, it explores how
+educators can use advanced AI coding models without outsourcing the thinking that
+makes creative work valuable. It concludes by considering how institutions can preserve
+human agency while providing equitable access to AI’s emerging creative capabilities.
+1:00 – 1:30 pm ET 
+Combined Team Advising with Faculty Mentors 
+Each team is assigned a mentor from among the Institute faculty. The mentor’s role is to 
+be a point person with whom to share updates on progress, discuss challenges that 
+arise, and obtain suggestions for other faculty mentors with which to meet. To meet 
+with your mentor, use the “Search” function at the top of the “Sessions” tab in the 
+Zoom Events platform. Enter your faculty mentor’s full name and join the session: 
+[Faculty Mentor Full Name] Combined Team Advising. This session provides the first 
+opportunity for you and your team to meet with your faculty mentor. There are three 
+additional opportunities scheduled across the two days of the kick-off. 
+1:30 pm-2:45 pm ET 
+Lunch/Team Time Discussions and Organization 
+2:45 pm-3:45 pm ET  
+Concurrent Sessions Block #2 
+SPONSOR SESSION 
+Accelerating AI responsibly in your LMS 
+- Daniel Guillot, Solutions Engineer, Instructure
+Higher education is past the question of whether to adopt AI—the pressure now is 
+how to do it well. When AI tools live outside the LMS, institutions lose visibility, 
+policy alignment breaks down, and student experiences grow inconsistent. This 
+session makes the case for anchoring your AI strategy inside the LMS. We'll share 
+best practices from institutions already taking this approach and introduce new 
+ways Canvas is helping make responsible AI adoption practical at scale.
+A Policy is Not a Solution: Building Strategy and Culture 
+- José Bowen, Senior Scholar, AAC&U
+
+===== PAGE 20 =====
+ 
+ 20 
+Like previous technologies, AI can improve quality and speed of some tasks. But AI also 
+offers a significant expansion of capabilities, Could the ability to both customize and 
+scale create new opportunities for services or support? Every campus needs a CLEAR 
+culture that encourages and supports safe AI experimentation and implementation: 
+ 
+• Controls: building rust with safe tools and data, governance and guardrails. 
+• Learning: crea3ng training for experimenta3on, curiosity, limits and ethics 
+• Examples: sharing ideas and department-speciﬁc work-ﬂow trials. 
+• Adop3on: suppor3ng a culture of feedback, failure, and change. 
+• Reviews: tes3ng for beneﬁts and harm with mechanisms for repor3ng and 
+itera3on. 
+ 
+This workshop explores the ways AI might be used to (1) streamline administrative tasks 
+and workflow with examples from many campuses about financial aid, scheduling, 
+budget forecasting, compliance, transfer of credits, social media monitoring, decision 
+making and much more. We will also look at examples for (2) how to support people 
+and culture: bias, equitable decision making, student support, assessment and 
+innovation. You need an AI strategy that goes beyond increasing efficiency: your campus 
+should now be able to improve decision-making, support new services and build 
+capacity. 
+ 
+AI and the Humanities: Teaching A Framework for Setting Boundaries in Research 
+- Antonio Byrd, Associate Professor of English, University of Missouri-Kansas City 
+The widespread availability of generative artificial intelligence (GenAI) platforms can 
+shift how scholars across disciplines understand what research is and how to conduct it. 
+From reading to analysis to writing, GenAI may be a tempting option for driving a 
+research agenda forward efficiently but at what cost? Based on work from Modern 
+Language Association Task Force on AI and the Humanities, Dr. Antonio Byrd shares a 
+framework for evaluating GenAI tools in research. Originally create for researchers, 
+instructors can apply the same principles in teaching and mentoring undergraduate and 
+graduates through the research process. The talk will conclude with a What Would You 
+Do? section where audiences look at three real-world scenarios that “test” their 
+boundaries of GenAI use and refusal. 
+ 
+Beyond AI Adoption: Building the Culture, Leadership, and Change Capacity for an 
+Intelligent Organization 
+- Gary Carini, Vice Provost for Artificial Intelligence and Institutional Research, Baylor 
+University 
+Implementing AI is not primarily a technology initiative—it is an organizational 
+transformation. Lasting success depends on creating a culture that encourages learning, 
+experimentation, responsible innovation, and continuous adaptation. Leaders must 
+address questions of trust, governance, decision-making, and employee engagement 
+while helping people understand how their roles and contributions will evolve. This 
+session examines the organizational and leadership practices that enable institutions to 
+
+===== PAGE 21 =====
+ 
+ 21 
+move beyond isolated AI projects toward sustainable transformation. Participants will 
+gain practical approaches for shaping culture, leading change, and developing 
+organizations that can continually adapt as AI technologies evolve. 
+ 
+AI Proofing is a Myth, or It’s Harmful: Toward AI-Resilient Design (A Workshop) 
+- Reed Dickson, Director, Faculty & Academic Leader Support, Pima Community College 
+In the face of rapid innovation, yes, we sometimes regress. We can become so obsessed 
+with AI-proofing and policing that we subject students to our least imaginative and least 
+pedagogical practices: high-stakes exams and hand-cramping, timed-writing activities. 
+But we can ask a better question: how might we make our learning experiences AI-
+resilient? In other words, how can we make our assignments less prone to students’ AI 
+misuse and more open to positive uses of AI? What kinds of edtech products and 
+curricular practices might we lean on? In this workshop, after briefly exploring what I’ve 
+been calling “AI-Resilient Design,” we will pivot toward a design workshop. Please bring 
+an assignment you feel is susceptible to AI misuse, along with any connected course 
+learning outcomes aligned with that assignment. During our workshop, you will use AI to 
+briefly audit those activities with resilience in mind. After the audit, you will explore how 
+a light addendum or a broader, AI-assisted overhaul might breathe life into that activity, 
+perhaps helping it become more authentic, process-minded, metacognitive, and edtech-
+infused. 
+ 
+AI and Accreditation: Balancing Efficiency and Authenticity 
+- Myk Garn, Public Commissioner, Distance Education Accreditation Commission (DEAC) 
+For anyone who has, or will in the future, faced the daunting, and high-stakes, tasks of 
+preparing for accreditation or a reaffirmation visit, AI can be a real blessing for 
+efficiency. Or a high-risk adventure. This session is targeted for accreditation liaisons, 
+team members, and administrators charged with developing, monitoring, or managing 
+institutional and/or professional (programmatic) accreditations. Led by Myk Garn, Public 
+Commissioner for the Distance Education Accreditation Commission (DEAC) and Chair of 
+its AI Committee, the session will facilitate discussion and sharing of emerging and 
+evolving best practices amongst accreditors and attendees. The session will include a 
+scan of institutional and professional accreditor AI policies as well as guidelines for 
+where the use of AI is appropriate (or risky) when preparing an institutional or 
+programmatic self-study report. We’ll also look at guidelines accreditors are developing 
+to direct their own use of AI for reviews of self-studies and by off-site and on-site 
+evaluators. 
+ 
+AI Literacy is Not the Same as AI Fluency: Learning, Workplace Readiness, and the Role 
+of Higher Education 
+- Sarah Z. Johnson, Academic Integrity Officer, Chair of First Year Composition, and 
+Writing Center Director, Madison College 
+Colleges and universities are in the difficult position of preparing the workforce of 
+tomorrow while also serving the learning needs of their students today. When the 
+business sector advocates for an "AI-literate" workforce, what's often described is 
+
+===== PAGE 22 =====
+ 
+ 22 
+knowledge workers who can "effectively leverage the efficiencies" of generative AI. But 
+this is not true AI literacy; it's AI fluency. The presenter, an Academic Integrity Officer 
+and English Department Chair at a large urban technical college, will lay out the ways 
+colleges and universities must differentiate between AI fluency and literacy, providing 
+students opportunities and frameworks to understand and use generative AI ethically, 
+while preserving the foundational skill-building and critical thinking that's central to 
+what it means to be "educated." 
+ 
+Our Values in an AI World: Rethinking Academic Integrity  
+- Camilla Roberts, Director of the Honor and Integrity System, Kansas State University 
+As artificial intelligence (AI) reshapes education, we are faced with an important 
+question: How do we embrace innovation without losing sight of the values that define 
+academic integrity? This presentation explores how honesty, trust, fairness, respect, 
+responsibility, and courage can guide us through the opportunities and challenges of an 
+AI-enabled educational landscape. Together, we will consider how AI can enhance 
+learning and creativity while navigating concerns around misuse, authorship, bias, 
+privacy, and equitable access. Participants will leave with practical strategies for keeping 
+our values at the center as we rethink what academic integrity means in an age of AI. 
+ 
+Guiding AI Integration at a Community College - Lessons from a Full-Time AI Strategy 
+Officer 
+- Peter Shea, Assistant Dean for AI Integration, Middlesex Community College in 
+Massachusetts 
+This presentation presents a four-phase sequencing framework for AI integration — 
+foundation, capacity building, evidence-based scaling, institutionalization. They will also 
+get ten candidly stated leadership lessons, including the ones learned the hard way: why 
+lowering institutional anxiety has to precede raising ambition, why baseline data beats 
+enthusiasm when deciding what to scale, and why a plan needs a mechanism for 
+discontinuing what does not work. Participants running disconnected pilots will gain a 
+concrete diagnostic for converting that activity into coordinated institutional change. 
+ 
+Exploring Approaches to Designing AI Chatbots for Learning 
+- Krista Wojdak, Professor of Instructional Design and Technology, Appalachian State 
+University 
+Custom AI chatbots can play many roles in education—tutor, coach, question generator, 
+feedback provider, thinking partner—but how you train them matters enormously. In 
+this discussion-based session, an overview of multiple implementations of a chatbot, all 
+focused differently will be described. An overview of the frameworks and pedagogical 
+approaches will be presented, along with data collected to inform the specific research 
+questions addressed. This will serve as a launching point to discuss the variety of 
+approaches for using chatbots to support student learning. 
+ 
+Scaling the Faculty Voice: Designing Low-Lift, High-Impact Socratic AI Tutors 
+- Galen Ziegler, Assistant Professor of Nursing, Harford Community College 
+
+===== PAGE 23 =====
+ 
+ 23 
+When students hit a knowledge wall outside of standard class hours, high-level faculty 
+feedback is traditionally unavailable, often leading to rote memorization rather than 
+deep learning. This session provides a practical roadmap for creating a course-specific AI 
+tutor trained directly on the instructor's own teaching voice. We will discuss how to 
+implement adaptive scaffolding within an AI prompt to monitor for student frustration 
+or knowledge gaps, providing foundational bridges that sustain engagement. Discover 
+how a carefully crafted prompt can scale your assistance to 2:00 AM without requiring 
+complex coding. 
+ 
+Simplifying Administrative Processes Using AI 
+- Michael Zwick, Senior Vice President for Research, Rutgers University 
+Administrative complexity and monotony can hinder efficiency and responsiveness, 
+ultimately undermining the university's teaching, research, and public service mission. 
+This presentation will explore how artificial intelligence (AI) can streamline routine 
+administrative tasks, freeing staff to pursue high-value activities that advance the 
+university's tripartite mission. The implementation and use of AI within Rutgers' Office 
+for Research will be presented as a case study. The focus will be on simplifying AI use 
+and empowering academic leaders to harness its potential for meaningful 
+administrative transformation. 
+ 
+3:45-4:15pm ET / 4:15-4:45pm ET / 4:45-5:15pm ET 
+ 
+Individual Team Advising with Faculty Mentors / Team Planning 
+See the “Guide to Initial Cluster Advising Session and Individual Team Meetings” section 
+on pages 35-43 of this program for the specific time of your team meeting with your 
+faculty mentor.  To meet with your mentor, use the “Search” function at the top of the 
+“Sessions” tab in the Zoom Events platform. Enter your faculty mentor’s full name and 
+join the session: [Faculty Mentor Full Name] Individual Team Advising at your scheduled 
+time. 
+ 
+5:15 pm –  
+ 
+Team planning – Action Plan Drafting 
+ 
+ 
+Friday, September 11, 2026   
+ 
+ 
+11 am – 12:00 pm ET 
+ 
+Concurrent Sessions Block #3 
+ 
+SPONSOR SESSION: 
+
+===== PAGE 24 =====
+ 
+ 24 
+Title TBD 
+France Hoang, CEO, BoodleBox 
+ 
+Integrating A.I. Into Digital Course Development: the 20% Challenge 
+- Thomas Cavanagh, Vice Provost for Digital Learning, University of Central Florida 
+How can institutions leverage the most effective A.I. tools for developing digital 
+courses? Using the University of Central Florida’s Division of Digital Learning as a case 
+study, this session will explore how teams of faculty, instructional designers, and media 
+developers might leverage A.I. to address a hypothetical increase in demand of 20%. It 
+will describe the initial genesis, kick off retreat, evaluation process, and current status of 
+a significant pilot of various A.I. tools. 
+ 
+From AI Literacy to Judgment Literacy: How Purpose-Driven Thinking Can Cultivate 
+Deep Learning in the Age of AI 
+- Enoch Hale, Director, Center for Teaching & Learning & Director, Academic Technology, 
+California Polytechnic Humboldt 
+Most conversations about AI literacy emphasize learning how AI works. Far fewer ask 
+whether students know how to decide when, why, or whether AI should be used in 
+pursuit of meaningful learning. This session argues that AI literacy is necessary but 
+insufficient. What higher education increasingly needs is judgment literacy—the 
+capacity to make thoughtful, purpose-driven decisions in situations where no algorithm 
+can determine the right answer. Participants will experience a series of collaborative 
+activities that surface the tensions between efficiency and learning, automation and 
+agency, and technological capability and educational purpose. Rather than treating 
+these tensions as problems to solve, the session uses them as opportunities for deeper 
+thinking about teaching and learning. Participants will develop practical approaches for 
+designing learning experiences that cultivate discernment, critical thinking, and 
+responsible AI use while preserving the distinctly human aims of higher education. They 
+will leave with adaptable classroom activities, discussion protocols, and planning tools 
+that can be implemented immediately across disciplines and institutional contexts. 
+ 
+AI Development for Good: Checking the Vibe at ASU 
+- Kyle Jensen, Assistant Dean of AI & Emerging Digital Technologies, College of Liberal 
+Arts and Sciences, Arizona State University 
+This presentation provides an overview of how ASU is building AI applications to 
+improve learning outcomes, generate longitudinal insights across diverse student 
+populations, and improve the quality of dialogue between teachers and students. 
+ 
+The Good, the Bad, and the Ethical: Reimagining Critical Inquiry for the AI Era 
+- Mozhdeh Khodarahmi, Director of Libraries and Archives at the College of Saint 
+Benedict and Saint John’s University (CSB+SJU) 
+Drawing on scholarly research and classroom examples, this session examines the 
+benefits, risks, and ethical stakes of AI’s relationship with critical thinking. AI can 
+strengthen inquiry by helping students test arguments and consider multiple 
+
+===== PAGE 25 =====
+ 
+ 25 
+perspectives. Conversely, it can impede thinking when students surrender productive 
+struggle or accept automated responses without sufficient evaluation. Most concerning, 
+strong analytical abilities can be weaponized when disconnected from ethical values and 
+responsibility. This session argues that preparing students for an AI-shaped world must 
+begin with values. Critical thinking alone does not guarantee humane outcomes. 
+Through historical and contemporary case studies, participants will examine how 
+innovation and problem-solving can either serve humanity or contribute to harm. 
+Students must learn to move beyond asking, “Is this accurate?” and “Does this work?” 
+to consider, “Whom does this affect?” and “Should this be done?” Through games, 
+ethical dilemmas, reflective activities, and other pedagogical approaches, participants 
+will explore practical ways to place values-based reasoning at the heart of AI literacy. 
+They will leave with adaptable strategies for designing curricula that cultivate ethical 
+judgment, intellectual independence, critical evaluation, and responsible uses of AI. 
+ 
+What Is an Agent, Really? A Practical Mental Model for Agentic AI 
+- Jonathan McMichael, AI Learning Solutions Specialist, College of Liberal Arts and 
+Sciences, Arizona State University 
+Agentic AI can feel as though it is simply happening to us. New products appear quickly, 
+companies are experimenting with different interfaces and agent harnesses, and 
+demonstrations often emphasize what a system can do without explaining how it works. 
+This workshop gives nontechnical participants a practical mental model for 
+understanding agentic systems as they continue to evolve. We will begin with the 
+language model, then examine how tools, instructions, files, permissions, and software 
+environments are assembled into an agentic harness. Participants will compare 
+chatbots, tool-enabled assistants, and agents that carry out work across multiple steps. 
+The goal is not to provide a one-time catch-up session or teach a single platform. It is to 
+give participants a durable baseline for diagnosing new tools, evaluating internal and 
+external systems, asking better questions, and deciding where agents should and should 
+not have a role in their institutions. 
+ 
+The Hidden Work of Curriculum: Using AI to Draft, Diagnose, and Decide 
+- Will Miller, Associate Vice President for Continuous Improvement and Institutional 
+Performance, Embry-Riddle Aeronautical University 
+Faculty expertise should be spent making curricular judgments—not repeatedly 
+reformatting outcomes, reconstructing curriculum maps, or polishing catalog language. 
+Working from a sample academic program, participants will use AI to clarify catalog 
+language, strengthen learning outcomes, build draft curriculum maps, align course and 
+program outcomes, and identify potential gaps, redundancies, hidden prerequisites, and 
+assessment bottlenecks. The session will distinguish among three different roles for AI: 
+what it may draft, what it may help diagnose, and what faculty must ultimately decide. 
+Rather than positioning AI as an automated curriculum designer, the session treats it as 
+a structured thought partner that can organize information, surface patterns, and 
+generate questions for faculty consideration. Participants will leave with reusable 
+
+===== PAGE 26 =====
+26 
+workflows, prompt sequences, curriculum-map templates, and a verification protocol 
+for accuracy, provenance, confidentiality, bias, and faculty governance. 
+From Policy to People: Strategies to Center Humanity Within Campus AI Initiatives 
+- Carter Moulton, Faculty Developer, Trefny Innovative Instruction Center at Colorado 
+School of Mines
+The need to provide clear institutional guidance on AI use—when combined with the 
+ethical tensions and sense of urgency underlying AI integration—can lead to substantial 
+pushback and further division between faculty, students and staff. This discussion 
+session explores practical strategies for building buy-in and momentum around campus 
+AI initiatives, drawing on work from the AI@Mines initiative at Colorado School of 
+Mines. The session will explore insights and challenges regarding stakeholder feedback, 
+faculty resistance, student involvement, campus event planning, and industry 
+partnerships. Participants will then be invited to reflect on their own institutional 
+contexts, brainstorming methods for involving campus community members as co-
+designers, and leaving with practical approaches for building a shared governance 
+model that prioritizes human connection.
+AI Ethics in Practice: Real-World Impacts in the Classroom & Beyond 
+- Sarah Newman, Director of Art & Education, metaLAB at Harvard Berkman Klein Center 
+for Internet & Society
+AI ethics is often framed so broadly that actual harms and potential opportunities are 
+presented as hypothetical and appear relatively abstract. In this session, we will discuss 
+concrete examples of AI harms (and some benefits!) in the areas of climate, labor, 
+creativity, and medicine. We will examine AI ethics in education, and discuss known 
+issues around copyright, misinformation, bias, and academic integrity, with concrete 
+examples and helpful strategies for mitigating harm. We will also review design 
+strategies that prioritize outcomes, incorporate ethics early in design processes, and 
+increase transparency. Attendees will gain a practical understanding of how to engage 
+students with these topics and will leave with the context required to use (or permit 
+students to use) these tools responsibly.
+Bridging the AI Readiness Gap: A Conversation with Campus Leaders 
+- Sherry Rankins-Robertson, Professor of Writing and Rhetoric, University of Central 
+Florida
+As generative AI (gAI) continues to reshape higher education and the workplace, 
+department chairs are uniquely positioned to guide conversations about teaching, 
+learning, and student preparation across disciplines. This facilitated discussion will 
+explore the growing gap between faculty readiness to teach with gAI and students' 
+readiness to learn and work responsibly with gAI technologies. The session will invite 
+participants to reflect on the knowledge, skills, and dispositions students need to 
+succeed in an AI-enhanced workforce and consider how academic programs can 
+respond to these evolving demands. Attendees will develop strategic questions that can
+
+===== PAGE 27 =====
+ 
+ 27 
+inform departmental planning, faculty development, and student success initiatives with 
+emerging technologies. 
+ 
+The Values Foundation of a Human-first AI Initiative 
+- Melinda Rhodes-DiSalvo, Executive Director, Center for Teaching, Learning, and 
+Assessment, Ohio University 
+Colleges and universities currently recognize the importance AI initiatives promoting a 
+human focus. But what does it really mean for an institution to be "human-centered"? 
+This session presents themes emerging from a review of 10 human-centered 
+approaches and highlights the Human-first Initiative at Ohio University, an institutional 
+culmination of work that began with grassroots creation and adoption of a GenAI in 
+Teaching and Learning position statement. The Human-first Initiative is not a mandate 
+or a technology directive — it is a set of values about who drives innovation and why. 
+These values include: integration, acknowledging varied perspectives on AI are 
+necessary to genuine intellectual endeavor; organic, recognizing that every status and 
+rank brings value to the table; distinct, supporting departments, units and divisions as 
+they discover the best ways of using AI — or not using it — for their specific purposes; 
+humanistic, centering literacy, critical thinking and ethics; cross-disciplinary, insisting no 
+single unit houses or is responsible for AI; and innovation, which assumes the need for 
+processes and policies that can quickly adapt and respond to the changing technology. 
+Participants leave with an understanding of how their peers balance the roles of 
+technology and humans, create purposeful friction and support institutional adoption 
+and elevate evidence-based pedagogy alongside experimentation. 
+ 
+Beyond Answer Generation: Designing AI Interactions as a Cognitive Partner 
+- Vincent Spezzo, Associate Director of AI, Online, and Emerging Digital Pedagogies, 
+Center for Teaching and Learning, Georgia Tech 
+How can instructors design learning experiences in which students think with AI rather 
+than simply obtain answers from it? In this interactive session, participants will explore 
+recent research on student usage of AI and uncover practical instructional design 
+strategies for positioning generative AI as a cognitive partner and learning tool. The 
+session will introduce approaches that create productive cognitive friction, prompt 
+students to question and evaluate AI outputs, and make their reasoning visible through 
+reflection and revision. Participants will examine an example activity and identify 
+opportunities to incorporate structured inquiry, critical evaluation, and metacognitive 
+reflection into course design. They will leave with a practical framework for designing 
+AI-supported activities that strengthen, not replace, students’ disciplinary thinking, 
+judgment, and agency. 
+ 
+Helping Faculty across Disciplines Integrate AI into Courses 
+- Annette Vee, Associate Professor of English, Facilitator for AI across the Disciplines, 
+University of Pittsburgh 
+This workshop will highlight an AI across the Disciplines faculty seminar Annette Vee 
+facilitates at University of Pittsburgh. This seminar draws together faculty across Arts 
+
+===== PAGE 28 =====
+ 
+ 28 
+and Sciences each term to learn more about AI and how to integrate it productively into 
+their own courses. Annette will share key aspects of success and outcomes from the 
+seminar, including structure, teaching materials, and examples of course-level AI 
+integrations. 
+ 
+ 
+12:00 pm – 12:15 pm 
+ 
+ 
+BREAK 
+ 
+ 
+12:15 pm – 1:00 pm ET 
+ 
+Day Two Plenary – Today’s Higher Education Landscape: The Current Moment and 
+What’s Ahead 
+Doug Lederman, Principal, Lederman Advisory Services; Co-Founder, Inside Higher Ed 
+ 
+1:00 pm – 2:00 pm ET 
+ 
+Team Time / Consulting / Action Plan Development / Lunch 
+This time is set aside for you and your team to make progress on the development of 
+your action plan. 
+ 
+2:00 pm – 3:00 pm ET 
+ 
+Concurrent Sessions Block #4 
+ 
+Preparing for the Post-AI Workforce 
+- Bryan Alexander, Senior Scholar, Learning Design, and Technology Program, 
+Georgetown University 
+How might colleges and universities best prepare students for the world of work during 
+the AI revolution?  This session begins by modeling different possible changes to the 
+labor market, including at the macro level of aggregate employment, the possibility of 
+technology-driven unemployment and underemployment, and transformed work 
+functions. We continue by exploring possibilities for new jobs and disaggregated 
+positions, based on current economic analysis.  At the campus level we analyze different 
+institutional responses, from undergraduate literacies to discipline-specific knowledge. 
+ 
+Human-AI Collaboration: Teaching Students to Think with AI Instead of Cognitive 
+Offloading 
+- Brent Anders, Lecturer and Researcher, American University of Armenia 
+Generative AI has become a very powerful cognitive partner, but it must be used 
+properly to provide greater benefits than harmful effects. This session explores different 
+
+===== PAGE 29 =====
+ 
+ 29 
+key aspects of this and strategies for teaching students how to correctly collaborate 
+effectively with an AI while still maintaining intellectual growth, ownership, critical 
+thinking, and disciplinary expertise. This also entails understanding and avoiding 
+overreliance and cognitive offloading, while also using AI to enhance one's capabilities.  
+Participants of this workshop will go through several structured Human-AI collaboration 
+exercises to experience the strategies explained. By going through this workshop and 
+hands-on experience, participants will be able to adapt the processes to their own 
+disciplines and situations. 
+ 
+Building a Network of AI Teaching Fellows: A Distributed Leadership Model for 
+Pedagogical and Curricular Innovation 
+- Amy C. Davis, CHRO, Associate Vice Chancellor of Human Resources & Professor, 
+University of Arkansas Little Rock 
+Many institutions have a small group of faculty members already experimenting with AI 
+in their teaching. The challenge is translating the expertise of these early adopters into 
+meaningful institutional capacity. This session presents a practical framework for 
+transforming individual innovators into AI Teaching Fellows who can extend support, 
+mentorship, and leadership across campus. Participants will explore a fellowship model 
+built around five core responsibilities: facilitating workshops, mentoring peers, piloting 
+innovative teaching practices, sharing assessment findings, and contributing to 
+institutional guidance. The session will address common implementation questions, 
+including compensation, workload, faculty incentives, assessment of program impact, 
+and partnerships among centers for teaching and learning, academic departments, and 
+academic affairs. Attendees will leave with tools and templates for creating a fellow’s 
+program that strengthens faculty engagement, encourages experimentation, and 
+develops a sustainable ecosystem of AI expertise. 
+ 
+Beyond Implementation: Turning AI Education Initiatives into Scholarship 
+- Julaine M. Fowlin, Assistant Professor and Executive Director of the Center for the 
+Advancement of Teaching and Learning (CATL), Medical University of South Carolina 
+As institutions advance AI in education, valuable insights are being generated every day 
+through faculty development, course redesign, policy implementation, AI literacy 
+efforts, and institutional change initiatives. Yet much of this work remains local, limiting 
+opportunities for reflection, continuous improvement, and broader impact. This session 
+explores how the I5 Framework (Ignite, Immerse, Integrate, Introspect, and Impart) can 
+help educators, instructional designers, faculty developers, and institutional leaders 
+move beyond implementation and toward scholarship. Participants will examine 
+scholarship broadly, exploring multiple pathways for sharing and contributing 
+knowledge, from institutional blogs, newsletters, and conference presentations to peer-
+reviewed scholarship. By the end of the session, attendees will be better equipped to 
+recognize the scholarly value of their work and identify pathways for sharing their 
+experiences, whether through institutional storytelling, professional presentations, or 
+formal peer-reviewed scholarship. 
+ 
+
+===== PAGE 30 =====
+ 
+ 30 
+What Role Does Grading Play in The Age of AI? 
+- Jason Gulya, Professor of English, Berkeley College 
+There is so much information about assignment redesign in The Age of AI. Even a 
+cursory search reveals some of the common strategies: focusing on process over 
+product, making assignments more AI-resistant, and relying on in-person assignments. 
+But relatively little has been said about assessment redesign itself. How does the rise of 
+AI – and generative AI in particular–encourage us to rethink how we grade and assess 
+students? In this presentation, we will cover the transactional model of education, the 
+role of AI graders in and out of the classroom, and what we can learn from alternative 
+assessment about making students more learning oriented. The goal is to (a) improve 
+our understanding of how important grading reform may be in the Age of AI and (b) 
+discuss specific ways that we can make students more learning-oriented, even in a 
+world that will prioritize grades and metrics for the foreseeable future. 
+ 
+Finding Collaborators for Campus AI Strategy and Implementation 
+- Caleb J. Keith, Assistant Vice President for Digital Initiatives, AAC&U 
+Artificial intelligence is no longer a future consideration in higher education; it is already 
+reshaping teaching, learning, student support, administration, and workforce 
+preparation. Yet institutions may question how to move beyond isolated 
+experimentation toward coordinated, mission-aligned implementation. This gap often 
+has less to do with technology adoption than with the harder work of organizational 
+change and coalition-building. Successful AI implementation requires far more than 
+selecting the right tools or drafting the right policies; it requires building relationships 
+across organizational boundaries and engaging constituents who bring different forms 
+of expertise, authority, and concern to the table. This session explores how campuses 
+can identify, convene, and sustain the collaborators necessary for responsible AI 
+implementation. Specific attention is given to articulating a compelling institutional 
+rationale for AI adoption, mapping gaps in readiness and capacity, identifying key 
+campus partners, and building strategies for sustaining momentum toward shared 
+action. Drawing on lessons from organizational change theory, coalition-building, and 
+higher education innovation, this session offers a working framework for moving 
+institutions from individual experimentation to coordinated, sustained institutional 
+action. 
+ 
+Beyond Guardrails: Operationalizing Ethical AI Governance Through Institutional 
+Values 
+- Gloria Niles, Chief Academic Technology Innovation Officer, University of Hawai'i 
+System 
+This session moves participants from reactive, guardrail-focused AI policies toward a 
+proactive governance model that centers institutional values, ethics, and equity. 
+Drawing on the University of Hawaiʻi’s AI Values Framework, which grounds technical 
+policy in cultural stewardship and human dignity, this session provides a roadmap for 
+institutional leaders, faculty, and administrators to operationalize their AI commitments. 
+We will explore how to move from informal guidance to formal governance structures 
+
+===== PAGE 31 =====
+ 
+ 31 
+that protect data sovereignty, promote academic integrity, and ensure equitable access 
+for all community members. Participants will learn how to: 
+ 
+• Opera3onalize Policy through Values: Translate high-level principles, such as 
+knowledge and stewardship, into ac3onable governance policies that align with 
+exis3ng ins3tu3onal priori3es. 
+• Lead Through "Cogni3ve Synergy": Build cross-func3onal consensus by engaging 
+stakeholders across curriculum, IT , legal, and student services, ensuring that AI 
+strategy is a pedagogical and mission-driven ini3a3ve rather than solely a 
+technology project. 
+• Design for Equity and Responsibility: Iden3fy strategies to embed ethical review 
+processes into the governance workﬂow, moving beyond "human-in-the-loop" to 
+center "technology-in-the-loop," ensuring that human exper3se, judgment, and 
+cultural context drive innova3on. 
+ 
+By shifting the focus from technological constraint to cultural and ethical grounding, 
+leaders will leave with concrete strategies to build an AI ecosystem that upholds 
+academic freedom, fosters trust, and promotes the flourishing of their students and 
+communities. 
+ 
+Universal Design for Learning Meets Artificial Intelligence 
+- Susan Purrington, Harold F. Wiley Generative AI Teaching and Learning Fellow, 
+Connecticut College 
+Drawing from extensive Universal Design for Learning (UDL) expertise and pioneering AI 
+integration work, this presentation demonstrates how artificial intelligence can 
+revolutionize inclusive education by amplifying UDL principles across all three networks 
+of learning. The framework shows how AI tools can provide multiple means of 
+representation (AI-powered text-to-speech, real-time transcription, visual content 
+generation, and multilingual translation), multiple means of engagement (personalized 
+AI tutors, adaptive content delivery, culturally responsive examples, and interest-based 
+learning pathways), and multiple means of action and expression (voice-to-text tools, AI 
+writing assistants, alternative assessment formats, and creative multimedia options). 
+Rather than replacing human connection, AI serves as a powerful amplifier that removes 
+barriers and creates more equitable learning opportunities for students with disabilities, 
+English language learners, neurodivergent students, and other historically marginalized 
+populations. This approach transforms AI from a potential barrier into a powerful tool 
+for creating truly inclusive educational environments where every student can succeed. 
+ 
+Beyond Detection: Productive Friction and the End of the AI Arms Race 
+- Susan Ray, Associate Professor of English, Delaware County Community College 
+Recent surveys highlight a troubling discrepancy: our students' use of AI continues to 
+rise, while an increasing number of faculty in the United States and Canada are turning 
+their backs on it. Into this gap has stepped an entire market, algorithms feeding our 
+students reels for humanizers and auto-typers, tools that promise to make completed 
+
+===== PAGE 32 =====
+ 
+ 32 
+assignments undetectable while normalizing the outsourcing itself. Faculty, meanwhile, 
+receive a constant stream of emails and vendor sessions marketing AI detectors and 
+keystroke forensics. This session begins with a tour of what our students are actually 
+being marketed, how these tools work, and what AI detection software can and cannot 
+do. It then introduces an alternate approach often called productive friction: designing 
+assessments that make the thinking visible rather than policing the product. This 
+includes low-stakes checks for understanding, visible decision making, source 
+verification, revision, reflection, and oral explanation — approaches that trace thought 
+as it develops. We close by sharing two assignment-redesign chatbots participants can 
+use and share with their colleagues. The first rebuilds an assessment without integrating 
+AI: it points out where evidence of student thinking is missing, proposes human 
+checkpoints, and shifts credit toward the learning process. The second helps faculty 
+build AI into an assignment where it supports the learning, while keeping the student's 
+process visible. Participants leave with the two chatbots, concrete revision strategies, 
+and a clear rationale for where AI belongs in their assessments — and where it does not. 
+ 
+Agile Innovation: A Case Study in Institutional Transformation 
+- Michelle Singh, Vice President of Strategic Educational Alliances, University of North 
+Texas 
+Transformation rarely fails for lack of ambition; it fails for lack of structure or 
+frameworks. Agile Innovation begins with a Landscape Analysis, then moves through 
+three focus areas, governance, operations, and practice and pedagogy, all grounded in 
+change management principles. It's built to help institutions develop capability 
+continuously, rather than treat transformation as a one-time policy response. This 
+session uses artificial intelligence as a live case study of that framework in action, 
+through its own three pillars: Mindshift (AI literacy to AI fluency), FreeFocus (process 
+optimization and automation), and Horizon Studio (innovation incubation). Together 
+they show how governance, practice, and culture can move in step toward the same 
+goal. Attendees will leave with a working model for institutional transformation they 
+can apply to AI or what may come next. 
+ 
+What Happens When No One is Watching: Designing Learning Environments that 
+Foster Academic Integrity 
+- Sharon Stoerger, Assistant Dean for Programs and Assessment, School of 
+Communication and Information, Rutgers University 
+Most acts of academic dishonesty occur in private, when no one is watching. Students’ 
+decision whether to tackle an assignment themselves or outsource some or all of the 
+work to AI is made long before the instructor ever evaluates the final submission. While 
+instructors cannot observe these private decision-making moments, they can influence 
+them. Drawing on research in academic integrity, motivation, and assessment design 
+research, this session explores how assignment structure, policy language, and 
+institutional messaging shape students’ choices before misconduct occurs. We will also 
+examine strategies for designing learning environments that encourage ethical decision-
+making and position academic integrity as a partnership rather than a compliance 
+
+===== PAGE 33 =====
+ 
+ 33 
+exercise. This session shares a practical framework focused on clarity, care, 
+collaboration, and process visibility, along with redesign strategies attendees can apply 
+to their own courses and institutions. 
+ 
+From "Ugh, AI" to "Un-grading": How Alternative Grading Can Reduce AI Anxieties 
+- JT Torres, Director of the Houston H. Harte Center for Teaching and Learning, 
+Washington & Lee University 
+While grade inflation might draw all the headline outrage, the real challenge facing 
+modern educators is that traditional learning signals have completely collapsed in the 
+era of AI. This interactive workshop tackles the root cause of faculty grading exhaustion 
+by helping instructors dismantle outdated assessment models and rebuild them for the 
+modern classroom. Participants will explore a practical, step-by-step process for 
+leveraging AI to support a standards-based, self-assessment framework—moving away 
+from high-stakes anxiety and toward meaningful, formative feedback. Join us to reshape 
+your approach to grading, reclaim your time, and adopt an alternative assessment 
+model that actually reflects student learning. 
+ 
+ 
+3:00 pm – 3:15 pm 
+ 
+BREAK 
+ 
+3:15-3:45 pm ET / 3:45-4:15 pm ET / 4:15-4:45 pm ET 
+ 
+Individual Team Advising with Faculty Mentors / Team Planning 
+See the “Guide to Initial Cluster Advising Session and Individual Team Meetings” section 
+on pages 35-42 of this program for the specific time of your team meeting with your 
+faculty mentor.  To meet with your mentor, use the “Search” function at the top of the 
+“Sessions” tab in the Zoom Events platform. Enter your faculty mentor’s full name and 
+join the session: [Faculty Mentor Full Name] Individual Team Advising at your scheduled 
+time. 
+ 
+4:45 pm – 5:15 pm ET 
+ 
+Action Plan Presentations with Faculty Mentor 
+See the “Team Advising Guide” on pages 42-43 for more information regarding action 
+plans and presentations. 
+ 
+5:20 pm – 5:30 pm ET 
+ 
+Closing Remarks and Next Steps 
+- C. Edward Watson, Vice President for Digital Innovation, AAC&U 
+ 
+
+===== PAGE 34 =====
+ 
+ 34 
+ 
+ 
+Future Events  
+ 
+** Please Note:  Fall meeting times between you and your faculty mentor will be determined 
+by scheduling those meetings directly with your mentor. 
+ 
+** Also note that all institute faculty are available to consult with you.  We encourage you to 
+invite experts beyond your faculty mentor, if needed, to be part of your Institute experience. 
+ 
+** The Fall 2026 webinar schedule will be available in the Institute Hub by September 10, 
+2026. 
+ 
+  
+
+===== PAGE 35 =====
+ 
+ 35 
+Guide to Initial Cluster Advising Session and Individual Team Meetings 
+ 
+Campus-Mentor Pairings with Detailed Schedule of Advising Meeting Times 
+ 
+Faculty mentors will meet with their teams as a group from 1:00 to 1:30 pm ET on Thursday, 
+September 10th.  Individual teams will then meet with their faculty mentors, as scheduled 
+below.  Your mentor and other institute faculty are available for additional consultations as 
+needed.  Feel free to reach out to institute faculty to schedule additional 30-minute consulting 
+sessions during the kick-off.  
+ 
+ 
+ 
+Campus Campus Team 
+Leader  
+Faculty 
+Mentor 
+Thursday, 
+September 
+10th, Meeting 
+Time 
+Friday,  
+September 
+11th, Meeting 
+Time 
+American Dental Education 
+Association Sherin Tooks Myk Garn 
+3:45 – 4:15pm 
+ET 
+3:15 – 3:45pm 
+ET 
+Anne Arundel Community 
+College Lisa Starkey Peter Shea 
+3:45 – 4:15pm 
+ET 
+3:15 – 3:45pm 
+ET 
+Augustana College Erin Kempker Nick Gaspar 
+3:45 – 4:15pm 
+ET 
+3:15 – 3:45pm 
+ET 
+Ball State University Nancy Abashian Adam Maksl 
+3:45 – 4:15pm 
+ET 
+3:15 – 3:45pm 
+ET 
+Berea College Sarah Adams JT Torres 
+4:15 – 4:45pm 
+ET  
+3:45 – 4:15pm 
+ET 
+Bethune-Cookman University Hector Torres 
+Territa 
+Upchurch-
+Poole 
+3:45 – 4:15pm 
+ET  
+3:15 – 3:45pm 
+ET 
+Bowie State University Becky Verzinski Laura Dumin 
+4:15 – 4:45pm 
+ET  
+3:45 – 4:15pm 
+ET 
+Bronx Community College, 
+CUNY Mark Lennerton Reed Dickson 
+3:45 – 4:15pm 
+ET 
+3:15 – 3:45pm 
+ET 
+Butler University - Applied A Allison O'Keeffe 
+Bethany 
+Miller 
+3:45 – 4:15pm 
+ET 
+3:15 – 3:45pm 
+ET 
+Butler University - Applied B Alex Carter Jason Gulya 
+3:45 – 4:15pm 
+ET 
+3:15 – 3:45pm 
+ET 
+Butler University - Applied C Tracy Sprunger JT Torres 
+3:45 – 4:15pm 
+ET 
+3:15 – 3:45pm 
+ET 
+Butler University - 
+Disciplinary A 
+Matthew 
+Lanham 
+Tom 
+Cavanagh 
+3:45 – 4:15pm 
+ET 
+3:15 – 3:45pm 
+ET 
+Butler University - 
+Disciplinary B Tonya Bergeson Rick Dakan 
+3:45 – 4:15pm 
+ET 
+3:15 – 3:45pm 
+ET 
+Butler University - 
+Institutional A Liz Lang Amy Davis 
+3:45 – 4:15pm 
+ET 
+3:15 – 3:45pm 
+ET 
+
+===== PAGE 36 =====
+ 
+ 36 
+Butler University - 
+Institutional B 
+Heidi Hancher-
+Rauch Shawn Miller 
+3:45 – 4:15pm 
+ET 
+3:15 – 3:45pm 
+ET 
+Butler University - 
+Institutional C Jen Luzadder José Bowen 
+3:45 – 4:15pm 
+ET 
+3:15 – 3:45pm 
+ET 
+Butler University - 
+Knowledge A Caleb Class 
+Susan 
+Purrington 
+3:45 – 4:15pm 
+ET 
+3:15 – 3:45pm 
+ET 
+Butler University - 
+Knowledge B Jamie Flood Lance Eaton 
+3:45 – 4:15pm 
+ET 
+3:15 – 3:45pm 
+ET 
+Butler University - Liberal A Mark Donner 
+Territa 
+Upchurch-
+Poole 
+4:15 – 4:45pm 
+ET 
+  
+3:45 – 4:15pm 
+ET 
+Butler University - Liberal B Evan Kinch Jeanne Law 
+3:45 – 4:15pm 
+ET 
+3:15 – 3:45pm 
+ET 
+Butler University Leadership Megan Grady 
+Bryan 
+Alexander 
+3:45 – 4:15pm 
+ET 
+3:15 – 3:45pm 
+ET 
+Capital University 
+Nate Whelan-
+Jackson Nick Gaspar 
+4:15 – 4:45pm 
+ET  
+3:45 – 4:15pm 
+ET 
+City University of New York 
+(CUNY) School of 
+Professional Studies  Antonia Levy 
+Charlena 
+Miller 
+3:45 – 4:15pm 
+ET  
+3:15 – 3:45pm 
+ET 
+College of Staten Island, 
+CUNY Patricia Kahn Reed Dickson 
+4:15 – 4:45pm 
+ET  
+3:45 – 4:15pm 
+ET 
+Crowder College  Phillip Witt Sarah Johnson 
+4:15 – 4:45pm 
+ET  
+3:45 – 4:15pm 
+ET 
+CSU San Bernardino Bradford Owen Enoch Hale 
+3:45 – 4:15pm 
+ET 
+3:15 – 3:45pm 
+ET 
+D'Youville University Benjamin Grant 
+Susan 
+Purrington 
+4:15 – 4:45pm 
+ET  
+3:45 – 4:15pm 
+ET 
+Dominican University Persis Driver JT Torres 
+4:45 – 5:15pm 
+ET 
+4:15 – 4:45pm 
+ET 
+Eastern Connecticut State 
+University Garrett Dancik 
+Melinda 
+Rhodes-
+DiSalvo 
+3:45 – 4:15pm 
+ET  
+3:15 – 3:45pm 
+ET 
+Eastern Illinois University Ngozi Onuora 
+Melinda 
+Rhodes-
+DiSalvo 
+4:15 – 4:45pm 
+ET 
+  
+3:45 – 4:15pm 
+ET 
+Eastern Washington 
+University Travis Masingale 
+Melinda 
+Rhodes-
+DiSalvo 
+4:45 – 5:15pm 
+ET 
+ 
+4:15 – 4:45pm 
+ET 
+Elizabethtown College Susan Mapp Jason Gulya 
+4:15 – 4:45pm 
+ET  
+3:45 – 4:15pm 
+ET 
+Emory University (Oxford 
+College) Nitya Jacob 
+Susan 
+Purrington 
+4:45 – 5:15pm 
+ET 
+4:15 – 4:45pm 
+ET 
+Fairfield University Yifeng Fan Nick Gaspar 
+4:45 – 5:15pm 
+ET 
+4:15 – 4:45pm 
+ET 
+
+===== PAGE 37 =====
+ 
+ 37 
+Fairleigh Dickinson 
+University Laila Khreisat Rick Dakan 
+4:45 – 5:15pm 
+ET 
+4:15 – 4:45pm 
+ET 
+Gateway Technical College Meg Hunter José Bowen 
+4:15 – 4:45pm 
+ET  
+3:45 – 4:15pm 
+ET 
+Georgia Southern University Britton McKay Laura Dumin 
+4:45 – 5:15pm 
+ET 
+4:15 – 4:45pm 
+ET 
+Georgia State University, 
+School of Public Health Sarah McCool Julaine Fowlin 
+3:45 – 4:15pm 
+ET 
+3:15 – 3:45pm 
+ET 
+Goucher College Bill Harder Lance Eaton 
+4:15 – 4:45pm 
+ET  
+3:45 – 4:15pm 
+ET 
+Grayson College Todd Ellis Sarah Johnson 
+3:45 – 4:15pm 
+ET 
+3:15 – 3:45pm 
+ET 
+H. Lavity Stoutt Community 
+College Fidel Captain Galen Zeigler 
+3:45 – 4:15pm 
+ET 
+3:15 – 3:45pm 
+ET 
+Hamilton College Lisa Trivedi Jason Gulya 
+4:45 – 5:15pm 
+ET 
+4:15 – 4:45pm 
+ET 
+Hamline University 
+Binnur Ozkececi-
+Taner 
+Bethany 
+Miller 
+4:15 – 4:45pm 
+ET  
+3:45 – 4:15pm 
+ET 
+Hanover College  Rachel Thomas Adam Maksl 
+4:15 – 4:45pm 
+ET 
+3:45 – 4:15pm 
+ET 
+Hawai'i Pacific University Mani Sehgal Enoch Hale 
+4:15 – 4:45pm 
+ET  
+3:45 – 4:15pm 
+ET 
+Heritage University 
+Gloria Jones-
+Dance Jeanne Law 
+4:15 – 4:45pm 
+ET  
+3:45 – 4:15pm 
+ET 
+High Point University Heidi Echols 
+Moz 
+Khodarahmi 
+4:15 – 4:45pm 
+ET  
+3:45 – 4:15pm 
+ET 
+Highline College Laura Soracco 
+Territa 
+Upchurch-
+Poole 
+4:45 – 5:15pm 
+ET  
+4:15 – 4:45pm 
+ET 
+Hostos Community College Babette Audant Susan Ray 
+3:45 – 4:15pm 
+ET 
+3:15 – 3:45pm 
+ET 
+Howard Community College Adrian Mayse Peter Shea 
+4:15 – 4:45pm 
+ET  
+3:45 – 4:15pm 
+ET 
+Indiana University South 
+Bend Susan Thomas Eddie Watson 
+3:45 – 4:15pm 
+ET 
+3:15 – 3:45pm 
+ET 
+James Madison University Yasmeen Shorish 
+Bethany 
+Miller 
+4:45 – 5:15pm 
+ET 
+4:15 – 4:45pm 
+ET 
+John Carroll University  
+Malia 
+McAndrew 
+Bryan 
+Alexander 
+4:15 – 4:45pm 
+ET  
+3:45 – 4:15pm 
+ET 
+Kean University Dina Rosen Will Miller 
+3:45 – 4:15pm 
+ET 
+3:15 – 3:45pm 
+ET 
+Kent State University 
+LeighAnn 
+Tomaswick Marc Watkins 
+3:45 – 4:15pm 
+ET 
+3:15 – 3:45pm 
+ET 
+Kingsborough Community 
+College Scott Cally Susan Ray 
+4:15 – 4:45pm 
+ET  
+3:45 – 4:15pm 
+ET 
+Knox College Melissa Glenn 
+Moz 
+Khodarahmi 
+4:45 – 5:15pm 
+ET 
+4:15 – 4:45pm 
+ET 
+
+===== PAGE 38 =====
+ 
+ 38 
+LaGuardia Community 
+College, CUNY 
+Assuanta 
+Howard Reed Dickson 
+4:45 – 5:15pm 
+ET 
+4:15 – 4:45pm 
+ET 
+Lansing Community College Nicole Olszowy Galen Zeigler 
+4:45 – 5:15pm 
+ET 
+4:15 – 4:45pm 
+ET 
+Lewis University Sheila Boysen Kyle Jensen 
+3:45 – 4:15pm 
+ET 
+3:15 – 3:45pm 
+ET 
+Loyola University New 
+Orleans Erin Foster 
+Sharon 
+Stoerger 
+3:45 – 4:15pm 
+ET 
+3:15 – 3:45pm 
+ET 
+Marist University Christina Fojas 
+Vincent 
+Spezzo 
+3:45 – 4:15pm 
+ET 
+3:15 – 3:45pm 
+ET 
+McHenry County College Sarah Stashkiw David Harris 
+3:45 – 4:15pm 
+ET 
+3:15 – 3:45pm 
+ET 
+Mesa Community College 
+Jennifer 
+Strickland Peter Shea 
+4:45 – 5:15pm 
+ET 
+4:15 – 4:45pm 
+ET 
+Michigan State University Stephen Thomas Eddie Watson 
+4:15 – 4:45pm 
+ET  
+3:45 – 4:15pm 
+ET 
+Mississippi University for 
+Women Clear Moore Jeanne Law 
+4:45 – 5:15pm 
+ET 
+4:15 – 4:45pm 
+ET 
+Mitchell Hamline School of 
+Law 
+Anthony 
+Niedwiecki 
+Sharon 
+Stoerger 
+4:15 – 4:45pm 
+ET 
+3:45 – 4:15pm 
+ET 
+Montclair State University Emily Isaacs Will Miller 
+4:15 – 4:45pm 
+ET 
+3:45 – 4:15pm 
+ET 
+Morehead State University 
+Johnathan 
+Nelson Brent Anders 
+4:15 – 4:45pm 
+ET  
+3:45 – 4:15pm 
+ET 
+Mount St. Joseph University Steven Almquist 
+Vincent 
+Spezzo 
+4:15 – 4:45pm 
+ET  
+3:45 – 4:15pm 
+ET 
+Mt. San Antonio College Kelly Fowler Susan Ray 
+4:45 – 5:15pm 
+ET 
+4:15 – 4:45pm 
+ET 
+NetVUE (Network for 
+Vocation in Undergraduate 
+Education) Rachael Baker Myk Garn 
+4:15 – 4:45pm 
+ET 
+  
+3:45 – 4:15pm 
+ET 
+New England College Gavin Henning 
+Carter 
+Moulton 
+3:45 – 4:15pm 
+ET 
+3:15 – 3:45pm 
+ET 
+Norfolk State University Michele Rozga Will Miller 
+4:45 – 5:15pm 
+ET 
+4:15 – 4:45pm 
+ET 
+Northeast Wisconsin 
+Technical College Kristin Sericati José Bowen 
+4:45 – 5:15pm 
+ET 
+4:15 – 4:45pm 
+ET 
+Northeastern Illinois 
+University  
+Sandra Beyda-
+Lorie 
+Tom 
+Cavanagh 
+4:15 – 4:45pm 
+ET  
+3:45 – 4:15pm 
+ET 
+Northern Michigan 
+University 
+Elizabeth (Liz) 
+Wuorinen 
+Tom 
+Cavanagh 
+4:45 – 5:15pm 
+ET 
+4:15 – 4:45pm 
+ET 
+Olympic College 
+Kevin Bowersox-
+Johnson David Harris 
+4:15 – 4:45pm 
+ET  
+3:45 – 4:15pm 
+ET 
+Otterbein University Kathryn Plank Chris Hakala 
+3:45 – 4:15pm 
+ET 
+3:15 – 3:45pm 
+ET 
+
+===== PAGE 39 =====
+ 
+ 39 
+Pfeiffer University Amy Caudle 
+Carter 
+Moulton 
+4:15 – 4:45pm 
+ET  
+3:45 – 4:15pm 
+ET 
+Pfeiffer University Dawn Lucas 
+Sherry 
+Rankins-
+Robertson 
+3:45 – 4:15pm 
+ET  
+3:15 – 3:45pm 
+ET 
+Queen's University, Smith 
+School of Business 
+Kate 
+Rowbotham 
+Charlena 
+Miller 
+4:15 – 4:45pm 
+ET 
+3:45 – 4:15pm 
+ET 
+Queensborough Community 
+College  Reem Jaafar Sarah Johnson 
+4:45 – 5:15pm 
+ET 
+4:15 – 4:45pm 
+ET 
+Rhodes College Miriam Clinton 
+Carter 
+Moulton 
+4:45 – 5:15pm 
+ET 
+4:15 – 4:45pm 
+ET 
+Sacramento City College Albert Garcia Lance Eaton 
+4:45 – 5:15pm 
+ET 
+4:15 – 4:45pm 
+ET 
+Sacred Heart University Elizabeth Luoma 
+Vincent 
+Spezzo 
+4:45 – 5:15pm 
+ET 
+4:15 – 4:45pm 
+ET 
+Saginaw Valley State 
+University 
+Rajani 
+Muraleedharan-
+Sreekumaridevi Laura Dumin 
+3:45 – 4:15pm 
+ET  
+3:15 – 3:45pm 
+ET 
+Salisbury University Laurie Henry 
+Jonathan 
+McMichael 
+3:45 – 4:15pm 
+ET 
+3:15 – 3:45pm 
+ET 
+Skagit Valley College Darren Greeno Gloria Niles 
+3:45 – 4:15pm 
+ET 
+3:15 – 3:45pm 
+ET 
+Smith College Justin Cammy Chris Hakala 
+4:15 – 4:45pm 
+ET 
+3:45 – 4:15pm 
+ET 
+South Dakota State 
+University Victor Taylor Annette Vee 
+3:45 – 4:15pm 
+ET 
+3:15 – 3:45pm 
+ET 
+St. Olaf College Tarshia Stanley 
+Moz 
+Khodarahmi 
+3:45 – 4:15pm 
+ET 
+3:15 – 3:45pm 
+ET 
+SUNY Old Westbury Renu Balyan 
+Jonathan 
+McMichael 
+4:15 – 4:45pm 
+ET 
+3:45 – 4:15pm 
+ET 
+SUNY System Administration David Cantaffa Myk Garn 
+4:45 – 5:15pm 
+ET 
+4:15 – 4:45pm 
+ET 
+Syracuse University, School 
+of Information Studies Megan Oakleaf 
+Sharon 
+Stoerger 
+4:45 – 5:15pm 
+ET 
+4:15 – 4:45pm 
+ET 
+Tabor College Lara Vanderhoof 
+Sherry 
+Rankins-
+Robertson 
+4:15 – 4:45pm 
+ET 
+  
+3:45 – 4:15pm 
+ET 
+Tarrant County College 
+District Michelle York Michelle Singh 
+3:45 – 4:15pm 
+ET 
+3:15 – 3:45pm 
+ET 
+Temple University Jeffrey Rients Michael Zwick 
+4:45 – 5:15pm 
+ET 
+4:15 – 4:45pm 
+ET 
+Texas Christian University Brad Lucas Gary Carini 
+4:15 – 4:45pm 
+ET 
+3:45 – 4:15pm 
+ET 
+Texas Christian University Stacy Grau 
+Sarah 
+Newman 
+3:45 – 4:15pm 
+ET 
+3:15 – 3:45pm 
+ET 
+Texas Southern University Cheree Daniels 
+Bryan 
+Alexander 
+4:45 – 5:15pm 
+ET 
+4:15 – 4:45pm 
+ET 
+
+===== PAGE 40 =====
+40 
+The Evergreen State College Greg Mullins Annette Vee 
+4:15 – 4:45pm 
+ET  
+3:45 – 4:15pm 
+ET 
+Trine University Keirsten Eberts Adam Maksl 
+4:45 – 5:15pm 
+ET 
+4:15 – 4:45pm 
+ET 
+Tulsa Community College Jennifer Ivie Michelle Singh 
+4:15 – 4:45pm 
+ET 
+3:45 – 4:15pm 
+ET 
+University of Alabama at 
+Birmingham Amy Chatham Michael Zwick 
+3:45 – 4:15pm 
+ET 
+3:15 – 3:45pm 
+ET 
+UMass Boston Susan Gauss Michael Zwick 
+4:15 – 4:45pm 
+ET  
+3:45 – 4:15pm 
+ET 
+United States Merchant 
+Marine Academy Susan Comilang Rick Dakan 
+4:15 – 4:45pm 
+ET  
+3:45 – 4:15pm 
+ET 
+Universidad de Los Andes Norma Hendez Brent Anders 
+4:45 – 5:15pm 
+ET 
+4:15 – 4:45pm 
+ET 
+University of Akron Jennifer Hebert Amy Davis 
+4:45 – 5:15pm 
+ET 
+4:15 – 4:45pm 
+ET 
+University of Arizona, College 
+of Social & Behavioral 
+Sciences Jeannine Relly Julaine Fowlin 
+4:15 – 4:45pm 
+ET 
+3:45 – 4:15pm 
+ET 
+University of California Davis Marina Ellefson Kyle Jensen 
+4:15 – 4:45pm 
+ET  
+3:45 – 4:15pm 
+ET 
+University of California, 
+Riverside (UCR) Lash Vance Kyle Jensen 
+4:45 – 5:15pm 
+ET 
+4:15 – 4:45pm 
+ET 
+University of Central 
+Missouri Carol Knight Antonio Byrd 
+3:45 – 4:15pm 
+ET 
+3:15 – 3:45pm 
+ET 
+University of Duhok Dilan Rostam Brent Anders 
+3:45 – 4:15pm 
+ET 
+3:15 – 3:45pm 
+ET 
+University of Global Health 
+Equity (UGHE) 
+Hiba 
+Abdelrahman Julaine Fowlin 
+4:45 – 5:15pm 
+ET 
+4:15 – 4:45pm 
+ET 
+University of Hawaii West 
+Oahu Esther Widiasih Enoch Hale 
+4:45 – 5:15pm 
+ET 
+4:15 – 4:45pm 
+ET 
+University of Illinois 
+Springfield Layne Morsch Antonio Byrd 
+4:15 – 4:45pm 
+ET  
+3:45 – 4:15pm 
+ET 
+University of Mount Saint 
+Vincent 
+Lynne 
+Bongiovanni Gary Carini 
+4:45 – 5:15pm 
+ET 
+4:15 – 4:45pm 
+ET 
+University of Nevada, Reno Sarah Cummings Annette Vee 
+4:45 – 5:15pm 
+ET 
+4:15 – 4:45pm 
+ET 
+University of New England Marc Ebenfield 
+Meg 
+Mittelstadt 
+3:45 – 4:15pm 
+ET 
+3:15 – 3:45pm 
+ET 
+University of New Hampshire Lisa Owen 
+Meg 
+Mittelstadt 
+4:15 – 4:45pm 
+ET  
+3:45 – 4:15pm 
+ET 
+University of New Hampshire Jen Lehmann Gloria Niles 
+4:15 – 4:45pm 
+ET 
+3:45 – 4:15pm 
+ET 
+University of North Carolina 
+at Chapel Hill Viji Sathy Eddie Watson 
+4:45 – 5:15pm 
+ET 
+4:15 – 4:45pm 
+ET 
+
+===== PAGE 41 =====
+41 
+University of North Carolina 
+at Charlotte Daniel Maxwell Shawn Miller 
+4:15 – 4:45pm 
+ET  
+3:45 – 4:15pm 
+ET 
+University of North Carolina 
+at Pembroke Nachiket Bhawe Shawn Miller 
+4:45 – 5:15pm 
+ET 
+4:15 – 4:45pm 
+ET 
+University of Rhode Island 
+Christopher 
+Lavan 
+Meg 
+Mittelstadt 
+4:45 – 5:15pm 
+ET 
+4:15 – 4:45pm 
+ET 
+University of San Diego 
+Austin Choi-
+Fitzpatrick 
+Camilla 
+Roberts 
+3:45 – 4:15pm 
+ET 
+3:15 – 3:45pm 
+ET 
+University of South Carolina, 
+Darla Moore School of 
+Business Oz Ince 
+Charlena 
+Miller 
+4:45 – 5:15pm 
+ET  
+4:15 – 4:45pm 
+ET 
+University of South Dakota Jacob Kerby Amy Davis 
+4:15 – 4:45pm 
+ET  
+3:45 – 4:15pm 
+ET 
+University of Southern 
+Mississippi Joanne Tran Antonio Byrd 
+4:45 – 5:15pm 
+ET 
+4:15 – 4:45pm 
+ET 
+University of Tampa 
+Cheri Etling-
+Paulsen 
+Camilla 
+Roberts 
+4:15 – 4:45pm 
+ET  
+3:45 – 4:15pm 
+ET 
+University of Texas at 
+Arlington 
+Andrew 
+Hippisley Michelle Singh 
+4:45 – 5:15pm 
+ET 
+4:15 – 4:45pm 
+ET 
+University of Texas at 
+Arlington Holli Slater 
+Sarah 
+Newman 
+4:15 – 4:45pm 
+ET 
+3:45 – 4:15pm 
+ET 
+University of Texas at San 
+Antonio 
+Amy Buechler-
+Steubing 
+Sarah 
+Newman 
+4:45 – 5:15pm 
+ET 
+4:15 – 4:45pm 
+ET 
+University of Virginia's 
+College at Wise Sabrina Qureshi Krista Wojdak 
+3:45 – 4:15pm 
+ET 
+3:15 – 3:45pm 
+ET 
+University of Wisconsin Eau 
+Claire 
+Aleks Sternfeld-
+Dunn 
+Krista Wojdak 4:15 – 4:45pm 
+ET 
+3:45 – 4:15pm 
+ET 
+University of Wisconsin-
+Green Bay Kristin Vespia 
+Krista Wojdak 4:45 – 5:15pm 
+ET 
+4:15 – 4:45pm 
+ET 
+University of Wyoming Christine Boggs 
+Camilla 
+Roberts 
+4:45 – 5:15pm 
+ET 
+4:15 – 4:45pm 
+ET 
+Vassar College Jan Cameron Chris Hakala 
+4:45 – 5:15pm 
+ET 
+4:15 – 4:45pm 
+ET 
+Vincennes University Jaci Lederman Gloria Niles 
+4:45 – 5:15pm 
+ET 
+4:15 – 4:45pm 
+ET 
+Virginia Western Community 
+College Chris Porter Galen Zeigler 
+4:15 – 4:45pm 
+ET  
+3:45 – 4:15pm 
+ET 
+Wayne State University Basma Bekdache Marc Watkins 
+4:15 – 4:45pm 
+ET 
+3:45 – 4:15pm 
+ET 
+Western Connecticut State 
+University 
+Stephen 
+Hegedus Marc Watkins 
+4:45 – 5:15pm 
+ET 
+4:15 – 4:45pm 
+ET 
+Whitworth University Pete Tucker 
+Sherry 
+Rankins-
+Robertson 
+4:45 – 5:15pm 
+ET  
+4:15 – 4:45pm 
+ET 
+Wittenberg University Kelly Dillon Gary Carini 
+3:45 – 4:15pm 
+ET 
+3:15 – 3:45pm 
+ET 
+
+===== PAGE 42 =====
+ 
+ 42 
+Yavapai College Karen Palmer David Harris 
+4:45 – 5:15pm 
+ET 
+4:15 – 4:45pm 
+ET 
+York College, CUNY 
+Thitima 
+Srivatanakul 
+Jonathan 
+McMichael 
+4:45 – 5:15pm 
+ET 
+4:15 – 4:45pm 
+ET 
+ 
+ 
+ 
+Team Advising Guide 
+ 
+• Have a strategy for navigating the Institute curriculum 
+o As a team, discuss which sessions to attend—divide and conquer! 
+o Use a portion of team time to report out to other team members about what 
+was learned in sessions. 
+o All sessions are intended to be discussion-based and interactive.  
+ 
+• Make good use of your team time during the Institute 
+o Find the right balance between working on your own, engaging with other 
+teams, and consulting with Institute faculty.  
+o Faculty consultations should not replace team time. 
+ 
+• Portions of team time can be used to consult with individual Institute faculty on 
+specific topics or issues your team is grappling with 
+o There is no formal process for scheduling consulting time. Find the faculty 
+member you want to consult with and ask when they have availability. 
+o All faculty e-mail addresses are provided within this program (see pages 44-49). 
+You can access full faculty bios and areas of expertise in the Institute Hub, under 
+the “Faculty Mentors” menu item.  
+o Consulting sessions are typically 30 minutes in length.  
+ 
+• Use one-pagers to find other teams to connect with during the Institute 
+o Connect with other teams by finding email addresses under the “Team 
+Directory” menu item in the Institute Hub. One-page statements are accessible 
+in the “Resources” page on the Hub. 
+ 
+• Information on Action Plans and Presentations 
+o Action plan templates are in Institute Hub, in the “Resources” page which can be 
+found under the “Tools & Materials” menu item. 
+o Tips for presentations on Friday, September 11th, between 4:45 and 5:15 p.m. 
+Eastern: 
+
+===== PAGE 43 =====
+ 
+ 43 
+§ Assign a role to the audience: To whom will your team make an initial 
+presentation about the AI program upon return to campus? Faculty? 
+Faculty and staff? Senior administrators? 
+§ Be mindful of time—presentations should be approximately 5 minutes in 
+length with an additional 5 minutes provided for feedback and 
+recommendations.  In other words, you will have a total of 10 minutes for 
+your presentation and discussion. 
+§ Your faculty mentor will be a tight timekeeper to ensure that each of the 
+three teams has 10 minutes during the 30 minutes allowed for 
+presentations. 
+§ Given the timing, PowerPoint is somewhat discouraged but not 
+prohibited – our recommendation is to keep the message simple and 
+low-tech, maybe using a single PowerPoint slide to organize your 
+comments. 
+o Action plans are due three weeks after the close of the Kick-off of the Institute.   
+Please upload your Action Plan to this link by the close of business on Friday, 
+October 2, 2026. Please follow the naming convention of “[Institution Name] 
+Action Plan” for the file. 
+ 
+• Have fun!!! 
+ 
+ 
+  
+
+===== PAGE 44 =====
+ 
+ 44 
+Faculty and Staff List with E-Mail Addresses 
+ 
+Bryan Alexander 
+Senior Scholar, Learning Design, and Technology program 
+Georgetown University 
+bryan.alexander@gmail.com  
+ 
+Brent A. Anders 
+Lecturer and Researcher 
+American University of Armenia 
+brentaanders@gmail.com  
+ 
+José Antonio Bowen 
+Senior Scholar 
+American Association of Colleges and Universities (AAC&U) 
+jazzbowen@gmail.com  
+ 
+Antonio Byrd 
+Associate Professor of English 
+University of Missouri-Kansas City 
+antoniobyrd@umkc.edu  
+ 
+Gary Carini 
+Vice Provost for Artificial Intelligence & Institutional Research 
+Baylor University 
+Gary_Carini@baylor.edu  
+ 
+Thomas Cavanagh 
+Vice Provost for Digital Learning 
+University of Central Florida 
+cavanagh@ucf.edu  
+ 
+Rick Dakan 
+AI Coordinator 
+Ringling College of Art & Design 
+rdakan@c.ringling.edu  
+ 
+Amy Davis 
+CHRO, Associate Vice Chancellor of Human Resources & Professor,  
+University of Arkansas Little Rock 
+acdavis@ualr.edu   
+ 
+Reed Dickson 
+Director, Faculty & Academic Leader Support 
+Pima Community College 
+reeddicksonux@gmail.com  
+ 
+
+===== PAGE 45 =====
+ 
+ 45 
+Laura Dumin 
+Professor in English and Technical Writing 
+University of Central Oklahoma 
+ldumin@uco.edu  
+ 
+Lance Eaton 
+Senior Associate Director of AI in Teaching and Learning 
+Northeastern University 
+lance.eaton@gmail.com  
+ 
+Julaine M. Fowlin 
+Assistant Professor and Executive Director 
+Center for the Advancement of Teaching and Learning (CATL) 
+Medical University of South Carolina 
+fowlin@musc.edu  
+ 
+Myk Garn 
+Public Commissioner 
+Distance Education Accreditation Commission (DEAC) 
+mykgarn@gmail.com  
+ 
+Nick Gaspar 
+Director of Online and Digital Education 
+University of Michigan-Flint 
+gaspar@umich.edu  
+ 
+Jason Gulya 
+Professor of English 
+Berkeley College 
+jason-gulya@berkeleycollege.edu  
+ 
+Chris Hakala 
+Executive Director of the Center for Excellence Training 
+Professor of the Psychology Department 
+Springfield College 
+chakala@springfield.edu  
+ 
+Enoch Hale 
+Director, Center for Teaching & Learning & Director, Academic Technology 
+California Polytechnic Humboldt 
+Enoch.Hale@Humboldt.edu  
+ 
+David Harris 
+Senior Vice President, Higher Education & Program 
+GSV Summit 
+David.harris@gsvsummit.com  
+ 
+ 
+
+===== PAGE 46 =====
+ 
+ 46 
+Kyle Jensen 
+Assistant Dean of AI & Emerging Digital Technologies 
+College of Liberal Arts and Sciences 
+Arizona State University 
+dr.kjensen@asu.edu  
+ 
+Sarah Z Johnson 
+Academic Integrity Officer 
+Chair of First Year Composition, and Writing Center Director 
+Madison College 
+SZJohnson@madisoncollege.edu  
+ 
+Caleb J. Keith 
+Assistant Vice President for Digital Initiatives 
+American Association of Colleges and Universities (AAC&U) 
+ckeith@aacu.org  
+ 
+Mozhdeh Khodarahmi 
+Director of Libraries and Archives  
+College of Saint Benedict and Saint John’s University (CSB+SJU)  
+mozhdehkhodarahmi@gmail.com  
+ 
+Jeanne Beatrix Law 
+Professor of English 
+Kennesaw State University 
+jlaw29@kennesaw.edu  
+ 
+Adam Maksl 
+Professor of Journalism & New Media  
+Chair of the Department of Communication  
+Indiana University Indianapolis 
+amaksl@iu.edu  
+ 
+Jonathan McMichael 
+AI Learning Solutions Specialist 
+College of Liberal Arts and Sciences 
+Arizona State University 
+jonathan.l.mcmichael@asu.edu  
+ 
+Bethany Miller 
+Associate Provost & Chief Data Officer 
+Macalester College 
+bmille14@macalester.edu  
+ 
+Charlena Miller 
+Assistant Professor of Business 
+Doane University 
+charlena.miller@doane.edu  
+
+===== PAGE 47 =====
+47 
+Shawn Miller 
+Associate Provost for Digital Learning and Strategy 
+Rice University 
+sm275@rice.edu  
+Will Miller 
+Associate Vice President for Continuous Improvement and Institutional Performance 
+Embry-Riddle Aeronautical University 
+millerw1@erau.edu 
+Megan L. "Meg" Mittelstadt 
+Assistant Vice President for Learning Initiatives 
+Director of the Center for Teaching and Learning 
+University of Georgia 
+Megan.Mittelstadt@uga.edu  
+Carter Moulton 
+Faculty Developer, Trefny Innovative Instruction Center 
+Colorado School of Mines 
+cartermoulton@mines.edu  
+Sarah Newman 
+Director of Art & Education at metaLAB 
+Harvard University 
+snewman@metalab.harvard.edu  
+Gloria Niles 
+Chief Academic Technology Innovation Officer 
+University of Hawai'i System 
+gniles@hawaii.edu  
+Territa Upchurch-Poole 
+Associate Professor of Psychology  
+Director, Lakso Center for the Scholarship of Teaching and Learning (SoTL) 
+Juniata College 
+poole@juniata.edu  
+Susan Purrington 
+Harold F. Wiley Generative AI Teaching and Learning Fellow 
+Connecticut College  
+spurringt@conncoll.edu  
+Sherry Rankins-Robertson 
+Professor of Writing and Rhetoric 
+University of Central Florida 
+Sherry.Robertson@ucf.edu  
+
+===== PAGE 48 =====
+ 
+ 48 
+Susan Ray 
+Associate Professor of English 
+Delaware County Community College  
+sray8@dccc.edu  
+ 
+Melinda Rhodes-DiSalvo 
+Executive Director, Center for Teaching, Learning, and Assessment 
+Ohio University 
+rhodes.melinda@ohio.edu  
+ 
+Camilla Roberts 
+Director of the Honor and Integrity System 
+Kansas State University 
+cjroberts@ksu.edu  
+  
+Peter Shea 
+Assistant Dean for AI Integration 
+Middlesex Community College in Massachusetts 
+SHEAP@middlesex.edu  
+ 
+Michelle Singh 
+Vice President of Strategic Educational Alliances 
+University of North Texas 
+michelle.singh@unt.edu  
+ 
+Vincent Spezzo 
+Associate Director of AI, Online, and Emerging Digital Pedagogies 
+Center for Teaching and Learning 
+Georgia Tech 
+vincent.spezzo@gatech.edu  
+ 
+Sharon Stoerger 
+Assistant Dean for Programs and Assessment 
+School of Communication and Information 
+Rutgers University 
+sharon.stoerger@rutgers.edu  
+ 
+JT Torres 
+Director, Houston H. Harte Center for Teaching and Learning 
+Washington & Lee University 
+JTorres@wlu.edu  
+ 
+Annette Vee 
+Associate Professor of English 
+Facilitator for AI across the Disciplines 
+University of Pittsburgh 
+annettevee@pitt.edu  
+ 
+
+===== PAGE 49 =====
+ 
+ 49 
+Marc Watkins 
+Assistant Director of Academic Innovation 
+Lecturer of Writing and Rhetoric 
+University of Mississippi 
+mwatkins03@gmail.com  
+ 
+C. Edward Watson 
+Vice President for Digital Innovation 
+American Association of Colleges and Universities (AAC&U) 
+watson@aacu.org  
+ 
+Krista Wojdak 
+Professor of Instructional Design and Technology 
+Appalachian State University 
+wojdakkp@appstate.edu  
+ 
+Galen Ziegler 
+Assistant Professor of Nursing 
+Harford Community College 
+gziegler@harford.edu  
+ 
+Michael Zwick 
+Senior Vice President for Research 
+Rutgers University 
+mz560@oq.rutgers.edu  
+ 
+ 
+ 
+AAC&U Staff 
+Hannah Schneider 
+Director of Digital Education Programs 
+American Association of Colleges and Universities (AAC&U) 
+HSchneider@aacu.org – 336-686-5406 
+ 
+Anna Kleppin 
+Administrative and Institute Support Assistant 
+American Association of Colleges and Universities (AAC&U)  
+akleppin@aacu.org – 202-888-2224 
+ 
+ 
+ 
+
+===== PAGE 50 =====
+ 
+ 50 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
