@@ -31,7 +31,8 @@ answer depends on it.
 ## Our goals for the Institute
 
 The application asked for three to five goals. Record ours here (pull from the one-page
-statement on the Hub if we already submitted one):
+statement on the Hub if we already submitted one). Stuck? [goal-menu.md](goal-menu.md) has a
+menu of candidates for a cross-discipline community college team, plus a filter for choosing.
 
 1.
 2.

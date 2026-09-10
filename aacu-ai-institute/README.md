@@ -44,6 +44,7 @@ Pedagogy, and the Curriculum. Notes, program reference, and deliverable drafts l
 - [Faculty & staff directory](01-program/faculty-directory.md) — every mentor's email
 - [Logistics & platforms](01-program/logistics.md) — Hub, Zoom Events, tech support, AI notetaker policy
 - [Our team profile](02-team/team-profile.md) — roster, goals, advising times
+- [Candidate goals menu](02-team/goal-menu.md) — ~40 goals for a cross-discipline CC team, with a filter for picking
 - [One Page Statement](03-deliverables/one-page-statement.md) — the campus profile the faculty read before advising
 - [Action Plan draft](03-deliverables/action-plan-draft.md) — the Oct 2 deliverable
 - [Final Report draft](03-deliverables/final-report-draft.md) — end-of-year; also the running artifact log
