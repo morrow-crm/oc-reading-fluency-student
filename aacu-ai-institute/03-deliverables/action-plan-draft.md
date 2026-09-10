@@ -11,6 +11,12 @@ planning and scaling. Include **at least one collaborative project** for the fal
 throughout: *how do our team members and the offices/departments they represent work together
 to contribute to this work?*
 
+**Write this knowing the spring Final Report exists.** The
+[Final Report](final-report-draft.md) asks us to revisit, item by item, the four goal types,
+the anticipated barriers, the stakeholders we name, and the 2–3 year vision — and to report
+what actually happened. Specific, checkable entries here make that report writable; vague ones
+don't.
+
 The template is explicitly **not prescriptive** — adapt the sections below to our goals and
 context. The prompts under each heading are the template's; delete them as we replace them
 with our own prose.
@@ -131,3 +137,5 @@ the tables above. Nothing here goes in the submitted plan as-is.*
 - [ ] Exported to the format we're submitting; filename exactly `Olympic College Action Plan`
 - [ ] Uploaded to the Box link before COB Fri Oct 2, 2026
 - [ ] Final submitted copy saved here as `action-plan-2026-10-02-SUBMITTED.md`
+- [ ] Goal types and barriers copied into [final-report-draft.md](final-report-draft.md)
+      so the spring report starts pre-populated

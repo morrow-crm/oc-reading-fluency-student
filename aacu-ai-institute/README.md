@@ -22,9 +22,11 @@ Pedagogy, and the Curriculum. Notes, program reference, and deliverable drafts l
 
 | Due | What | Where |
 |---|---|---|
+| ~~Fri Aug 7, 2026~~ | One Page Statement — deadline passed; keep our copy on hand, the Institute keeps referring back to it | [one-page-statement.md](03-deliverables/one-page-statement.md) |
 | Fri Sep 11, 4:45–5:15 pm ET | Action Plan presentation — 5 min talk + 5 min feedback, no slides or one slide | Zoom Events, with faculty mentor |
-| **Fri Oct 2, 2026 (COB)** | **Action Plan, 2–3 pages**, filename `Olympic College Action Plan` | Upload link on the Institute Hub |
+| **Fri Oct 2, 2026 (COB)** | **Action Plan, 2–3 pages**, filename `Olympic College Action Plan` | [Box upload](https://aacu.app.box.com/f/96733378b4e74ab2aa910403acd0b6f3) |
 | TBD | Fall 2026 webinar schedule posted | Institute Hub, by Sep 10 |
+| Spring 2027 (date TBA) | **Final Report** + artifact uploads — pairs section by section with the Action Plan | [final-report-draft.md](03-deliverables/final-report-draft.md) |
 
 ## What's in here
 
@@ -42,7 +44,9 @@ Pedagogy, and the Curriculum. Notes, program reference, and deliverable drafts l
 - [Faculty & staff directory](01-program/faculty-directory.md) — every mentor's email
 - [Logistics & platforms](01-program/logistics.md) — Hub, Zoom Events, tech support, AI notetaker policy
 - [Our team profile](02-team/team-profile.md) — roster, goals, advising times
+- [One Page Statement](03-deliverables/one-page-statement.md) — the campus profile the faculty read before advising
 - [Action Plan draft](03-deliverables/action-plan-draft.md) — the Oct 2 deliverable
+- [Final Report draft](03-deliverables/final-report-draft.md) — end-of-year; also the running artifact log
 - [Kick-off presentation notes](03-deliverables/kickoff-presentation-notes.md) — the 5-minute Friday talk
 - [Session notes template](04-notes/_TEMPLATE-session-notes.md) — copy per session attended
 - [Correspondence log](05-correspondence/correspondence.md) — every Institute email, newest first
@@ -56,7 +60,11 @@ Pedagogy, and the Curriculum. Notes, program reference, and deliverable drafts l
 3. **After a session** — pull anything actionable into the "Candidate commitments" section of
    [action-plan-draft.md](03-deliverables/action-plan-draft.md).
 4. **Deliverables** — drafts go in `03-deliverables/`. Keep a dated final copy when submitted.
-5. **Email from the Institute** — paste it into the chat and it gets appended to
+5. **Anything the team produces** — syllabus, policy draft, workshop deck, student handout —
+   gets a row in the artifact table in
+   [final-report-draft.md](03-deliverables/final-report-draft.md) the day it exists. The Final
+   Report asks for these, and reconstructing them in April is miserable.
+6. **Email from the Institute** — paste it into the chat and it gets appended to
    [05-correspondence/correspondence.md](05-correspondence/correspondence.md), with action
    items and deadlines pulled forward into this README.
 

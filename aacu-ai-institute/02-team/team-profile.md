@@ -42,9 +42,9 @@ statement on the Hub if we already submitted one):
 ## Our one-page statement
 
 The Institute suggests using the one-pager as the starting point for team-time conversations
-and for finding peer teams to connect with. Paste or link ours here:
-
-> _(one-page statement text or Hub link)_
+and for finding peer teams to connect with. It lives in
+[../03-deliverables/one-page-statement.md](../03-deliverables/one-page-statement.md) — paste
+the submitted text in there.
 
 ## Context to have ready for the mentor
 

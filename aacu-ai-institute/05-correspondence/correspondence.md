@@ -15,6 +15,9 @@ Running archive of email about the Institute. Newest first. See
 | [ ] | Tell the team: no Zoom AI notetakers in concurrent, advising, or presentation sessions — assign a human notetaker | | Before Sep 10 | 2026-09-08 AAC&U |
 | [ ] | Divide up concurrent sessions across the four blocks | | Before Sep 10 | [sessions.md](../01-program/sessions.md) |
 | [ ] | Submit `Olympic College Action Plan` to the Box upload link | | **Fri Oct 2, 2026 (COB)** | Action Plan template |
+| [ ] | Paste our submitted One Page Statement into `03-deliverables/one-page-statement.md` (submitted Aug 7; faculty read it before advising) | | Before Thu advising | One Page template |
+| [ ] | Log every artifact the team produces in the Final Report artifact table, all year | | Ongoing | Final Report template |
+| [ ] | Watch for the Final Report due date — not stated in the template | | Spring 2027 | Final Report template |
 
 ---
 
