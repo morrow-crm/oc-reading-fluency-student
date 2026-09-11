@@ -92,8 +92,8 @@ and it is the one place where a cross-disciplinary team has an advantage no sing
 has.
 
 **Content goals** — *the what.* A written, faculty-endorsed definition of AI literacy for
-Olympic College that **works across every discipline and is grounded in the college's Core
-Abilities** `[NEED: the current list]` — what we say every student should be able to do when they
+Olympic College that **works across every discipline and is grounded in the college's new Core
+Abilities**, currently in development and not yet published — what we say every student should be able to do when they
 leave, regardless of program. Paired with it, a values statement naming the human capacities we
 intend to keep at the center of our teaching as AI capability grows. A professional development
 plan built on that definition. A design for a cross-divisional faculty ambassador program.
@@ -211,7 +211,7 @@ students should carry out of here regardless of program. What we have not yet as
 commitments require of us now.
 
 **The objective.** Use our existing faculty and student survey data — reading them against each
-other — to build a definition of AI literacy for Olympic College that is **grounded in the Core
+other — to build a definition of AI literacy for Olympic College that is **grounded in the new Core
 Abilities and works in every discipline**;
 validate that definition with faculty across all divisions; and stand up the professional
 development and peer-mentorship structures that let faculty act on it, beginning with a
