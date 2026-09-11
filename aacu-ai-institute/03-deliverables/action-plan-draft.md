@@ -60,20 +60,19 @@ doors. The **Instructional Designer** is how professional development actually g
 delivered — the plan does not depend on inventing a delivery capacity we lack. The **Chief
 Information Officer** carries the questions faculty cannot answer for themselves: which tools are
 approved, what happens to student data, what privacy and procurement require. Faculty from
-English, Business, and Nursing bring transfer and professional-technical perspectives and, more
-importantly, convene the conversation inside their own divisions. And an **affiliate faculty
-member on the team** means our commitment to adjunct-accessible professional development is
-designed with part-time colleagues rather than on their behalf.
+English, Business, and Nursing bring transfer and professional-technical perspectives and lend the
+work credibility with colleagues that an administrative initiative would not have. And an
+**affiliate faculty member on the team** means our commitment to adjunct-accessible professional
+development is designed with part-time colleagues rather than on their behalf.
 
 **Where we are thin, and how we compensate.** Six of nine members are faculty, and three of those
 are in English. We have no team member from the trades and professional-technical programs beyond
-nursing, from mathematics or the sciences, or from the library and student services. Since our
-collaborative project depends on team members convening their own divisions, we will recruit
-**division chairs as conveners** for divisions we do not sit in — in September, not in November —
-and will deliberately test the draft AI literacy definition with professional-technical and
-quantitative faculty. A definition drafted by a group weighted toward writing-intensive
-disciplines risks reading as though AI were only a question about essays and citation. It is not,
-and our definition must not sound as if it were.
+nursing, from mathematics or the sciences, or from the library and student services. The risk is
+in the drafting, not the outreach: a definition written by a group weighted toward
+writing-intensive disciplines can read as though AI were only a question about essays and
+citation. It is not, and ours must not sound as if it were. Our correction is to choose workshop
+venues that deliberately reach professional-technical and quantitative faculty, and to treat what
+we hear there as a test the draft has to pass rather than as feedback to file.
 
 ---
 
@@ -94,9 +93,11 @@ the center of our teaching as AI capability grows. A professional development pl
 that definition. A design for a cross-divisional faculty ambassador program.
 
 **Process goals** — *the how and who.* Evidence first, then draft, then workshop, then revise —
-not the reverse. Every element is tested with faculty before it is proposed for adoption. Each
-team member convenes the conversation in their own division, which is how a small team reaches
-a whole college. The ambassador program is itself a process goal: it makes cross-divisional
+not the reverse. Every element is tested with faculty before it is proposed for adoption. We will
+take the draft language to **existing venues where faculty already gather** — in-service and
+professional development days, division and department meetings, faculty senate, adjunct
+orientation — rather than convening new sessions or asking each team member to canvass their own
+constituents. The ambassador program is itself a process goal: it makes cross-divisional
 conversation about AI a standing structure rather than an event.
 
 **Equity goals** — Adjunct and part-time faculty teach a large share of our students `[CONFIRM]`
@@ -210,12 +211,15 @@ first artifact and the evidence base everything else rests on.
 College faculty, paired with a values statement centering the human skills we mean to protect.
 The draft is short and written to be argued with, not ratified.
 
-**Step 3 — Workshop (November–December 2026).** Take the draft to faculty rather than waiting
-for faculty to come to it. Each team member convenes at least one session in their own division;
-additional sessions go to the faculty senate, an adjunct-specific forum `[CONFIRM: is there an
-adjunct association or standing meeting?]`, and at least one group known to be skeptical. Revise
-from what we hear, and document what changed and why — that record is what earns the definition
-legitimacy.
+**Step 3 — Workshop (November–December 2026).** Take the draft to faculty rather than waiting for
+faculty to come to it. We will identify existing venues where faculty already meet — in-service
+or professional development days, division and department meetings, the faculty senate, adjunct
+orientation `[CONFIRM: what venues exist and when do they fall?]` — and request time on those
+agendas. The team designs one workshop and runs it in several settings, with members
+co-facilitating as availability and fit allow; we are not asking every member to own a division.
+We will deliberately seek at least one venue reaching professional-technical or quantitative
+faculty, and at least one reaching faculty known to be skeptical. Revise from what we hear, and
+document what changed and why — that record is what earns the definition legitimacy.
 
 **Step 4 — Build (December 2026–January 2027).** Convert the validated definition into a
 professional development plan launching in winter quarter, and a written proposal for a
@@ -235,9 +239,12 @@ and the VP of Instruction for sponsorship and resources.
 ### The collaborative fall project
 
 The Institute asks for at least one collaborative effort. Ours is **Step 3, the definition
-workshop series**: it cannot be done by any single office, it requires every team member to work
-through their own division, and it produces a shared artifact — the revised definition plus the
-documented record of faculty input — that belongs to the college rather than to a department.
+workshop series**. It cannot be done by any single office: the instructional designer builds the
+workshop, the dean secures access to governance and in-service agendas, faculty members give it
+credibility with their colleagues, the CIO answers the tool and privacy questions that always
+surface, and our affiliate faculty member keeps the adjunct version genuinely usable. It produces
+a shared artifact — the revised definition plus the documented record of faculty input — that
+belongs to the college rather than to any one department.
 
 ---
 
@@ -268,8 +275,9 @@ endorsement signals that this is faculty work rather than an administrative mand
 
 **Whose support secures resources:** the VP of Instruction and whoever controls professional
 development funds `[NEED]`, for stipends, facilitation, and continuation of the ambassador
-program beyond the Institute year. Division chairs in divisions without a team member are a
-distinct ask: we need them to convene their faculty on our behalf.
+program beyond the Institute year. Division chairs and whoever sets in-service and professional
+development day agendas are a distinct ask: we need time on agendas that are set early and fill
+fast.
 
 ---
 
@@ -277,8 +285,8 @@ distinct ask: we need them to convene their faculty on our behalf.
 
 **First:** division chairs and faculty senate leadership — before anything is drafted, so the
 work is understood as consultative from the start rather than as a finished product.
-**Second:** division-level faculty meetings, run by the team member from that division, where
-the draft definition gets its real test.
+**Second:** faculty in the venues where they already gather — in-service days, division and
+department meetings — where the draft definition gets its real test.
 **Third:** a college-wide communication once the definition has been revised — reporting what
 faculty said and what changed as a result.
 **Fourth:** adjunct faculty specifically, through whatever channel actually reaches them —
@@ -297,8 +305,9 @@ newsletter or PD channels `[CONFIRM]` for the PD program launch.
 **Short-term (by end of fall 2026)**
 - Spring 2026 faculty and student survey data analyzed and triangulated; written findings brief completed and circulated.
 - Draft AI literacy definition and values statement written.
-- Workshop sessions held in every division `[NEED: how many divisions?]`, with a target of
-  `[NEED]` faculty engaged, including a documented share of adjunct participants.
+- Definition workshop run in `[NEED: how many?]` venues reaching a target of `[NEED]` faculty,
+  including a documented share of adjunct participants and at least one setting outside the
+  writing-intensive disciplines.
 - Documented record of what faculty said and what changed in the definition as a result.
 - Winter PD plan and ambassador program proposal written and submitted for approval.
 
@@ -338,16 +347,15 @@ Institute's mid-year and capstone events; and the artifacts submitted with the F
 
 | Action | Purpose / details | When |
 |---|---|---|
-| Confirm which team member convenes which division | Establishes coverage | Sept 2026 |
-| Recruit division chairs as conveners for divisions with no team member | Closes the coverage gap before it bites in November | Sept 2026 |
+| Map existing faculty venues for fall and winter — in-service days, division and department meetings, senate, adjunct orientation — and request agenda time | Secures the rooms before calendars fill | Sept–Oct 2026 |
 | Raise ambassador-role workload question with union/adjunct association | Prevents a late blocker | Sept 2026 |
 | Confirm PD funds available and earmark toward adjunct stipends | Determines who can actually attend | Sept–Oct 2026 |
 | Obtain Spring 2026 **faculty and student** survey data from IR | Evidence base | Sept 2026 |
 | Analyze both surveys; triangulate student experience against faculty intent; write findings brief | **Artifact #1**; the faculty/student gap is the finding that grounds everything downstream | Oct 2026 |
 | Submit Action Plan to AAC&U | Institute deliverable | By Oct 2, 2026 |
 | Draft AI literacy definition + values statement | **Artifact #2**; short, written to be argued with | Oct–Nov 2026 |
-| Division-level workshop sessions, one per team member | **The collaborative project**; tests the draft | Nov–Dec 2026 |
-| Faculty senate and adjunct-forum sessions | Legitimacy and reach beyond division meetings | Nov–Dec 2026 |
+| Run the definition workshop in the secured venues, members co-facilitating | **The collaborative project**; tests the draft where faculty already are | Nov–Dec 2026 |
+| Ensure at least one venue reaches prof-tech or quantitative faculty, and one reaches skeptics | Corrects for the team's disciplinary weighting | Nov–Dec 2026 |
 | Revise definition; document what changed and why | **Artifact #3**; the record is what earns legitimacy | Dec 2026 |
 | Write winter PD plan, including published schedule, cadence, and sign-up path | **Artifact #4**; the group's spec for "regular and substantive" | Dec 2026 |
 | Write ambassador program proposal; identify approval path | **Artifact #5** | Dec 2026 |
@@ -443,8 +451,11 @@ than the PD phase, and we would adjust accordingly.
    and by full-time versus adjunct status? **Can the team share both instruments and the data
    with me?** Whether the two can genuinely be triangulated depends on how comparable the
    questions are — worth checking before the plan promises it.
-2. **Divisions** — how many, and named how? The ambassador program's size and the workshop count
-   both depend on this.
+2. **Venues** — which existing faculty gatherings can we get onto this fall and winter
+   (in-service days, division and department meetings, senate, adjunct orientation), when do
+   they fall, and who sets those agendas? Step 3 depends on securing rooms that already exist.
+   Also: how many divisions are there, and named how? The ambassador program's size depends on
+   it.
 3. **Existing structures** — is there a teaching and learning center, a PD coordinator, or a
    faculty development committee already? This plan should run through them, not around them.
 4. **Money** — funding exists; how much, who controls it, and can it be directed to adjunct

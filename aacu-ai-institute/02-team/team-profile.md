@@ -51,16 +51,13 @@ six are English**. Business transfer and nursing round it out. Nothing from trad
 professional-technical programs beyond nursing, nothing from math or the sciences, nothing from
 social sciences, nothing from the library, nothing from student services.
 
-This matters concretely, because the plan's collaborative project is a workshop series where
-*each team member convenes their own division*. We cannot convene divisions we aren't in. Two
-implications:
-
-1. For divisions with no team member, we need **division chairs as proxies** — recruited early,
-   in September, not improvised in November.
-2. The AI literacy definition will be drafted by a group weighted toward writing-intensive
-   disciplines. A definition that reads as being about essays and citation will not land in a
-   welding lab or a math classroom. Testing it specifically with prof-tech and quantitative
-   faculty is a correction we should build in deliberately, not hope for.
+The risk this creates is in the **drafting**, not the outreach. The team is not canvassing its
+own constituents — we will find existing venues to workshop the language. But the AI literacy
+definition will be *written* by a group weighted toward writing-intensive disciplines, and a
+definition that reads as being about essays and citation will not land in a welding lab or a math
+classroom. The correction is to choose workshop venues that deliberately reach prof-tech and
+quantitative faculty, and to treat what we hear there as a test the draft has to pass rather than
+as feedback to file.
 
 The Action Plan asks specifically: *how do your team members and the offices/departments they
 represent work together to contribute to this work?* Note each member's office above — the
