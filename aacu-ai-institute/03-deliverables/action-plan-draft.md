@@ -1,25 +1,26 @@
-# Olympic College Action Plan — DRAFT
+# Olympic College Action Plan — DRAFT v2
 
 > **Due:** close of business **Friday, October 2, 2026**
 > **Upload to:** https://aacu.app.box.com/f/96733378b4e74ab2aa910403acd0b6f3
-> **Filename:** `Olympic College Action Plan`
-> **Length:** 2–3 pages
+> **Filename:** `Olympic College Action Plan` · **Length:** 2–3 pages
 > **Source template:** [`../00-source/AI_Institute_Action_Plan_Template_2627.docx`](../00-source/AI_Institute_Action_Plan_Template_2627.docx)
 
-**Scope for this round:** the **fall 2026 semester**. Future Institute events cover spring
-planning and scaling. Include **at least one collaborative project** for the fall, and answer
-throughout: *how do our team members and the offices/departments they represent work together
-to contribute to this work?*
+**Focus chosen by the team: faculty development.** Reconciled against the group's comments on
+the template ([group-comments-2026-09.md](../02-team/group-comments-2026-09.md), all from
+Bradley Lee), which describe a broader institution-wide end state — AI policy covering use,
+tools, and privacy; an approved-tools list; a named and prioritized policy timeline — with
+faculty development and AI literacy inside it. The plan below states that relationship
+explicitly rather than letting the vision outrun the project.
 
-**Write this knowing the spring Final Report exists.** The
-[Final Report](final-report-draft.md) asks us to revisit, item by item, the four goal types,
-the anticipated barriers, the stakeholders we name, and the 2–3 year vision — and to report
-what actually happened. Specific, checkable entries here make that report writable; vague ones
-don't.
+**How to read this draft.** Everything below is written from the team's decision, but this
+document is longer than the 2–3 page limit — it's the working version. Prose sections are near
+submission length; the tables and the material under "Working notes" get trimmed or cut before
+upload. Markers:
 
-The template is explicitly **not prescriptive** — adapt the sections below to our goals and
-context. The prompts under each heading are the template's; delete them as we replace them
-with our own prose.
+- **`[CONFIRM]`** — an assumption I made that someone needs to verify.
+- **`[NEED]`** — a fact only the team has; the sentence can't be finished without it.
+
+Open questions are collected at the bottom.
 
 ---
 
@@ -31,56 +32,254 @@ Olympic College
 
 Kevin Bowersox-Johnson
 
+## Team Members
+
+`[NEED]` — names, titles, and the office or division each represents. The template asks how
+team members' departments contribute; that answer is built from this list.
+
+---
+
 ## Project Description and Goals
 
-- **Content goals** — the "what" of the project:
-- **Process goals** — the "how" and "who":
-- **Equity goals:**
-- **Outcome goals** — "why" do this, for the students and for the institution:
+Olympic College's team will build a **faculty-facing foundation for AI in teaching and
+learning**: begin from evidence about where our faculty actually are, articulate a shared
+definition of AI literacy anchored in the college's values and in the human capacities we most
+want to protect, test that definition with faculty rather than announce it, and then build the
+professional development and peer structures that make it usable. We are deliberately not
+starting with tools or policy. Faculty development is the lever that reaches every division,
+and it is the one place where a cross-disciplinary team has an advantage no single department
+has.
 
-### Where do you hope Olympic College will be in 2 to 3 years on AI, pedagogy, and the curriculum?
+**Content goals** — *the what.* A written, faculty-endorsed definition of AI literacy for
+Olympic College, paired with a values statement naming the human skills we intend to keep at
+the center of our teaching as AI capability grows. A professional development plan built on
+that definition. A design for a cross-divisional faculty ambassador program.
+
+**Process goals** — *the how and who.* Evidence first, then draft, then workshop, then revise —
+not the reverse. Every element is tested with faculty before it is proposed for adoption. Each
+team member convenes the conversation in their own division, which is how a small team reaches
+a whole college. The ambassador program is itself a process goal: it makes cross-divisional
+conversation about AI a standing structure rather than an event.
+
+**Equity goals** — Adjunct and part-time faculty teach a large share of our students `[CONFIRM]`
+and have the least access to professional development; every PD offering will be designed for
+someone who is paid by the course, teaches at more than one institution, and is not on campus
+for meetings. The AI literacy definition must be legible and useful to faculty in trades and
+professional-technical programs as well as transfer disciplines, and must not assume the tools
+or technical fluency that some disciplines have and others do not. We will deliberately include
+faculty who are skeptical of AI, not only enthusiasts — a definition workshopped only with
+early adopters will not survive contact with the rest of the faculty.
+
+**Outcome goals** — *the why.* For students: coherent expectations about AI instead of
+contradictory rules that differ by instructor, and teaching that protects the thinking, writing,
+and judgment they came here to develop. For the institution: faculty who can make deliberate,
+informed decisions about AI in their own courses — the goal is not adoption and not prohibition,
+but deliberateness — and a shared vocabulary that lets curriculum, policy, and student-facing
+guidance be built on something stable.
+
+### Where do you hope Olympic College will be in 2 to 3 years?
+
+In two to three years Olympic College should have **institutional AI policy** governing use,
+tools, and privacy — across instruction and across the campus, not instruction alone — with
+policies and procedures named, prioritized, and placed on a published timeline as they are
+integrated. Faculty and staff should understand which tools are **approved at the institutional
+level** and what appropriate use looks like in their context. **Regular and substantive
+professional development** on AI should be routine rather than special, with a published
+schedule and a stated cadence, and adjunct faculty should actually be able to attend it. **AI
+literacy and pedagogy** should be shared vocabulary, adopted through faculty governance and
+visible in program and course outcomes. An ambassador in every division should be a known point
+of contact. And student-facing expectations should be consistent enough that a student moving
+between a welding lab, an English course, and a nursing clinical meets the same basic
+expectations, expressed in discipline-appropriate ways.
+
+**How this year's project relates to that vision.** The end state above is institution-wide and
+includes policy work this team is not positioned to complete in one year. Faculty development is
+the lever we are pulling first, deliberately: a shared, faculty-endorsed definition of AI
+literacy is the vocabulary that any later policy on use, tools, privacy, or approval has to be
+written in. Policy built before that agreement exists tends to be rewritten; policy built after
+it tends to hold.
 
 ### What can you do to help the college meet these goals?
 
-### What help do you need to support the advancement of these goals over time?
+Our team spans divisions and offices `[NEED]`, which lets us convene the faculty conversation
+broadly rather than in one corner of the college. Specifically we can: **use existing survey
+data — of faculty, and of students and staff where it exists `[CONFIRM]` — to focus the work**
+on what our own campus actually reports rather than on national narrative; **publish a schedule
+of professional development offerings** with a stated frequency and a clear way to join, so that
+"regular and substantive" is verifiable rather than aspirational; and deliver the definition and
+the PD plan through existing governance and professional development channels instead of
+building parallel ones.
 
-### How will you know the work has been successful — at the student level, the faculty level, the institutional level?
+### What help do you need?
+
+`[NEED]` — likely: institutional research support to analyze the Spring 2026 survey; funding for
+adjunct participation stipends; a standing place on the faculty senate and division meeting
+agendas; administrative sponsorship from the Vice President of Instruction `[CONFIRM]`; and
+clarity on whether an ambassador role creates workload or compensation questions under the
+faculty bargaining agreement.
+
+### How will you know the work has been successful?
+
+*Student level:* students report more consistent and clearer AI expectations across their
+courses, and can describe when AI supported their learning and when it displaced it.
+*Faculty level:* a measurable increase in faculty who have made and can articulate a deliberate
+AI decision for their courses, measured by re-running the Spring 2026 survey instrument; PD
+participation that includes a representative share of adjunct faculty.
+*Institutional level:* the AI literacy definition and values statement are formally endorsed
+through governance, and the ambassador program is resourced to continue past this Institute
+year. We will also track **AI-related academic integrity measures** alongside the survey —
+reported concerns, referrals, and the share of courses with explicit AI expectations — with the
+caveat below about how to read them.
+
+---
 
 ## Goals of the plan, in a few sentences
 
-- **What is the issue?**
-- **What is the objective?**
+**The issue.** Olympic College faculty are responding to AI individually and unevenly. Some
+have redesigned their courses, many are uncertain, and some are alarmed; students consequently
+get contradictory expectations from course to course. We have survey evidence from Spring 2026
+about where faculty are, and it has not yet been turned into a plan. Meanwhile the conversation
+nationally rushes toward tools and detection, skipping the prior question of what we actually
+want faculty and students to be able to do — and what human capacities we want to protect.
+
+**The objective.** Use our existing faculty survey data to ground a shared, values-anchored
+definition of AI literacy for Olympic College; validate that definition with faculty across all
+divisions; and stand up the professional development and peer-mentorship structures that let
+faculty act on it — beginning with a PD program in winter quarter `[CONFIRM]` and a
+cross-divisional ambassador program.
+
+---
 
 ## The process for accomplishing this plan
 
-- **What are the steps needed to accomplish the goals?**
-- **Who do you need to involve to ensure success?**
+**Step 1 — Analyze (September–October 2026).** Obtain the Spring 2026 faculty survey data from
+institutional research `[NEED: who holds it]`. Analyze it for where faculty sit on AI use,
+confidence, and concern, and — critically — how that varies by division, by full-time versus
+adjunct status, and by discipline. Produce a short written findings brief. This brief is the
+first artifact and the evidence base everything else rests on.
+
+**Step 2 — Define (October–November 2026).** Draft a definition of AI literacy for Olympic
+College faculty, paired with a values statement centering the human skills we mean to protect.
+The draft is short and written to be argued with, not ratified.
+
+**Step 3 — Workshop (November–December 2026).** Take the draft to faculty rather than waiting
+for faculty to come to it. Each team member convenes at least one session in their own division;
+additional sessions go to the faculty senate, an adjunct-specific forum `[CONFIRM: is there an
+adjunct association or standing meeting?]`, and at least one group known to be skeptical. Revise
+from what we hear, and document what changed and why — that record is what earns the definition
+legitimacy.
+
+**Step 4 — Build (December 2026–January 2027).** Convert the validated definition into a
+professional development plan launching in winter quarter, and a written proposal for a
+cross-divisional faculty ambassador program. Take both through the appropriate approval path
+`[NEED]`.
+
+**Step 5 — Launch (Winter 2027).** Deliver the first PD offerings and recruit and pair the first
+ambassador cohort.
+
+**Who we need to involve.** Institutional research (data); the teaching and learning center or
+PD coordinator `[CONFIRM: what exists at OC]`; division chairs and deans (access to faculty and
+meeting time); faculty senate (legitimacy and eventual adoption); the adjunct faculty
+association and/or union (compensation, workload, and the bargaining implications of an
+ambassador role); human resources or whoever administers professional development funds;
+and the VP of Instruction for sponsorship and resources.
+
+### The collaborative fall project
+
+The Institute asks for at least one collaborative effort. Ours is **Step 3, the definition
+workshop series**: it cannot be done by any single office, it requires every team member to work
+through their own division, and it produces a shared artifact — the revised definition plus the
+documented record of faculty input — that belongs to the college rather than to a department.
+
+---
 
 ## Barriers and roadblocks
 
-- **What barriers do you foresee?**
-- **Strategies for addressing them:**
-- **Steps that could avoid them entirely:**
+| Barrier | Strategy | Can we avoid it? |
+|---|---|---|
+| Adjunct faculty have no paid time for PD or workshops | Seek stipends; offer asynchronous options; keep sessions short; schedule at multiple times | Partly — funding is the binding constraint `[NEED: is there money?]` |
+| Spring 2026 survey data may be thin, dated, or not broken out by division/employment status | Assess quality first; supplement with a short targeted follow-up or focus groups rather than abandoning the evidence base | Not entirely — plan Step 1 with a fallback |
+| Faculty AI fatigue and polarization; "another initiative" | Lead with values and human skills, not tools; include skeptics deliberately; make the first ask listening, not compliance | Partly — sequencing is the mitigation |
+| Definitional debate stalls indefinitely | Timebox it; a good-enough definition that gets used beats a perfect one that doesn't; set a decision date | Largely |
+| Ambassador role raises workload, compensation, or evaluation questions under the bargaining agreement | Raise it with the union early and explicitly, before recruiting anyone | Yes, if addressed in September |
+| Competing institutional priorities, accreditation cycles, leadership turnover | Attach the work to existing bodies and calendars rather than creating new ones; sponsor at the VP level | Partly |
+| Tool and vendor churn outdates any specific training | Anchor PD in durable judgment and pedagogy rather than in any product | Largely |
+
+---
 
 ## Champions, stakeholders, and decision-makers
 
-- **Who is needed to facilitate this work?**
-- **Whose support do you need to encourage others to join the conversation?**
-- **Whose support do you need to secure resources?**
+**Needed to facilitate:** division chairs and deans; the teaching and learning center or PD
+coordinator; institutional research; faculty senate leadership; the adjunct faculty
+association/union; the VP of Instruction.
+
+**Whose support brings others into the conversation:** respected mid-career faculty in divisions
+outside the team's own — particularly in professional-technical programs, where an AI
+conversation framed around essay writing will not land; and senate leadership, whose
+endorsement signals that this is faculty work rather than an administrative mandate.
+
+**Whose support secures resources:** the VP of Instruction and whoever controls professional
+development funds `[NEED]`, for stipends, facilitation, and continuation of the ambassador
+program beyond the Institute year.
+
+---
 
 ## Communication strategy
 
-- **Which groups on campus do you engage first? Second?**
-- **What methods of communication at each phase?**
+**First:** division chairs and faculty senate leadership — before anything is drafted, so the
+work is understood as consultative from the start rather than as a finished product.
+**Second:** division-level faculty meetings, run by the team member from that division, where
+the draft definition gets its real test.
+**Third:** a college-wide communication once the definition has been revised — reporting what
+faculty said and what changed as a result.
+**Fourth:** adjunct faculty specifically, through whatever channel actually reaches them
+`[NEED]`, since division meetings typically do not.
+**Later:** students and student services, once faculty expectations are stable enough to
+communicate honestly.
+
+Methods by phase: in-person and hybrid meetings for the workshop phase, because the point is to
+hear objections; written brief and email for findings; the college's existing faculty
+newsletter or PD channels `[CONFIRM]` for the PD program launch.
+
+---
 
 ## Measures of success
 
-*(Note: at the conclusion of the Institute you will be asked to report your successes.)*
+**Short-term (by end of fall 2026)**
+- Spring 2026 survey data analyzed; written findings brief completed and circulated.
+- Draft AI literacy definition and values statement written.
+- Workshop sessions held in every division `[NEED: how many divisions?]`, with a target of
+  `[NEED]` faculty engaged, including a documented share of adjunct participants.
+- Documented record of what faculty said and what changed in the definition as a result.
+- Winter PD plan and ambassador program proposal written and submitted for approval.
 
-- **Short-term measures:**
-- **Long-term measures:**
-- **What evidence demonstrates success to the team and to others on campus?**
-- **How will the information be gathered and disseminated?**
+**Long-term (by end of the Institute year)**
+- Definition and values statement endorsed through faculty governance.
+- PD sessions delivered in winter and spring, with attendance tracked by division and by
+  full-time/adjunct status.
+- Ambassador cohort recruited, paired across divisions, and active — with the number of
+  cross-divisional conversations held as the operative measure, not the number recruited.
+- Spring 2026 survey re-administered to measure movement on faculty confidence and on the share
+  who have made a deliberate AI decision about their courses.
+- A published PD schedule exists, with a stated cadence and a clear way to join — the group's
+  test of whether professional development is "regular and substantive."
+- AI-related academic integrity measures tracked and reported alongside expectation-setting.
+
+**On academic integrity metrics.** The group asked whether to tie specific academic-dishonesty
+metrics to the survey. We will, with a stated caution: AI-related referrals can rise because
+faculty finally set explicit expectations and started reporting, not because student behavior
+worsened. We therefore report integrity measures **paired** with the share of courses carrying
+explicit AI expectations, so the numbers can be read honestly rather than as a scoreboard. We
+will not treat detection-software output as evidence.
+
+**Evidence to gather:** the survey instrument re-run as a pre/post pair; workshop attendance and
+notes; the revision history of the definition; PD registration and attendance by employment
+status; ambassador conversation logs; and a small number of faculty interviews for the
+qualitative story the numbers won't tell.
+
+**Dissemination:** findings brief to faculty senate and division chairs; the definition and
+values statement published on the college's faculty-facing site `[CONFIRM]`; a report at the
+Institute's mid-year and capstone events; and the artifacts submitted with the Final Report.
 
 ---
 
@@ -90,52 +289,86 @@ Kevin Bowersox-Johnson
 
 | Action | Purpose / details | When |
 |---|---|---|
-| | | |
-| | | |
-| | | |
-| | | |
-| | | |
+| Confirm team roles; each member identified with a division/office | Establishes who convenes which conversation | Sept 2026 |
+| Raise ambassador-role workload question with union/adjunct association | Prevents a late blocker | Sept 2026 |
+| Obtain Spring 2026 faculty survey data from IR | Evidence base | Sept 2026 |
+| Analyze survey; assess data quality; write findings brief | **Artifact #1**; grounds everything downstream | Oct 2026 |
+| Submit Action Plan to AAC&U | Institute deliverable | By Oct 2, 2026 |
+| Draft AI literacy definition + values statement | **Artifact #2**; short, written to be argued with | Oct–Nov 2026 |
+| Division-level workshop sessions, one per team member | **The collaborative project**; tests the draft | Nov–Dec 2026 |
+| Faculty senate and adjunct-forum sessions | Legitimacy and reach beyond division meetings | Nov–Dec 2026 |
+| Revise definition; document what changed and why | **Artifact #3**; the record is what earns legitimacy | Dec 2026 |
+| Write winter PD plan, including published schedule, cadence, and sign-up path | **Artifact #4**; the group's spec for "regular and substantive" | Dec 2026 |
+| Write ambassador program proposal; identify approval path | **Artifact #5** | Dec 2026 |
 
-### Spring 2027 Actions
+### Winter–Spring 2027 Actions
 
 | Action | Purpose / details | When |
 |---|---|---|
-| | | |
-| | | |
-| | | |
-
-### Recommended Timeline for Campus Work
-
-| Action | Who | When |
-|---|---|---|
-| | | |
-| | | |
-| | | |
+| Seek governance endorsement of definition and values statement | Makes it institutional rather than ours | Winter 2027 |
+| Launch PD series | First delivery; adjunct-accessible by design | Winter 2027 |
+| Recruit and pair first ambassador cohort across divisions | Standing cross-divisional structure | Winter 2027 |
+| Track PD attendance and ambassador conversations | Evidence for the Final Report | Ongoing |
+| Re-administer faculty survey | Pre/post measure | Spring 2027 |
+| Assemble artifacts and write Final Report | Institute deliverable | Spring 2027 |
 
 ---
 
-## Candidate commitments
+## Working notes — not part of the submitted plan
 
-*Scratch space. Pull ideas here from session notes and team time; promote the good ones into
-the tables above. Nothing here goes in the submitted plan as-is.*
+### Open questions for the team
 
-| Idea | Came from | Fall / spring | Possible owner | Keep? |
-|---|---|---|---|---|
-| | | | | |
+1. **Scope.** The group's comments describe a 2–3 year end state that includes institutional AI
+   policy, privacy, and an approved-tools list. I've written that as the vision, with faculty
+   development as this year's lever and the definition as the groundwork policy will later need.
+   Is that the right relationship, or does the team want the plan to commit to policy work this
+   year as well?
+2. **"Winter 2026"** — assuming this means winter quarter, January–March 2027 (the winter term
+   of academic year 2026–27). Confirm, because the timeline tables depend on it.
+3. **Team roster** — names, titles, and the division or office each member represents. The
+   template asks specifically how members' offices work together; that section is unwritable
+   without it.
+4. **The Spring 2026 survey** — who administered it, who holds the data, what did it ask, how
+   many responded, and can responses be broken out by division and by full-time versus adjunct
+   status? Can the team share the instrument or the data with me?
+   **Note a discrepancy:** the team described this as *faculty* survey data, but comment 7 says
+   "using survey student/staff based re: AI focuses." Are these two instruments, or one with
+   wider scope? It changes what Step 1 can conclude and who the findings brief addresses.
+5. **Divisions** — how many, and named how? The ambassador program's size and the workshop count
+   both depend on this.
+6. **Existing structures** — is there a teaching and learning center, a PD coordinator, or a
+   faculty development committee already? This plan should run through them, not around them.
+7. **Money** — is there any funding for adjunct stipends, facilitation, or ambassador
+   compensation, and who controls it?
+8. **Approval path** — what body would endorse an AI literacy definition: faculty senate,
+   curriculum committee, instructional council, or nothing formal?
+9. **Prior work** — does Olympic College already have AI guidance, a policy, a syllabus
+   statement, or a committee? This plan reads as if we're starting fresh; if we aren't, it
+   should attach to what exists.
+10. **Union** — does an ambassador or mentor role touch the bargaining agreement (workload,
+    stipends, evaluation)? Better answered in September than in February.
+11. **Academic integrity metrics** — the draft includes them with a caution about how to read a
+    rising referral count. Does the team want them as a headline success measure, or kept as
+    context? They are persuasive to administrators and easy to misread.
+12. **Name** — the group's document says "Kevin Bowersox Johnson"; the Institute program says
+    "Kevin Bowersox-Johnson." Which is right for the submitted file?
 
-## Open questions for David Harris
+### Held for later
 
-- [ ]
-- [ ]
+- Student-facing guidance is deliberately downstream of faculty agreement. Name it as a
+  spring/next-year step so reviewers see we haven't forgotten students.
+- The values statement is the most distinctive thing in this plan and the most likely to draw
+  interest from other Institute teams — worth leading with in the Friday presentation.
 
-## Submission checklist
+### Submission checklist
 
-- [ ] 2–3 pages
-- [ ] Fall 2026 focus, with at least one collaborative cross-office project
+- [ ] Trimmed to 2–3 pages; working notes removed
+- [ ] All `[NEED]` and `[CONFIRM]` markers resolved
+- [ ] Reconciled against the group's comment document
+- [ ] Fall 2026 focus, with the collaborative project clearly identified
 - [ ] Answers how team members' offices/departments work together
 - [ ] Covers timeline, stakeholders, and obstacles
-- [ ] Exported to the format we're submitting; filename exactly `Olympic College Action Plan`
+- [ ] Filename exactly `Olympic College Action Plan`
 - [ ] Uploaded to the Box link before COB Fri Oct 2, 2026
-- [ ] Final submitted copy saved here as `action-plan-2026-10-02-SUBMITTED.md`
+- [ ] Copy saved here as `action-plan-2026-10-02-SUBMITTED.md`
 - [ ] Goal types and barriers copied into [final-report-draft.md](final-report-draft.md)
-      so the spring report starts pre-populated
