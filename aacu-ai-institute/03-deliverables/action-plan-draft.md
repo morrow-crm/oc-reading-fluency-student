@@ -40,8 +40,40 @@ Kevin Bowersox-Johnson
 
 ## Team Members
 
-`[NEED]` — names, titles, and the office or division each represents. The template asks how
-team members' departments contribute; that answer is built from this list.
+| Name | Title | Area represented |
+|---|---|---|
+| Kevin Bowersox-Johnson | Dean, Learning Innovation | Administration — team lead |
+| Andres Vinas | Chief Information Officer | Information technology |
+| Monika Major | Instructional Designer | Instructional design and teaching support |
+| William Bailey | Full-time faculty, Business Transfer | Business — transfer |
+| Bradley Lee | Full-time faculty, Nursing | Nursing — professional-technical |
+| Pierre Arellano | Full-time faculty, English | English |
+| Justin Lewis | Full-time faculty, English | English |
+| Candice Morrow | Full-time faculty, English | English |
+| Sage Westfall | Affiliate (contract) faculty | Part-time faculty |
+
+`[CONFIRM]` — full titles were truncated in the source roster.
+
+**How these offices work together.** This is the question the Institute asks, and our team is
+built to answer it. The Dean of Learning Innovation sponsors the work and opens the governance
+doors. The **Instructional Designer** is how professional development actually gets built and
+delivered — the plan does not depend on inventing a delivery capacity we lack. The **Chief
+Information Officer** carries the questions faculty cannot answer for themselves: which tools are
+approved, what happens to student data, what privacy and procurement require. Faculty from
+English, Business, and Nursing bring transfer and professional-technical perspectives and, more
+importantly, convene the conversation inside their own divisions. And an **affiliate faculty
+member on the team** means our commitment to adjunct-accessible professional development is
+designed with part-time colleagues rather than on their behalf.
+
+**Where we are thin, and how we compensate.** Six of nine members are faculty, and three of those
+are in English. We have no team member from the trades and professional-technical programs beyond
+nursing, from mathematics or the sciences, or from the library and student services. Since our
+collaborative project depends on team members convening their own divisions, we will recruit
+**division chairs as conveners** for divisions we do not sit in — in September, not in November —
+and will deliberately test the draft AI literacy definition with professional-technical and
+quantitative faculty. A definition drafted by a group weighted toward writing-intensive
+disciplines risks reading as though AI were only a question about essays and citation. It is not,
+and our definition must not sound as if it were.
 
 ---
 
@@ -109,7 +141,7 @@ it tends to hold.
 
 ### What can you do to help the college meet these goals?
 
-Our team spans divisions and offices `[NEED]`, which lets us convene the faculty conversation
+Our team spans instruction, instructional design, and information technology, which lets us convene the faculty conversation
 broadly rather than in one corner of the college. Specifically we can: **use existing survey
 data — of faculty, and of students and staff where it exists `[CONFIRM]` — to focus the work**
 on what our own campus actually reports rather than on national narrative; **publish a schedule
@@ -236,7 +268,8 @@ endorsement signals that this is faculty work rather than an administrative mand
 
 **Whose support secures resources:** the VP of Instruction and whoever controls professional
 development funds `[NEED]`, for stipends, facilitation, and continuation of the ambassador
-program beyond the Institute year.
+program beyond the Institute year. Division chairs in divisions without a team member are a
+distinct ask: we need them to convene their faculty on our behalf.
 
 ---
 
@@ -248,8 +281,8 @@ work is understood as consultative from the start rather than as a finished prod
 the draft definition gets its real test.
 **Third:** a college-wide communication once the definition has been revised — reporting what
 faculty said and what changed as a result.
-**Fourth:** adjunct faculty specifically, through whatever channel actually reaches them
-`[NEED]`, since division meetings typically do not.
+**Fourth:** adjunct faculty specifically, through whatever channel actually reaches them —
+Sage Westfall advises on what that channel is, since division meetings typically do not.
 **Later:** students and student services, once faculty expectations are stable enough to
 communicate honestly.
 
@@ -305,7 +338,8 @@ Institute's mid-year and capstone events; and the artifacts submitted with the F
 
 | Action | Purpose / details | When |
 |---|---|---|
-| Confirm team roles; each member identified with a division/office | Establishes who convenes which conversation | Sept 2026 |
+| Confirm which team member convenes which division | Establishes coverage | Sept 2026 |
+| Recruit division chairs as conveners for divisions with no team member | Closes the coverage gap before it bites in November | Sept 2026 |
 | Raise ambassador-role workload question with union/adjunct association | Prevents a late blocker | Sept 2026 |
 | Confirm PD funds available and earmark toward adjunct stipends | Determines who can actually attend | Sept–Oct 2026 |
 | Obtain Spring 2026 **faculty and student** survey data from IR | Evidence base | Sept 2026 |
@@ -346,6 +380,14 @@ policy has to be written in; policy drafted before that agreement exists tends t
 and policy drafted after it tends to hold. We expect the definition and values statement
 produced this year to be the input to a policy process in year two, and we would welcome the
 Institute's guidance on sequencing that transition.
+
+**Our team can go further on tools and policy than this plan commits to.** The Chief Information
+Officer sits on this team, which means the questions Bradley raised — approved tools, appropriate
+use, data privacy — have their institutional owner in the room. We have still sequenced faculty
+development first, for the reason given above. But if the team wants a second fall strand, a
+privacy and tool-approval *criteria* document drafted by the CIO in parallel with the definition
+work is the version that would not overextend us, and it would give the year-two policy process a
+running start.
 
 **An approved-tools list raises questions we haven't resolved.** Faculty and staff need to know
 which AI tools are approved at the institutional level and what appropriate use looks like. But
@@ -396,30 +438,27 @@ than the PD phase, and we would adjust accordingly.
 
 ### Open questions for the team
 
-1. **Team roster** — names, titles, and the division or office each member represents. The
-   template asks specifically how members' offices work together; that section is unwritable
-   without it.
-2. **The Spring 2026 surveys** — who administered the faculty and student instruments, who holds
+1. **The Spring 2026 surveys** — who administered the faculty and student instruments, who holds
    the data, what did each ask, how many responded, and can responses be broken out by division
    and by full-time versus adjunct status? **Can the team share both instruments and the data
    with me?** Whether the two can genuinely be triangulated depends on how comparable the
    questions are — worth checking before the plan promises it.
-3. **Divisions** — how many, and named how? The ambassador program's size and the workshop count
+2. **Divisions** — how many, and named how? The ambassador program's size and the workshop count
    both depend on this.
-4. **Existing structures** — is there a teaching and learning center, a PD coordinator, or a
+3. **Existing structures** — is there a teaching and learning center, a PD coordinator, or a
    faculty development committee already? This plan should run through them, not around them.
-5. **Money** — funding exists; how much, who controls it, and can it be directed to adjunct
+4. **Money** — funding exists; how much, who controls it, and can it be directed to adjunct
    stipends specifically?
-6. **Approval path** — what body would endorse an AI literacy definition: faculty senate,
+5. **Approval path** — what body would endorse an AI literacy definition: faculty senate,
    curriculum committee, instructional council, or nothing formal?
-7. **Prior work** — does Olympic College already have AI guidance, a policy, a syllabus
+6. **Prior work** — does Olympic College already have AI guidance, a policy, a syllabus
    statement, or a committee? This plan reads as if we're starting fresh; if we aren't, it
    should attach to what exists.
-8. **Union** — does an ambassador or mentor role touch the bargaining agreement (workload,
+7. **Union** — does an ambassador or mentor role touch the bargaining agreement (workload,
     stipends, evaluation)? Better answered in September than in February.
-9. **Academic integrity metrics** — the draft includes them with a caution about how to read a
+8. **Academic integrity metrics** — the draft includes them with a caution about how to read a
     rising referral count. Headline success measure, or context?
-10. **Name** — the group's document says "Kevin Bowersox Johnson"; the Institute program says
+9. **Name** — the group's document says "Kevin Bowersox Johnson"; the Institute program says
     "Kevin Bowersox-Johnson." Which is right for the submitted file?
 
 ### Note for the presentation
