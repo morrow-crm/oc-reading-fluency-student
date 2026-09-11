@@ -23,7 +23,8 @@ upload. Markers:
 Open questions are collected at the bottom. **"Additional Notes and Considerations"** near the
 end is part of the submitted plan — it records brainstorming that didn't become a commitment.
 
-**Settled so far:** PD launches winter quarter, January–March 2027. The Spring 2026 evidence
+**Settled so far:** The AI literacy definition is grounded in the college's **Core Abilities** and
+must work across every discipline. PD launches winter quarter, January–March 2027. The Spring 2026 evidence
 base is *two* surveys, faculty and student, read against each other to inform the faculty AI
 literacy definition. Some professional development funding exists and is earmarked first for
 adjunct participation.
@@ -70,9 +71,11 @@ are in English. We have no team member from the trades and professional-technica
 nursing, from mathematics or the sciences, or from the library and student services. The risk is
 in the drafting, not the outreach: a definition written by a group weighted toward
 writing-intensive disciplines can read as though AI were only a question about essays and
-citation. It is not, and ours must not sound as if it were. Our correction is to choose workshop
-venues that deliberately reach professional-technical and quantitative faculty, and to treat what
-we hear there as a test the draft has to pass rather than as feedback to file.
+citation. It is not, and ours must not sound as if it were. Two corrections: building the definition from
+the **Core Abilities**, which every program already answers to, constrains it toward language that
+travels; and choosing workshop venues that deliberately reach professional-technical and
+quantitative faculty, treating what we hear there as a test the draft has to pass rather than as
+feedback to file.
 
 ---
 
@@ -82,15 +85,26 @@ Olympic College's team will build a **faculty-facing foundation for AI in teachi
 learning**: begin from evidence about where our faculty actually are, articulate a shared
 definition of AI literacy anchored in the college's values and in the human capacities we most
 want to protect, test that definition with faculty rather than announce it, and then build the
-professional development and peer structures that make it usable. We are deliberately not
-starting with tools or policy. Faculty development is the lever that reaches every division,
+professional development and peer structures that make it usable. We are deliberately not starting with tools or policy, and we are not writing a
+definition from scratch: we start from what the college already says its graduates should be able
+to do. Faculty development is the lever that reaches every division,
 and it is the one place where a cross-disciplinary team has an advantage no single department
 has.
 
 **Content goals** — *the what.* A written, faculty-endorsed definition of AI literacy for
-Olympic College, paired with a values statement naming the human skills we intend to keep at
-the center of our teaching as AI capability grows. A professional development plan built on
-that definition. A design for a cross-divisional faculty ambassador program.
+Olympic College that **works across every discipline and is grounded in the college's Core
+Abilities** `[NEED: the current list]` — what we say every student should be able to do when they
+leave, regardless of program. Paired with it, a values statement naming the human capacities we
+intend to keep at the center of our teaching as AI capability grows. A professional development
+plan built on that definition. A design for a cross-divisional faculty ambassador program.
+
+Grounding the definition in the Core Abilities is the central design decision of this plan. It
+means we are not asking the college to adopt a new framework; we are asking what the commitments
+it has *already made* about its graduates require of us now that AI can perform parts of the work
+those abilities describe. The Core Abilities are also the one thing every program at the college
+already shares, which is what makes a genuinely cross-disciplinary definition possible: a
+statement anchored there applies as readily in a welding lab as in a composition classroom,
+because both programs already answer to it.
 
 **Process goals** — *the how and who.* Evidence first, then draft, then workshop, then revise —
 not the reverse. Every element is tested with faculty before it is proposed for adoption. We will
@@ -112,8 +126,9 @@ faculty who are skeptical of AI, not only enthusiasts — a definition workshopp
 early adopters will not survive contact with the rest of the faculty.
 
 **Outcome goals** — *the why.* For students: coherent expectations about AI instead of
-contradictory rules that differ by instructor, and teaching that protects the thinking, writing,
-and judgment they came here to develop. For the institution: faculty who can make deliberate,
+contradictory rules that differ by instructor, and teaching that still delivers the Core
+Abilities — the thinking, communication, and judgment we promise every graduate — in a world
+where AI can convincingly imitate their products. For the institution: faculty who can make deliberate,
 informed decisions about AI in their own courses — the goal is not adoption and not prohibition,
 but deliberateness — and a shared vocabulary that lets curriculum, policy, and student-facing
 guidance be built on something stable.
@@ -128,7 +143,9 @@ level** and what appropriate use looks like in their context. **Regular and subs
 professional development** on AI should be routine rather than special, with a published
 schedule and a stated cadence, and adjunct faculty should actually be able to attend it. **AI
 literacy and pedagogy** should be shared vocabulary, adopted through faculty governance and
-visible in program and course outcomes. An ambassador in every division should be a known point
+visible in program and course outcomes — with the connection between AI literacy and the Core
+Abilities explicit enough that it informs curriculum review and outcomes assessment rather than
+sitting alongside them as a separate conversation. An ambassador in every division should be a known point
 of contact. And student-facing expectations should be consistent enough that a student moving
 between a welding lab, an English course, and a nursing clinical meets the same basic
 expectations, expressed in discipline-appropriate ways.
@@ -181,11 +198,15 @@ caveat below about how to read them.
 have redesigned their courses, many are uncertain, and some are alarmed; students consequently
 get contradictory expectations from course to course. We have survey evidence from Spring 2026
 about where faculty are, and it has not yet been turned into a plan. Meanwhile the conversation
-nationally rushes toward tools and detection, skipping the prior question of what we actually
-want faculty and students to be able to do — and what human capacities we want to protect.
+nationally rushes toward tools and detection, skipping the prior question: what do we say every
+Olympic College graduate should be able to do, and what does AI change about our ability to
+deliver it? We have already answered the first half. Our Core Abilities state what students
+should carry out of here regardless of program. We have not yet asked what those commitments
+require of us now.
 
 **The objective.** Use our existing faculty and student survey data — reading them against each
-other — to ground a shared, values-anchored definition of AI literacy for Olympic College;
+other — to build a definition of AI literacy for Olympic College that is **grounded in the Core
+Abilities and works in every discipline**;
 validate that definition with faculty across all divisions; and stand up the professional
 development and peer-mentorship structures that let faculty act on it, beginning with a
 professional development program in **winter quarter (January–March 2027)** and a
@@ -201,15 +222,26 @@ data for where faculty sit on AI use, confidence, and concern, and how that vari
 by full-time versus adjunct status, and by discipline. Then **triangulate the student responses
 against the faculty responses** — where do students report experiencing something different from
 what faculty report doing? Those gaps are the most useful finding available to us, and they are
-what will make the AI literacy definition answer a real problem rather than a assumed one. A
+what will make the AI literacy definition answer a real problem rather than an assumed one. Read
+with the Core Abilities in hand, the survey data also tells us **which of those abilities are
+already under pressure** — where students report using AI to produce work that an ability was
+meant to develop, and where faculty report no longer being able to tell. A
 definition built only on what faculty say they need risks addressing the wrong thing; a
 definition built on the distance between faculty intent and student experience addresses
 something demonstrable. Produce a short written findings brief covering both. This brief is the
 first artifact and the evidence base everything else rests on.
 
-**Step 2 — Define (October–November 2026).** Draft a definition of AI literacy for Olympic
-College faculty, paired with a values statement centering the human skills we mean to protect.
-The draft is short and written to be argued with, not ratified.
+**Step 2 — Define (October–November 2026).** Draft a definition of AI literacy for Olympic College
+faculty, built directly on the Core Abilities. The method: take each Core Ability in turn and ask
+three questions of it. *What does AI change about how students demonstrate this?* *What part of it
+must be protected as human work, because the ability itself is what we are claiming to develop?*
+*What does AI make newly necessary for a student to be able to do?* The answers, assembled, are
+the definition — and because every program already answers to the Core Abilities, the result
+applies across disciplines by construction rather than by good intentions.
+
+The values statement emerges from the second question: the human capacities we mean to protect
+are not invented for this document, they are the ones the college has already named. The draft is
+short and written to be argued with, not ratified.
 
 **Step 3 — Workshop (November–December 2026).** Take the draft to faculty rather than waiting for
 faculty to come to it. We will identify existing venues where faculty already meet — in-service
@@ -353,7 +385,7 @@ Institute's mid-year and capstone events; and the artifacts submitted with the F
 | Obtain Spring 2026 **faculty and student** survey data from IR | Evidence base | Sept 2026 |
 | Analyze both surveys; triangulate student experience against faculty intent; write findings brief | **Artifact #1**; the faculty/student gap is the finding that grounds everything downstream | Oct 2026 |
 | Submit Action Plan to AAC&U | Institute deliverable | By Oct 2, 2026 |
-| Draft AI literacy definition + values statement | **Artifact #2**; short, written to be argued with | Oct–Nov 2026 |
+| Draft AI literacy definition from the Core Abilities + values statement | **Artifact #2**; each Core Ability read against what AI changes, what to protect, what is newly required | Oct–Nov 2026 |
 | Run the definition workshop in the secured venues, members co-facilitating | **The collaborative project**; tests the draft where faculty already are | Nov–Dec 2026 |
 | Ensure at least one venue reaches prof-tech or quantitative faculty, and one reaches skeptics | Corrects for the team's disciplinary weighting | Nov–Dec 2026 |
 | Revise definition; document what changed and why | **Artifact #3**; the record is what earns legitimacy | Dec 2026 |
@@ -364,7 +396,7 @@ Institute's mid-year and capstone events; and the artifacts submitted with the F
 
 | Action | Purpose / details | When |
 |---|---|---|
-| Seek governance endorsement of definition and values statement | Makes it institutional rather than ours | Winter 2027 |
+| Seek governance endorsement of definition and values statement through the body that owns the Core Abilities | Makes it institutional rather than ours, via a route that already exists | Winter 2027 |
 | Launch PD series | First delivery, Jan–Mar 2027; adjunct-accessible by design, stipended where funds allow | Winter 2027 |
 | Recruit and pair first ambassador cohort across divisions | Standing cross-divisional structure | Winter 2027 |
 | Track PD attendance and ambassador conversations | Evidence for the Final Report | Ongoing |
@@ -434,6 +466,14 @@ its documented false-positive rates for multilingual and neurodivergent writers.
 - Comparing approaches with Highline College and Skagit Valley College, the other Washington
   community colleges in this Institute cohort.
 
+**A question the Core Abilities framing will force into the open.** Reading each Core Ability
+against AI will surface disagreement about which abilities remain genuinely necessary for students
+to hold themselves, and which the college might reasonably decide are now performed with AI
+assistance as a matter of course. That is a real and contested question — and one this team should
+raise rather than resolve on its own. Our aim is to make the disagreement visible and
+discussable, in the specific terms of our own stated commitments, instead of leaving it to be
+settled course by course by default.
+
 **An honest uncertainty.** We do not yet know how much of our faculty is genuinely undecided
 about AI versus quietly opposed, and the two call for different professional development. The
 survey analysis in Step 1 is partly an attempt to find out. If it turns out that a substantial
@@ -460,16 +500,23 @@ than the PD phase, and we would adjust accordingly.
    faculty development committee already? This plan should run through them, not around them.
 4. **Money** — funding exists; how much, who controls it, and can it be directed to adjunct
    stipends specifically?
-5. **Approval path** — what body would endorse an AI literacy definition: faculty senate,
-   curriculum committee, instructional council, or nothing formal?
-6. **Prior work** — does Olympic College already have AI guidance, a policy, a syllabus
+5. **Approval path** — **who owns the Core Abilities?** Whatever body maintains and reviews them
+   is the natural route to endorsement, since we are interpreting their work rather than
+   proposing a rival framework. Faculty senate, curriculum committee, an outcomes-assessment
+   committee, or something else?
+6. **The Core Abilities themselves** — I need the current list, verbatim. The whole definition is
+   built from them, and Step 2's method works through them one at a time. Also: when were they
+   last revised, is a review cycle underway, and is there existing assessment data on how well
+   we currently deliver them? If a revision is already scheduled, this work should feed it
+   rather than run parallel.
+7. **Prior work** — does Olympic College already have AI guidance, a policy, a syllabus
    statement, or a committee? This plan reads as if we're starting fresh; if we aren't, it
    should attach to what exists.
-7. **Union** — does an ambassador or mentor role touch the bargaining agreement (workload,
+8. **Union** — does an ambassador or mentor role touch the bargaining agreement (workload,
     stipends, evaluation)? Better answered in September than in February.
-8. **Academic integrity metrics** — the draft includes them with a caution about how to read a
+9. **Academic integrity metrics** — the draft includes them with a caution about how to read a
     rising referral count. Headline success measure, or context?
-9. **Name** — the group's document says "Kevin Bowersox Johnson"; the Institute program says
+10. **Name** — the group's document says "Kevin Bowersox Johnson"; the Institute program says
     "Kevin Bowersox-Johnson." Which is right for the submitted file?
 
 ### Note for the presentation

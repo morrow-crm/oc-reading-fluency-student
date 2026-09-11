@@ -55,9 +55,10 @@ The risk this creates is in the **drafting**, not the outreach. The team is not 
 own constituents — we will find existing venues to workshop the language. But the AI literacy
 definition will be *written* by a group weighted toward writing-intensive disciplines, and a
 definition that reads as being about essays and citation will not land in a welding lab or a math
-classroom. The correction is to choose workshop venues that deliberately reach prof-tech and
-quantitative faculty, and to treat what we hear there as a test the draft has to pass rather than
-as feedback to file.
+classroom. Two corrections: the definition is built from the **Core Abilities**, which every program already
+answers to and which therefore constrain it toward language that travels across disciplines; and
+we choose workshop venues that deliberately reach prof-tech and quantitative faculty, treating
+what we hear there as a test the draft has to pass rather than as feedback to file.
 
 The Action Plan asks specifically: *how do your team members and the offices/departments they
 represent work together to contribute to this work?* Note each member's office above — the
