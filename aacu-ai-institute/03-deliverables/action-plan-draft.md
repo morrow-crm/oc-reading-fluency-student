@@ -504,10 +504,11 @@ than the PD phase, and we would adjust accordingly.
    is the natural route to endorsement, since we are interpreting their work rather than
    proposing a rival framework. Faculty senate, curriculum committee, an outcomes-assessment
    committee, or something else?
-6. **The Core Abilities themselves** — I need the current list, verbatim. The whole definition is
-   built from them, and Step 2's method works through them one at a time. Also: when were they
-   last revised, is a review cycle underway, and is there existing assessment data on how well
-   we currently deliver them? If a revision is already scheduled, this work should feed it
+6. **The Core Abilities, verbatim** — I have the five names from web search (the college's
+   domains are blocked from this environment) but not the catalog wording or the sub-outcomes
+   under each. Paste the catalog text and the worksheet gets rebuilt against it. Also: when were
+   they last revised, is a review cycle underway, and is there existing assessment data on how
+   well we currently deliver them? If a revision is already scheduled, this work should feed it
    rather than run parallel.
 7. **Prior work** — does Olympic College already have AI guidance, a policy, a syllabus
    statement, or a committee? This plan reads as if we're starting fresh; if we aren't, it
