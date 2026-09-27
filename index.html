@@ -320,12 +320,6 @@
     flex-wrap: wrap;
   }
   .tool-group.markup-group { gap: 8px 14px; }
-  .markup-actions {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    flex-wrap: wrap;
-  }
   .tool-label {
     font-size: 11px;
     text-transform: uppercase;
@@ -721,7 +715,6 @@
       <div class="drop-zone" id="drop-zone" role="button" tabindex="0"
            aria-label="Choose a reading file. Press Enter or Space to open the file picker, or drag a file here.">
         <p><strong>Click to choose a file</strong> or drag the file here.</p>
-        <p class="muted">Or load the included sample: <button id="load-sample">Load sample-reading.json</button></p>
         <input type="file" id="file-input" accept=".json,.docx,.pdf,application/json,application/pdf" aria-hidden="true" tabindex="-1">
       </div>
       <div id="load-error" class="error" role="alert" style="display:none;"></div>
@@ -784,11 +777,7 @@
         <div class="toolbar" role="group" aria-labelledby="markup-tools-label">
           <div class="tool-group markup-group">
             <span class="tool-label" id="markup-tools-label">Mark up</span>
-            <span class="hint">Click a word to mark it as new vocab or hear it pronounced. To mark a key idea, select a sentence or passage, then click "Mark key idea."</span>
-            <div class="markup-actions">
-              <button class="tag-btn" id="apply-key"><span class="btn-swatch" aria-hidden="true"></span> Mark key idea</button>
-              <button class="util-btn" id="clear-key">Clear in selection</button>
-            </div>
+            <span class="hint">Click a word to mark it as new vocab or hear it pronounced.</span>
           </div>
         </div>
       </div>
@@ -796,10 +785,6 @@
         <span class="legend-item">
           <span class="legend-swatch unfamiliar" aria-hidden="true"></span>
           New vocabulary word (yellow with wavy underline)
-        </span>
-        <span class="legend-item">
-          <span class="legend-swatch tag-key" aria-hidden="true"></span>
-          Key idea (blue with solid bottom border)
         </span>
       </div>
       <p class="muted reading-keyboard-hint" id="reading-keyboard-hint">
@@ -1194,18 +1179,6 @@
   });
   fileInput.addEventListener('change', () => {
     if (fileInput.files && fileInput.files.length) handleFile(fileInput.files[0]);
-  });
-  $('load-sample').addEventListener('click', async (e) => {
-    e.stopPropagation();
-    clearLoadError();
-    try {
-      const res = await fetch('sample-reading.json');
-      if (!res.ok) throw new Error('HTTP ' + res.status);
-      const text = await res.text();
-      processJsonText(text);
-    } catch (err) {
-      showLoadError('Could not load sample-reading.json (' + err.message + '). Make sure the file is next to this page and the page is being served (not opened from disk).');
-    }
   });
   $('reload-file').addEventListener('click', () => {
     $('reading-loaded').style.display = 'none';
@@ -1891,33 +1864,6 @@
     });
     return indices;
   }
-
-  $('apply-key').addEventListener('click', () => {
-    const indices = touchedWordIndicesFromSelection();
-    if (indices === null) {
-      alert('Select a sentence or passage first, then click "Mark key idea."');
-      return;
-    }
-    if (!indices.length) {
-      alert('That selection does not include any words from the reading.');
-      return;
-    }
-    indices.forEach(i => { state.words[i].key = true; });
-    indices.forEach(i => updateWordAndNeighbors(i));
-    window.getSelection().removeAllRanges();
-  });
-
-  $('clear-key').addEventListener('click', () => {
-    const indices = touchedWordIndicesFromSelection();
-    if (indices === null) {
-      alert('Select the text you want to clear first.');
-      return;
-    }
-    if (!indices.length) return;
-    indices.forEach(i => { state.words[i].key = false; });
-    indices.forEach(i => updateWordAndNeighbors(i));
-    window.getSelection().removeAllRanges();
-  });
 
   // Font / line spacing controls
   $('font-size').addEventListener('input', applyFontControls);
@@ -2845,9 +2791,8 @@
       .doc h2 { font-size: 16px; color: #1f3a5f; margin: 22px 0 8px; }
       .doc .meta { color: #555; font-size: 13px; line-height: 1.45; }
       .doc .reading p { font-size: 15px; line-height: 1.75; margin: 0 0 0.9em; }
-      /* Non-color signals mirror the on-screen annotations: a wavy
-         underline for new vocabulary, a solid bottom border for key ideas.
-         These ensure the two annotation types are distinguishable in the
+      /* Non-color signal mirrors the on-screen annotation: a wavy underline
+         for new vocabulary, so the marks stay distinguishable in the
          instructor's PDF even when printed in grayscale or viewed by a
          colorblind reader. */
       .doc .unfamiliar {
@@ -2856,22 +2801,10 @@
         text-decoration-thickness: 2px;
         text-underline-offset: 2px;
       }
-      .doc .tag-key {
-        background-color: #b9d8f5;
-        box-shadow: inset 0 -3px 0 #1f4f7d;
-      }
-      .doc .unfamiliar.tag-key {
-        background-image: linear-gradient(to top, #fff176 0 3px, #b9d8f5 3px 100%);
-        text-decoration: underline wavy #8a6a00;
-        text-decoration-thickness: 2px;
-        text-underline-offset: 2px;
-        box-shadow: inset 0 -3px 0 #1f4f7d;
-      }
       .doc .legend { font-size: 13px; margin: 4px 0 12px; color: #333; display: flex; flex-wrap: wrap; gap: 6px 18px; }
       .doc .legend .legend-item { display: inline-flex; align-items: center; gap: 6px; }
       .doc .legend .swatch { display: inline-block; width: 28px; height: 12px; vertical-align: middle; border: 1px solid rgba(0,0,0,0.12); }
       .doc .legend .swatch.unfamiliar { background: #fff176; border-bottom: 2px solid #8a6a00; }
-      .doc .legend .swatch.tag-key { background: #b9d8f5; border-bottom: 3px solid #1f4f7d; }
       .doc dl.summary { margin: 6px 0; }
       .doc dl.summary dt { font-weight: 600; color: #1f3a5f; margin-top: 6px; }
       .doc dl.summary dd { margin: 2px 0 8px; }
@@ -2979,7 +2912,6 @@
 <h2>Annotated reading</h2>
 <div class="legend">
   <span class="legend-item"><span class="swatch unfamiliar"></span>New vocabulary word (yellow, wavy underline)</span>
-  <span class="legend-item"><span class="swatch tag-key"></span>Key idea (blue, solid bottom border)</span>
 </div>
 <div class="reading">
 ${paragraphsHtml}
