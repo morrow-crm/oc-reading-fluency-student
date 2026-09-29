@@ -134,12 +134,35 @@
   .rec-dot {
     width: 12px; height: 12px; background: var(--recording);
     border-radius: 50%;
+    flex: none;
     animation: pulse 1.1s ease-in-out infinite;
   }
   @keyframes pulse {
     0%, 100% { opacity: 1; transform: scale(1); }
     50% { opacity: 0.45; transform: scale(0.85); }
   }
+  /* Prominent "you are being recorded" box shown when recording starts. */
+  .rec-callout {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #fdecea;
+    border: 2px solid var(--recording);
+    border-radius: 5px;
+    padding: 12px 16px;
+    margin-bottom: 12px;
+    color: var(--text);
+  }
+  .rec-callout-text { flex: 1; font-size: 14px; }
+  /* Paused state: the dot stops pulsing and goes hollow so it is clear that
+     recording is stopped, and the bar dims. */
+  .recording-bar.paused { background: var(--muted); }
+  .rec-dot.paused {
+    animation: none;
+    background: transparent;
+    border: 2px solid #fff;
+  }
+  .rec-callout .rec-dot.paused { border-color: var(--recording); }
   .timer {
     font-variant-numeric: tabular-nums;
     font-size: 18px;
@@ -749,11 +772,19 @@
   <!-- STAGE 4: READ ALOUD -->
   <section class="stage" id="stage-read" aria-labelledby="reading-title-display">
     <div id="read-state-a">
+      <div class="rec-callout" id="rec-callout" role="status" aria-live="assertive">
+        <span class="rec-dot" aria-hidden="true"></span>
+        <div class="rec-callout-text">
+          <strong>You are being recorded.</strong> The app is recording your voice as you read this passage aloud. It stays on your device — nothing is sent anywhere until you download and submit your files. Need a break? Use <strong>Pause</strong>.
+        </div>
+        <button type="button" id="rec-callout-dismiss" class="util-btn">Got it</button>
+      </div>
       <div class="recording-bar" role="status" aria-live="polite">
         <span class="rec-dot" aria-hidden="true"></span>
-        <strong>Recording</strong>
-        <span class="muted">— read the passage aloud at a natural pace.</span>
+        <strong id="rec-status-label">Recording</strong>
+        <span class="muted" id="rec-status-hint">— read the passage aloud at a natural pace.</span>
         <span class="timer" id="read-timer" aria-hidden="true">00:00</span>
+        <button type="button" id="read-pause" class="util-btn" aria-pressed="false">Pause</button>
         <button type="button" id="read-time-check" class="util-btn"
                 aria-label="Check elapsed reading time">Check time</button>
         <span id="read-timer-sr" class="sr-only" aria-live="polite" aria-atomic="true"></span>
@@ -935,7 +966,7 @@
     wsSpansByLeft: {},      // leftWordIdx -> .ws span between word leftIdx and leftIdx+1
     totalWords: 0,
     paraSentenceMap: [],    // per paragraph: array of sentence strings
-    timer: { startMs: 0, elapsedMs: 0, interval: null },
+    timer: { startMs: 0, elapsedMs: 0, interval: null, baseMs: 0, paused: false },
     micRecorder: null,
     micChunks: [],
     micBlob: null,
@@ -1882,11 +1913,21 @@
     state.recChunks = [];
     state.recBlob = null;
     state.timer.elapsedMs = 0;
+    state.timer.baseMs = 0;
+    state.timer.paused = false;
     $('read-timer').textContent = '00:00';
     $('read-state-a').style.display = '';
     $('read-state-b').style.display = 'none';
     $('finish-reading').style.display = '';
     $('annotate-continue').style.display = 'none';
+    // Fresh recording UI: re-show the callout, clear any paused styling.
+    $('rec-callout').style.display = '';
+    document.querySelector('#read-state-a .recording-bar').classList.remove('paused');
+    document.querySelectorAll('#read-state-a .rec-dot').forEach(d => d.classList.remove('paused'));
+    $('rec-status-label').textContent = 'Recording';
+    $('rec-status-hint').textContent = '— read the passage aloud at a natural pace.';
+    $('read-pause').textContent = 'Pause';
+    $('read-pause').setAttribute('aria-pressed', 'false');
 
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
@@ -1895,6 +1936,9 @@
       state.recMime = mime;
       const rec = new MediaRecorder(stream, mime ? { mimeType: mime } : undefined);
       state.recRecorder = rec;
+      // Pause/Resume is offered only if this browser's MediaRecorder supports it.
+      state.recCanPause = (typeof rec.pause === 'function' && typeof rec.resume === 'function');
+      $('read-pause').style.display = state.recCanPause ? '' : 'none';
       rec.ondataavailable = e => { if (e.data && e.data.size > 0) state.recChunks.push(e.data); };
       rec.onstop = () => {
         state.recBlob = new Blob(state.recChunks, { type: state.recMime || rec.mimeType || 'audio/webm' });
@@ -1906,14 +1950,62 @@
       rec.start();
       // Start timer
       state.timer.startMs = Date.now();
-      state.timer.interval = setInterval(() => {
-        state.timer.elapsedMs = Date.now() - state.timer.startMs;
-        $('read-timer').textContent = formatTime(state.timer.elapsedMs);
-      }, 250);
+      state.timer.interval = setInterval(tickReadTimer, 250);
     } catch (err) {
       alert('Could not start recording: ' + (err.message || err) +
         '\n\nIf this keeps happening, return to the microphone check.');
     }
+  }
+
+  // Elapsed reading time, accounting for any paused spans. While running it is
+  // the accumulated base plus the current segment; while paused (no interval)
+  // the accumulated total is already stored in elapsedMs.
+  function currentElapsedMs() {
+    return state.timer.interval
+      ? state.timer.baseMs + (Date.now() - state.timer.startMs)
+      : state.timer.elapsedMs;
+  }
+  function tickReadTimer() {
+    state.timer.elapsedMs = currentElapsedMs();
+    $('read-timer').textContent = formatTime(state.timer.elapsedMs);
+  }
+
+  // Dismiss the recording callout (the persistent bar remains as the indicator).
+  $('rec-callout-dismiss').addEventListener('click', () => {
+    $('rec-callout').style.display = 'none';
+  });
+
+  // Pause / resume the recording and the timer together.
+  $('read-pause').addEventListener('click', () => {
+    const rec = state.recRecorder;
+    if (!rec || !state.recCanPause) return;
+    if (!state.timer.paused) {
+      // Pause: stop the recorder and freeze the accumulated time.
+      if (rec.state === 'recording') rec.pause();
+      if (state.timer.interval) { clearInterval(state.timer.interval); state.timer.interval = null; }
+      state.timer.baseMs = state.timer.elapsedMs = state.timer.baseMs + (Date.now() - state.timer.startMs);
+      state.timer.paused = true;
+      setRecordingPausedUi(true);
+    } else {
+      // Resume: continue the recorder and restart the timer segment.
+      if (rec.state === 'paused') rec.resume();
+      state.timer.startMs = Date.now();
+      state.timer.paused = false;
+      state.timer.interval = setInterval(tickReadTimer, 250);
+      setRecordingPausedUi(false);
+    }
+  });
+
+  function setRecordingPausedUi(paused) {
+    document.querySelector('#read-state-a .recording-bar').classList.toggle('paused', paused);
+    document.querySelectorAll('#read-state-a .rec-dot').forEach(d => d.classList.toggle('paused', paused));
+    $('rec-status-label').textContent = paused ? 'Paused' : 'Recording';
+    $('rec-status-hint').textContent = paused
+      ? '— recording is paused. Press Resume when you\'re ready.'
+      : '— read the passage aloud at a natural pace.';
+    $('read-pause').textContent = paused ? 'Resume' : 'Pause';
+    $('read-pause').setAttribute('aria-pressed', paused ? 'true' : 'false');
+    $('read-timer-sr').textContent = paused ? 'Recording paused.' : 'Recording resumed.';
   }
 
   // On-demand timer announcement for screen-reader users. The visible timer
@@ -1921,21 +2013,21 @@
   // tech; pressing "Check time" exposes the current elapsed time in a polite
   // live region.
   $('read-time-check').addEventListener('click', () => {
-    const ms = state.timer.interval
-      ? (Date.now() - state.timer.startMs)
-      : state.timer.elapsedMs;
-    $('read-timer-sr').textContent = 'Elapsed reading time: ' + formatTimeLong(ms) + '.';
+    const ms = currentElapsedMs();
+    $('read-timer-sr').textContent = 'Elapsed reading time: ' + formatTimeLong(ms) +
+      (state.timer.paused ? ' (paused).' : '.');
   });
 
   $('finish-reading').addEventListener('click', () => {
-    // Stop timer
+    // Stop timer (capture elapsed before clearing; works whether running or paused)
+    state.timer.elapsedMs = currentElapsedMs();
     if (state.timer.interval) {
       clearInterval(state.timer.interval);
       state.timer.interval = null;
     }
-    state.timer.elapsedMs = Date.now() - state.timer.startMs;
+    state.timer.paused = false;
     $('read-timer').textContent = formatTime(state.timer.elapsedMs);
-    // Stop recording
+    // Stop recording (stop() finalizes the take from either recording or paused)
     if (state.recRecorder && state.recRecorder.state !== 'inactive') {
       state.recRecorder.stop();
     }
