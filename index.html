@@ -785,7 +785,10 @@
         <span class="muted" id="rec-status-hint">— read the passage aloud at a natural pace.</span>
         <span class="timer" id="read-timer" aria-hidden="true">00:00</span>
         <button type="button" id="read-pause" class="util-btn" aria-pressed="false">Pause</button>
-        <button type="button" id="read-time-check" class="util-btn"
+        <!-- On-demand time announcement for screen-reader users only. Hidden
+             visually (the live timer above is already visible to sighted
+             students, so a visible "Check time" button just confused them). -->
+        <button type="button" id="read-time-check" class="util-btn sr-only"
                 aria-label="Check elapsed reading time">Check time</button>
         <span id="read-timer-sr" class="sr-only" aria-live="polite" aria-atomic="true"></span>
       </div>
@@ -914,6 +917,7 @@
       <div class="summary-box">
         <dl>
           <dt>Time spent reading</dt><dd id="dl-time"></dd>
+          <dt id="dl-pauses-label" style="display:none;">Recording paused</dt><dd id="dl-pauses" style="display:none;"></dd>
           <dt>Words in passage</dt><dd id="dl-words"></dd>
           <dt>Words per minute (assumes full passage read)</dt><dd id="dl-wpm"></dd>
         </dl>
@@ -966,7 +970,7 @@
     wsSpansByLeft: {},      // leftWordIdx -> .ws span between word leftIdx and leftIdx+1
     totalWords: 0,
     paraSentenceMap: [],    // per paragraph: array of sentence strings
-    timer: { startMs: 0, elapsedMs: 0, interval: null, baseMs: 0, paused: false },
+    timer: { startMs: 0, elapsedMs: 0, interval: null, baseMs: 0, paused: false, pauseCount: 0, pausedMs: 0, pauseStartMs: 0 },
     micRecorder: null,
     micChunks: [],
     micBlob: null,
@@ -1915,6 +1919,9 @@
     state.timer.elapsedMs = 0;
     state.timer.baseMs = 0;
     state.timer.paused = false;
+    state.timer.pauseCount = 0;
+    state.timer.pausedMs = 0;
+    state.timer.pauseStartMs = 0;
     $('read-timer').textContent = '00:00';
     $('read-state-a').style.display = '';
     $('read-state-b').style.display = 'none';
@@ -1985,10 +1992,14 @@
       if (state.timer.interval) { clearInterval(state.timer.interval); state.timer.interval = null; }
       state.timer.baseMs = state.timer.elapsedMs = state.timer.baseMs + (Date.now() - state.timer.startMs);
       state.timer.paused = true;
+      // Log the pause so the reading record can report it to the professor.
+      state.timer.pauseCount++;
+      state.timer.pauseStartMs = Date.now();
       setRecordingPausedUi(true);
     } else {
       // Resume: continue the recorder and restart the timer segment.
       if (rec.state === 'paused') rec.resume();
+      state.timer.pausedMs += Date.now() - state.timer.pauseStartMs;
       state.timer.startMs = Date.now();
       state.timer.paused = false;
       state.timer.interval = setInterval(tickReadTimer, 250);
@@ -2024,6 +2035,10 @@
     if (state.timer.interval) {
       clearInterval(state.timer.interval);
       state.timer.interval = null;
+    }
+    // If they finish while still paused, close that open pause span.
+    if (state.timer.paused) {
+      state.timer.pausedMs += Date.now() - state.timer.pauseStartMs;
     }
     state.timer.paused = false;
     $('read-timer').textContent = formatTime(state.timer.elapsedMs);
@@ -2708,6 +2723,15 @@
     const minutes = ms / 60000;
     const wpm = minutes > 0 ? Math.round(state.totalWords / minutes) : 0;
     $('dl-time').textContent = formatTimeLong(ms) + ' (' + formatTime(ms) + ')';
+    if (state.timer.pauseCount) {
+      $('dl-pauses-label').style.display = '';
+      $('dl-pauses').style.display = '';
+      $('dl-pauses').textContent = state.timer.pauseCount + ' time' + (state.timer.pauseCount === 1 ? '' : 's') +
+        ', ' + formatTimeLong(state.timer.pausedMs) + ' total';
+    } else {
+      $('dl-pauses-label').style.display = 'none';
+      $('dl-pauses').style.display = 'none';
+    }
     $('dl-words').textContent = state.totalWords.toString();
     $('dl-wpm').textContent = wpm + ' wpm';
 
@@ -2995,7 +3019,8 @@
 
 <h2>Summary</h2>
 <dl class="summary">
-  <dt>Time spent reading</dt><dd>${esc(formatTimeLong(ms))} (${esc(formatTime(ms))})</dd>
+  <dt>Time spent reading</dt><dd>${esc(formatTimeLong(ms))} (${esc(formatTime(ms))}) <span class="note">(active reading time; excludes any pauses)</span></dd>
+  ${state.timer.pauseCount ? `<dt>Recording paused</dt><dd>${state.timer.pauseCount} time${state.timer.pauseCount === 1 ? '' : 's'}, ${esc(formatTimeLong(state.timer.pausedMs))} total</dd>` : ''}
   <dt>Total words in passage</dt><dd>${state.totalWords}</dd>
   <dt>Words per minute</dt><dd>${wpm} wpm <span class="note">(assumes the whole passage was read aloud)</span></dd>
   ${reading.readingLevel ? `<dt>Reading level</dt><dd>${esc(reading.readingLevel)}${reading.levelDescription ? ' — ' + esc(reading.levelDescription) : ''}</dd>` : ''}
