@@ -734,7 +734,8 @@
   <section class="stage" id="stage-load" aria-labelledby="load-heading">
     <div class="panel">
       <h2 id="load-heading" tabindex="-1">Load the reading</h2>
-      <p>Open the file your professor sent you. Accepted file types: <strong>.json</strong> (preferred), <strong>.docx</strong>, or <strong>.pdf</strong>.</p>
+      <p id="load-intro">Open the file your professor sent you. Accepted file types: <strong>.json</strong> (preferred), <strong>.docx</strong>, or <strong>.pdf</strong>.</p>
+      <p id="load-from-link" class="notice" role="status" style="display:none;"></p>
       <div class="drop-zone" id="drop-zone" role="button" tabindex="0"
            aria-label="Choose a reading file. Press Enter or Space to open the file picker, or drag a file here.">
         <p><strong>Click to choose a file</strong> or drag the file here.</p>
@@ -1226,6 +1227,47 @@
     setStage('read', 'Read aloud');
     startReadingRecording();
   });
+
+  // ----- Assignment reference links: ?reading=<slug> -----
+  // When the page is opened with ?reading=<slug>, fetch readings/<slug>.json
+  // from this same site and pre-load it, so a link posted in Canvas opens the
+  // reading with no file upload. Purely additive: with no ?reading= param the
+  // upload flow is unchanged, and any failure falls back to normal upload.
+  function revealUploadFallback() {
+    $('load-intro').style.display = '';
+    $('drop-zone').style.display = '';
+    $('reload-file').style.display = '';
+    $('load-from-link').style.display = 'none';
+  }
+  function initReadingFromUrl() {
+    let slug = null;
+    try { slug = new URLSearchParams(window.location.search).get('reading'); }
+    catch (e) { return; }
+    if (!slug || !/^[A-Za-z0-9][A-Za-z0-9_-]{0,80}$/.test(slug)) return;
+    state.fromAssignmentLink = true;
+    // Hide the upload affordances up front; the reading is coming from the link.
+    $('load-intro').style.display = 'none';
+    $('drop-zone').style.display = 'none';
+    $('reload-file').style.display = 'none';
+    $('load-from-link').style.display = 'block';
+    $('load-from-link').textContent = 'Loading your reading from the assignment link…';
+    fetch('readings/' + encodeURIComponent(slug) + '.json', { cache: 'no-store' })
+      .then(res => { if (!res.ok) throw new Error('HTTP ' + res.status); return res.text(); })
+      .then(text => {
+        clearLoadError();
+        processJsonText(text);
+        if (state.reading) {
+          $('load-from-link').textContent = 'This reading opened from your assignment link — no file needed.';
+        } else {
+          revealUploadFallback();
+        }
+      })
+      .catch(() => {
+        showLoadError('This assignment link could not open its reading. You can still load the file your professor gave you below.');
+        revealUploadFallback();
+      });
+  }
+  initReadingFromUrl();
 
   function clearLoadError() { $('load-error').style.display = 'none'; }
   function showLoadError(msg) {
