@@ -958,6 +958,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<!-- MP3 encoder: the recording is transcoded to .mp3 in the browser before download
+     so the file plays everywhere (Canvas, Windows, phones). If this fails to load,
+     the app falls back to the browser's native recording so a student is never blocked. -->
+<script src="https://cdn.jsdelivr.net/npm/lamejs@1.2.1/lame.min.js"></script>
 <script>
 (function () {
   'use strict';
@@ -2764,6 +2768,64 @@
     return o && o.definition ? o.definition : '';
   }
 
+  // ----- MP3 conversion -----
+  // Browsers record .webm/.m4a, which many players and Canvas SpeedGrader can't
+  // open. We transcode the recording to .mp3 in the browser (lamejs) so the file
+  // plays everywhere. On any failure we keep the original recording so the student
+  // is never left without a file to submit.
+  function floatToInt16(f32) {
+    const i16 = new Int16Array(f32.length);
+    for (let i = 0; i < f32.length; i++) {
+      const s = Math.max(-1, Math.min(1, f32[i]));
+      i16[i] = s < 0 ? s * 0x8000 : s * 0x7fff;
+    }
+    return i16;
+  }
+  async function encodeRecordingToMp3(blob) {
+    if (!window.lamejs || !window.lamejs.Mp3Encoder) return null;
+    const AC = window.AudioContext || window.webkitAudioContext;
+    if (!AC) return null;
+    const ctx = new AC();
+    try {
+      const audioBuf = await ctx.decodeAudioData(await blob.arrayBuffer());
+      const samples = floatToInt16(audioBuf.getChannelData(0)); // mono (voice); ch0 is enough
+      const enc = new window.lamejs.Mp3Encoder(1, audioBuf.sampleRate, 128);
+      const out = [];
+      const block = 1152;
+      for (let i = 0; i < samples.length; i += block) {
+        const buf = enc.encodeBuffer(samples.subarray(i, i + block));
+        if (buf.length > 0) out.push(buf);
+      }
+      const tail = enc.flush();
+      if (tail.length > 0) out.push(tail);
+      if (!out.length) return null;
+      return new Blob(out, { type: 'audio/mpeg' });
+    } catch (e) {
+      return null;
+    } finally {
+      try { ctx.close(); } catch (e) {}
+    }
+  }
+  // Convert in the background and swap the link to the .mp3 once ready; the link
+  // starts pointing at the original recording so it works even mid-conversion.
+  async function prepareMp3Download(a, baseName) {
+    const original = a.download;
+    a.textContent = 'Preparing MP3… (your file will be ready in a moment)';
+    a.style.pointerEvents = 'none';
+    a.style.opacity = '0.6';
+    let mp3 = null;
+    try { mp3 = await encodeRecordingToMp3(state.recBlob); } catch (e) { mp3 = null; }
+    if (mp3) {
+      a.href = URL.createObjectURL(mp3);
+      a.download = baseName + '.mp3';
+      a.textContent = 'Download audio recording (' + baseName + '.mp3)';
+    } else {
+      a.textContent = 'Download audio recording (' + original + ')';
+    }
+    a.style.pointerEvents = '';
+    a.style.opacity = '';
+  }
+
   // ----- Stage 6: Download -----
   function prepareDownload() {
     const ms = state.timer.elapsedMs;
@@ -2788,11 +2850,17 @@
     const audioFilename = safeName + ' - ' + safeTitle + ' - recording.' + audioExt;
     const recordFilename = safeName + ' - ' + safeTitle + ' - reading record.pdf';
 
+    const audioBase = safeName + ' - ' + safeTitle + ' - recording';
     const audioA = $('dl-audio');
     if (state.recBlob) {
+      // Point at the original recording immediately (works even mid-conversion),
+      // then transcode to MP3 and swap the link when it's ready.
       audioA.href = URL.createObjectURL(state.recBlob);
       audioA.download = audioFilename;
       audioA.textContent = 'Download audio recording (' + audioFilename + ')';
+      audioA.style.pointerEvents = '';
+      audioA.style.opacity = '';
+      prepareMp3Download(audioA, audioBase);
     } else {
       audioA.textContent = 'Audio recording not available';
       audioA.removeAttribute('href');
