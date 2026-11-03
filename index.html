@@ -4,34 +4,34 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>OC Reading Fluency — Student</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap">
 <style>
   :root {
-    /* "Composition Notebook" palette: warm paper, ink, ink-blue accent,
-       pencil-yellow highlight, brick-red recording. Variable names are kept
-       so every existing rule re-themes from these values alone. */
-    --navy: #30527a;          /* banner / recording bar (ink-blue) */
-    --navy-dark: #26405f;
-    --panel: #fdfaf2;         /* warm panel */
-    --panel-border: #ddd2b8;
-    --border: #b7a985;
-    --text: #23201b;          /* ink */
-    --muted: #645c48;
-    --warning-bg: #f7efd6;
+    /* "Calm Focus" palette: cool off-white, dark-teal accent, teal-tinted
+       vocabulary highlight, red reserved for the recording signal. Variable
+       names are kept so every existing rule re-themes from these values alone. */
+    --navy: #1b6d63;          /* banner / recording bar (dark teal) */
+    --navy-dark: #155a52;
+    --panel: #ffffff;         /* white card on cool ground */
+    --panel-border: #d4dee1;
+    --border: #a7b7bc;
+    --text: #1f2a30;          /* slate */
+    --muted: #51656c;
+    --warning-bg: #fdf3d6;
     --warning-border: #b08c2a;
-    --error-bg: #f6e4df;
-    --error-border: #a8442a;
-    --error-text: #6a1b16;
-    --primary: #30527a;       /* ink-blue */
-    --primary-hover: #26405f;
-    --secondary: #ece3cf;     /* warm paper button */
-    --secondary-hover: #e2d6bc;
-    --recording: #b23a2e;     /* brick red */
-    --unfamiliar: #e9b949;    /* pencil yellow */
-    --unfamiliar-edge: #8a6a00;
+    --error-bg: #f6e0dc;
+    --error-border: #c2473b;
+    --error-text: #7a241b;
+    --primary: #1b6d63;       /* dark teal (passes contrast with white text) */
+    --primary-hover: #155a52;
+    --secondary: #e6eef0;     /* cool light button */
+    --secondary-hover: #d6e2e5;
+    --recording: #c2473b;     /* red, reserved for recording */
+    --unfamiliar: #bfe3dd;    /* teal-tinted highlight */
+    --unfamiliar-edge: #0f4a43;
     --tag-key: #b9d8f5;
     --tag-key-edge: #1f4f7d;
-    --focus-ring: #30527a;
+    --focus-ring: #1b6d63;
   }
   /* Visually hidden but available to screen readers. */
   .sr-only {
@@ -62,13 +62,13 @@
   * { box-sizing: border-box; }
   html, body {
     margin: 0; padding: 0;
-    font-family: "Public Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background: #f6f1e7;
+    font-family: "Atkinson Hyperlegible", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: #f4f7f8;
     color: var(--text);
     font-size: 15px;
     line-height: 1.45;
   }
-  h1, h2, h3 { font-family: "Fraunces", Georgia, "Times New Roman", serif; }
+  h1, h2, h3 { font-family: "Atkinson Hyperlegible", system-ui, sans-serif; font-weight: 700; }
   .app {
     max-width: 900px;
     margin: 0 auto;
@@ -226,6 +226,9 @@
     background: #fff;
     border: 1px solid var(--border);
     border-radius: 5px;
+    /* Cap the line length (~62 characters) for readability; scales with the
+       student's chosen text size since it's set in ch. */
+    max-width: 62ch;
     padding: 18px 22px;
     max-height: 60vh;
     overflow-y: auto;
